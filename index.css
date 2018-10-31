@@ -1,0 +1,63 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+*
+{
+  margin: 0px;
+  padding: 0px;
+}
+#game
+{
+	
+}
+#cover
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100vw;
+	height:100vh;
+	background-color:black;
+	opacity:0.3;
+}
+#setting
+{
+	position:absolute;
+	/*z-index:2;*/
+	background-color:yellow;
+	top:10vh;
+	left:20vw;
+	width:60vw;
+	height:60vh;
+	font-family:"Noto Sans TC",sans-serif;
+	font-size:4em;
+	font-weight:400;
+}
+#achieve
+{
+	position:absolute;
+	/*z-index:2;*/
+	background-color:yellow;
+	top:10vh;
+	left:20vw;
+	width:60vw;
+	height:60vh;
+	font-family:"Microsoft JhengHei";
+	font-size:4em;
+}
+#return
+{
+	position:absolute;
+	background-repeat:no-repeat;
+	z-index:3;
+	top:10vh;
+	left:70vw;
+	width:5vw;
+	height:5vh;
+}
+#day
+{
+	position:absolute;
+	top:13vh;
+	left:75vw;
+	font-family:"Times New Roman";
+	font-size:4em;
+}
