@@ -101,7 +101,7 @@ var mainpage ={
 	//參數設定
 	//按鈕設定
 	this.button_end = game.add.button(345, 645, 'endb');
-	this.button_end.scale.set(0.48);
+	//this.button_end.scale.set(0.48);
     this.button_end.onInputDown.add( dowm,{key:"end"},this);
     this.button_end.onInputUp.add(up, { key: "end" }, this);  
 	
