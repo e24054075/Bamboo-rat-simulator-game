@@ -52,7 +52,7 @@ function deviceType() {
 		device_type = 0;
 	} else {
 		device_type = 1;
-		$("#day").css({"top":"12vh","left":"20vw","font-size":"2em"});
+		$("#day").css({"top":"90px","left":"300px","font-size":"1.8em"});
 	}
 };
 
@@ -62,9 +62,9 @@ var mainpage ={
   preload:()=>{
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
 	game.load.image('back','assets/img/back.png');		
-	game.load.image('endb','assets/img/endb.png');
-	game.load.image('setb','assets/img/setb.png');		
-	game.load.image('achb','assets/img/achb.png');
+	game.load.image('endb','assets/img/endb2.png');
+	game.load.image('setb','assets/img/setb2.png');		
+	game.load.image('achb','assets/img/achb2.png');
 	game.load.image('wall','assets/img/wall.png');	
 	game.load.spritesheet('rat_player','assets/img/rat2.png', 210, 114);
 	},
@@ -100,22 +100,24 @@ var mainpage ={
 	rat_player.input.boundsRect = bounds;
 	//參數設定
 	//按鈕設定
-	this.button_end = game.add.button(350, 640, 'endb');
-	this.button_end.scale.set(0.32);
+	this.button_end = game.add.button(345, 645, 'endb');
+	this.button_end.scale.set(0.48);
     this.button_end.onInputDown.add( dowm,{key:"end"},this);
     this.button_end.onInputUp.add(up, { key: "end" }, this);  
 	
-	this.button_end = game.add.button(280, 640, 'setb');
-	this.button_end.scale.set(0.32);
+	this.button_end = game.add.button(10, 645, 'setb');
+	//this.button_end.scale.set(0.32);
     this.button_end.onInputDown.add( dowm,{key:"set"},this);
     this.button_end.onInputUp.add(up, { key: "set" }, this);  
 	
-	this.button_end = game.add.button(207, 640, 'achb');
-	this.button_end.scale.set(0.32);
+	this.button_end = game.add.button(80, 645, 'achb');
+	//this.button_end.scale.set(0.32);
     this.button_end.onInputDown.add( dowm,{key:"achieve"},this);
     this.button_end.onInputUp.add(up, { key: "achieve" }, this);  
 	game.time.events.loop(Phaser.Timer.SECOND*2,updateMoveNum, this);
 	game.time.events.loop(Phaser.Timer.SECOND*2,updowm, this);
+	
+	cursors = game.input.keyboard.createCursorKeys();
 	},
   update:()=>{
 	//按鍵觸發
@@ -140,7 +142,7 @@ var mainpage ={
 		as_type = 2;
 	}
 	//game.physics.arcade.collide(rat_player, layer);
-	if(game.physics.arcade.collide(rat_player, layer)&& !rat_player.body.onCeiling())
+	if(game.physics.arcade.collide(rat_player, layer)&& rat_player.body.onWall())
 		collide_num = 1;
 	if(rat_player.input.isDragged)
 	{
@@ -194,6 +196,27 @@ var mainpage ={
         if (rat_player.facing === 'right') 
 			rat_player.frame = 0;
 	}	
+	//方向控制
+	
+    if (cursors.left.isDown) {
+        rat_player.body.velocity.x = -100;
+        rat_player.play('left');
+        if (rat_player.facing !== 'left')
+		    rat_player.facing = 'left';
+    }
+
+    else if (cursors.right.isDown ) {	
+        rat_player.body.velocity.x = 100;
+        rat_player.play('right');
+        if (rat_player.facing !== 'right') 
+            rat_player.facing = 'right';
+	}
+	else if (cursors.up.isDown ) {	
+        rat_player.body.velocity.y = -50;
+	}
+	else if (cursors.down.isDown ) {	
+        rat_player.body.velocity.y = 50;
+	}
 	
 	},
 	render:()=>{
