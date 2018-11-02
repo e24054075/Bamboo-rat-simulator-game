@@ -7,6 +7,7 @@ var gameTimer = 0;
 var collide_num = 0;
 var as_type = 0;
 
+var rat_mood = 0;
 var move_num;
 var up_num;
 var device_type;
@@ -65,7 +66,9 @@ var mainpage ={
 	game.load.image('endb','assets/img/endb3.png');
 	game.load.image('setb','assets/img/setb2.png');		
 	game.load.image('achb','assets/img/achb2.png');
-	game.load.image('wall','assets/img/wall.png');	
+	game.load.image('wall','assets/img/wall.png');
+	game.load.spritesheet('mood','assets/img/mood.png', 120, 121);
+	game.load.spritesheet('weather','assets/img/weather.png', 177, 177);
 	game.load.spritesheet('rat_player','assets/img/rat2.png', 210, 114);
 	},
   create:()=>{	
@@ -101,19 +104,25 @@ var mainpage ={
 	//參數設定
 	//按鈕設定
 	this.button_end = game.add.button(345, 645, 'endb');
-	//this.button_end.scale.set(0.48);
+	this.button_end.scale.set(0.9);
     this.button_end.onInputDown.add( dowm,{key:"end"},this);
     this.button_end.onInputUp.add(up, { key: "end" }, this);  
 	
-	this.button_end = game.add.button(10, 645, 'setb');
-	//this.button_end.scale.set(0.32);
-    this.button_end.onInputDown.add( dowm,{key:"set"},this);
-    this.button_end.onInputUp.add(up, { key: "set" }, this);  
+	this.button_set = game.add.button(10, 645, 'setb');
+	this.button_set.scale.set(0.9);
+    this.button_set.onInputDown.add( dowm,{key:"set"},this);
+    this.button_set.onInputUp.add(up, { key: "set" }, this);  
 	
-	this.button_end = game.add.button(80, 645, 'achb');
-	//this.button_end.scale.set(0.32);
-    this.button_end.onInputDown.add( dowm,{key:"achieve"},this);
-    this.button_end.onInputUp.add(up, { key: "achieve" }, this);  
+	this.button_ach = game.add.button(80, 645, 'achb');
+	this.button_ach.scale.set(0.9);
+    this.button_ach.onInputDown.add( dowm,{key:"achieve"},this);
+    this.button_ach.onInputUp.add(up, { key: "achieve" }, this); 
+	
+	this.button_mood = game.add.button(355, 30, 'mood');
+	this.button_mood.scale.set(0.38);
+	this.button_weather = game.add.button(295, 30, 'weather');
+	this.button_weather.scale.set(0.3);
+	
 	game.time.events.loop(Phaser.Timer.SECOND*2,updateMoveNum, this);
 	game.time.events.loop(Phaser.Timer.SECOND*2,updowm, this);
 	
@@ -124,7 +133,7 @@ var mainpage ={
 	if(trigger.end === 1&& game.time.now > gameTimer)
 	{
 		day++;
-		$('#day').text("DAY:"+day);
+		$('#day').text("DAY "+day);
 		gameTimer = game.time.now + 750;
 	}
 	if(trigger.achieve === 1 && trigger.set != 1)
@@ -196,8 +205,14 @@ var mainpage ={
         if (rat_player.facing === 'right') 
 			rat_player.frame = 0;
 	}	
+	if(rat_mood > 0)
+		button_mood.frame = 0;
+	else if(rat_mood < 0)
+		button_mood.frame = 1;
+	else
+		button_mood.frame = 2;
 	//方向控制
-	
+	/*
     if (cursors.left.isDown) {
         rat_player.body.velocity.x = -100;
         rat_player.play('left');
@@ -217,7 +232,7 @@ var mainpage ={
 	else if (cursors.down.isDown ) {	
         rat_player.body.velocity.y = 50;
 	}
-	
+	*/
 	},
 	render:()=>{
 		//game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 32);
@@ -258,6 +273,6 @@ $(document).ready(function(){
 	$("#achieve").hide();
 	$("#return").hide();
 	as_return();
-	$('#day').text("DAY:"+day);
+	$('#day').text("DAY "+day);
 	deviceType();
 });
