@@ -3,7 +3,7 @@ var phaserheight = window.innerHeight;
 var phaserwid = 600*phaserwidth/phaserheight;
 
 var day = 1;
-var trigger = {end:0,achieve:0,set:0};
+var trigger = {end:0,achieve:0,set:0,mood:0};
 var gameTimer = 0;
 var gameTimer2 = 0;
 var gameTimer3 = 0;
@@ -27,8 +27,8 @@ function dowm() {
         case "set":
 			trigger.set = 1;
             break;
-        case "space":
-
+        case "mood":
+			trigger.mood = 1;
             break;    
         default:
             break;
@@ -45,8 +45,8 @@ function up() {
         case "set":
 			trigger.set = 0;
             break;
-        case "space":
-
+        case "mood":
+			trigger.mood = 0;
             break;
         default:
             break;
@@ -124,6 +124,9 @@ var mainpage ={
     this.button_ach.onInputUp.add(up, { key: "achieve" }, this); 
 	
 	this.button_mood = game.add.button(355, 30, 'mood');
+	this.button_mood.onInputDown.add( dowm,{key:"mood"},this);
+    this.button_mood.onInputUp.add(up, { key: "mood" }, this);
+	
 	this.button_mood.scale.set(0.38);
 	this.button_weather = game.add.button(295, 30, 'weather');
 	this.button_weather.scale.set(0.3);
@@ -140,8 +143,6 @@ var mainpage ={
 		day++;
 		$('#day').text("DAY "+day);
 		gameTimer = game.time.now + 750;
-		game.state.start('littlegame');
-		$('#day').hide();
 	}
 	if(trigger.achieve === 1 && trigger.set != 1)
 	{
@@ -156,6 +157,11 @@ var mainpage ={
 		$("#setting").show();
 		$("#return").show();
 		as_type = 2;
+	}
+	if(trigger.mood === 1)
+	{
+		$("#day").hide();
+		game.state.start('littlegame');
 	}
 	//game.physics.arcade.collide(rat_player, layer);
 	if(game.physics.arcade.collide(rat_player, layer)&& rat_player.body.onWall())
@@ -337,8 +343,11 @@ var littlegame ={
 	}
 	if(obstacle.body.x < 1)
 		obstacle.kill();
-	if(rat_life == 0)
+	if(rat_life === 0)
+	{
+		$("#day").show();
 		game.state.start('mainpage');
+	}
 	},
 	render:()=>{
 		//game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 32);
