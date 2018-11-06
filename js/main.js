@@ -1,13 +1,17 @@
 var phaserwidth = window.innerWidth;
 var phaserheight = window.innerHeight;
+var phaserwid = 600*phaserwidth/phaserheight;
 
 var day = 1;
 var trigger = {end:0,achieve:0,set:0};
 var gameTimer = 0;
+var gameTimer2 = 0;
+var gameTimer3 = 0;
 var collide_num = 0;
 var as_type = 0;
-
+var rat_life;
 var rat_mood = 0;
+var rat_jump = 0;
 var move_num;
 var up_num;
 var device_type;
@@ -77,6 +81,7 @@ var mainpage ={
 	game.physics.arcade.gravity.y = 0;
 	game.time.desiredFps = 30;
 	//視窗設定
+	game.scale.setGameSize(420,700);
 	if(device_type === 0){
 		game.scale.scaleMode  = Phaser.ScaleManager.SHOW_ALL;
 		game.scale.pageAlignVertically = true;
@@ -135,6 +140,8 @@ var mainpage ={
 		day++;
 		$('#day').text("DAY "+day);
 		gameTimer = game.time.now + 750;
+		game.state.start('littlegame');
+		$('#day').hide();
 	}
 	if(trigger.achieve === 1 && trigger.set != 1)
 	{
@@ -250,8 +257,100 @@ function updowm(){
 game.state.add('mainpage', mainpage);
 game.state.start('mainpage');
 
+var littlegame ={
+  preload:()=>{
+	game.load.spritesheet('rat_player','assets/img/rat3.png', 210, 182);
+	game.load.image('background','assets/img/rat_race_bg.png');		
+	game.load.image('rat_race','assets/img/rat_race.png');
+	game.load.image('obstacle','assets/img/spike.png');	
+	game.load.image('obstacle2','assets/img/rock.png');		
+	},
+  create:()=>{	
+    //物理引擎
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+	game.physics.arcade.gravity.y = 350;
+	game.time.desiredFps = 30;
+	game.scale.setGameSize(1050,600);
+	//視窗設定
+	if(device_type === 0){
+		game.scale.scaleMode  = Phaser.ScaleManager.SHOW_ALL;
+		game.scale.pageAlignVertically = true;
+		game.scale.pageAlignHorizontally = true;
+	}
+	Phaser.Canvas.setImageRenderingCrisp(game.canvas);
+	//載入
+	bg = game.add.tileSprite(0, 0,1280, 600, 'background');
+	bg.autoScroll(-250,0);
+	rat_race = game.add.sprite(0,472,'rat_race');
+	
+	rat_player = game.add.sprite(50,200, 'rat_player');
+	game.physics.enable(rat_player,Phaser.Physics.ARCADE);
 
-function as_return(i){
+	game.physics.enable(rat_race,Phaser.Physics.ARCADE);
+	rat_race.body.allowGravity = false;
+	rat_race.body.immovable = true;
+	
+	rat_player.facing = 'right';
+    rat_player.animations.add('right', [1,2,3,4], 9, true);
+	rat_player.body.collideWorldBounds = true;
+	rat_player.animations.add('jump', [5,6,7], 2, false);
+	//game.input.onDown.add(function(){rat_jump = 1;});
+	game.input.onUp.add(function(){rat_jump = 1;});
+
+	rat_life = 3;
+	gameTimer2 = 1000;
+	lifeText = game.add.text(20,50,'生命: '+rat_life, {fontSize: '24px', fill: '#000000'});
+	},
+  update:()=>{
+	/*$(window).on("orientationchange",function(){
+		if(window.orientation != 0)
+		{
+				game.scale.setGameSize(1050,600);
+		}
+	});*/
+	if(rat_jump && game.time.now > gameTimer && game.physics.arcade.collide(rat_player, rat_race))
+	{
+		rat_player.play('jump');
+		rat_player.body.velocity.y = -350;
+		gameTimer = game.time.now + 1300;
+	}
+	else if(game.physics.arcade.collide(rat_player, rat_race)&& rat_jump === 0)
+	{
+		rat_player.play('right');
+	}
+	rat_jump = 0;
+	if(game.time.now > gameTimer2)
+	{
+		obstacle = game.add.sprite(1000,395,'obstacle');
+		game.physics.enable(obstacle,Phaser.Physics.ARCADE);
+		obstacle.scale.set(0.3);
+		obstacle.body.allowGravity = false;
+		obstacle.body.immovable = true;
+		obstacle.body.velocity.x = -350;
+		gameTimer2 = game.time.now +4000;
+	}
+	if(game.physics.arcade.overlap(rat_player, obstacle) && game.time.now > gameTimer3)
+	{
+		rat_life--;
+		lifeText.setText("生命: " + rat_life);
+		gameTimer3 = game.time.now +2000;
+	}
+	if(obstacle.body.x < 1)
+		obstacle.kill();
+	if(rat_life == 0)
+		game.state.start('mainpage');
+	},
+	render:()=>{
+		//game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 32);
+		//game.debug.spriteInfo(rat_player,32,32);
+		 //game.debug.spriteBounds(rat_player);
+	},
+
+};
+
+game.state.add('littlegame',littlegame);
+
+function as_return(){
 	$("#return").click(function(){
 		if(as_type === 1)
 		{
