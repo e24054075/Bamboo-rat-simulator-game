@@ -73,7 +73,7 @@ var mainpage ={
 	game.load.image('wall','assets/img/wall.png');
 	game.load.spritesheet('mood','assets/img/mood.png', 120, 121);
 	game.load.spritesheet('weather','assets/img/weather.png', 177, 177);
-	game.load.spritesheet('rat_player','assets/img/rat2.png', 210, 114);
+	game.load.spritesheet('rat_player','assets/img/rat5.png', 210, 114);
 	},
   create:()=>{	
     //物理引擎
@@ -96,11 +96,13 @@ var mainpage ={
 	layer = map.createLayer('layer1');
 	map.setCollision(1,true,layer);
 	
-	rat_player = game.add.sprite(100,450, 'rat_player');
+	rat_player = game.add.sprite(150,500, 'rat_player');
 	game.physics.enable(rat_player,Phaser.Physics.ARCADE);
 	rat_player.facing = 'right';
 	rat_player.animations.add('left', [6,7,8,9], 7, true);
     rat_player.animations.add('right', [1,2,3,4], 7, true);
+	rat_player.animations.add('catch', [10,11],10, true);
+	rat_player.anchor.setTo(0.5,0.5);
 	rat_player.body.collideWorldBounds = true;
 	rat_player.inputEnabled = true;
 	rat_player.input.enableDrag(true);
@@ -108,17 +110,17 @@ var mainpage ={
 	rat_player.input.boundsRect = bounds;
 	//參數設定
 	//按鈕設定
-	this.button_end = game.add.button(345, 645, 'endb');
+	this.button_end = game.add.button(345, 640, 'endb');
 	this.button_end.scale.set(0.9);
     this.button_end.onInputDown.add( dowm,{key:"end"},this);
     this.button_end.onInputUp.add(up, { key: "end" }, this);  
 	
-	this.button_set = game.add.button(10, 645, 'setb');
+	this.button_set = game.add.button(10, 640, 'setb');
 	this.button_set.scale.set(0.9);
     this.button_set.onInputDown.add( dowm,{key:"set"},this);
     this.button_set.onInputUp.add(up, { key: "set" }, this);  
 	
-	this.button_ach = game.add.button(80, 645, 'achb');
+	this.button_ach = game.add.button(80, 640, 'achb');
 	this.button_ach.scale.set(0.9);
     this.button_ach.onInputDown.add( dowm,{key:"achieve"},this);
     this.button_ach.onInputUp.add(up, { key: "achieve" }, this); 
@@ -166,14 +168,13 @@ var mainpage ={
 	//game.physics.arcade.collide(rat_player, layer);
 	if(game.physics.arcade.collide(rat_player, layer)&& rat_player.body.onWall())
 		collide_num = 1;
+	rat_player.angle = 0;
 	if(rat_player.input.isDragged)
 	{
 		rat_player.body.velocity.x = 0;
 		rat_player.body.velocity.y = 0;
-		if (rat_player.facing === 'left') 
-			rat_player.frame = 5;
-        if (rat_player.facing === 'right') 
-			rat_player.frame = 0;
+		rat_player.angle = 90;
+		rat_player.play('catch');
 	}
 	else if(move_num < 6)
 	{
@@ -250,6 +251,7 @@ var mainpage ={
 	render:()=>{
 		//game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 32);
 		//game.debug.spriteInfo(rat_player,32,32);
+		//game.debug.spriteBounds(rat_player);
 	},
 };
 
