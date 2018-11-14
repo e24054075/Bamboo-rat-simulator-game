@@ -10,18 +10,33 @@
 	</head>
 	<body stlye = 'margin = 0;'>
 		<div id="game"></div>
-		<div id="day"></div>
-		<div id= "cover"></div>
-		<div id= "status">
-		</div>
-		<div id="achieve">
-			<p>成就</p>
-		</div>
-		<div id="setting">
-			<p>設定</p>
-		</div>
-		<div id="return">
-			<img src="./assets/img/return.png" height="100%">
+		<div id="main">
+			<div id="ratname">
+			<svg>
+			<defs>
+				<path id="a1" d="M0 30 C120 70,140 35,450 0" stroke="#000" fill="none"/>
+			</defs>
+			<defs>
+				<path id="a2" d="M0 30 C30 50,60 30,450 0" stroke="#000" fill="none"/>
+			</defs>
+			<text id="ratnamesize" style = "font-size:3em">
+				<textPath xlink:href="#a3">竹鼠一號
+				</textPath>
+			</text>
+			</svg>
+			</div>
+			<div id="day"></div>
+			<div id= "cover"></div>
+			<div id= "status"></div>
+			<div id="achieve">
+				<p>成就</p>
+			</div>
+			<div id="setting">
+				<p>設定</p>
+			</div>
+			<div id="return">
+				<img src="./assets/img/return.png" height="100%">
+			</div>
 		</div>
 		<script src="./js/main.js"></script>
 	</body>

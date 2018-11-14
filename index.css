@@ -8,6 +8,15 @@
 {
 	
 }
+#status
+{
+	position:absolute;
+	background-color:rgb(253,236,166);
+	top:0vh;
+	left:0vw;
+	width:100vw;
+	height:15vh;
+}
 #cover
 {
 	position:absolute;
@@ -60,4 +69,11 @@
 	left:75vw;
 	font-family:"Times New Roman";
 	font-size:4em;
+}
+#ratname
+{
+	position:absolute;
+	top:90vh;
+	left:44.2vw;
+	font-family:"Noto Sans TC",sans-serif;
 }

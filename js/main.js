@@ -3,7 +3,7 @@ var phaserheight = window.innerHeight;
 var phaserwid = 600*phaserwidth/phaserheight;
 
 var day = 1;
-var trigger = {end:0,achieve:0,set:0,mood:0};
+var trigger = {end:0,achieve:0,set:0,mood:0,eat:0};
 var gameTimer = 0;
 var gameTimer2 = 0;
 var gameTimer3 = 0;
@@ -15,6 +15,8 @@ var rat_jump = 0;
 var move_num;
 var up_num;
 var device_type;
+var food_choice = 0;
+var i;
 
 function dowm() {
     switch (this.key) {
@@ -29,7 +31,10 @@ function dowm() {
             break;
         case "mood":
 			trigger.mood = 1;
-            break;    
+            break;  
+		case "eat":
+			trigger.eat = 1;
+			break;
         default:
             break;
     }
@@ -48,6 +53,9 @@ function up() {
         case "mood":
 			trigger.mood = 0;
             break;
+		case "eat":
+			trigger.eat = 0;
+			break;
         default:
             break;
     }       
@@ -55,9 +63,15 @@ function up() {
 function deviceType() {
 	if(navigator.userAgent.match(/mobile/i)) {
 		device_type = 0;
+		var atemp = document.getElementById('a1');
+		atemp.setAttribute('id','a3');
 	} else {
 		device_type = 1;
 		$("#day").css({"top":"90px","left":"300px","font-size":"1.8em"});
+		$("#ratname").css({"position":"absolute","top":"653px","left":"190px"});
+		$("#ratnamesize").css({"font-size":"1.2em"});
+		var atemp = document.getElementById('a2');
+		atemp.setAttribute('id','a3');
 	}
 };
 
@@ -71,6 +85,8 @@ var mainpage ={
 	game.load.image('setb','assets/img/setb2.png');		
 	game.load.image('achb','assets/img/achb2.png');
 	game.load.image('wall','assets/img/wall.png');
+	game.load.image('bowl','assets/img/bowl.png');
+	game.load.image('bamboo','assets/img/bamboo2.png');
 	game.load.spritesheet('mood','assets/img/mood.png', 120, 121);
 	game.load.spritesheet('weather','assets/img/weather.png', 177, 177);
 	game.load.spritesheet('rat_player','assets/img/rat5.png', 210, 114);
@@ -81,7 +97,7 @@ var mainpage ={
 	game.physics.arcade.gravity.y = 0;
 	game.time.desiredFps = 30;
 	//視窗設定
-	game.scale.setGameSize(420,700);
+	game.scale.setGameSize(420,720);
 	if(device_type === 0){
 		game.scale.scaleMode  = Phaser.ScaleManager.SHOW_ALL;
 		game.scale.pageAlignVertically = true;
@@ -96,6 +112,11 @@ var mainpage ={
 	layer = map.createLayer('layer1');
 	map.setCollision(1,true,layer);
 	
+	this.button_eat = game.add.button(160, 640, 'bowl');
+	this.button_eat.scale.set(0.8);
+	this.button_eat.onInputDown.add( dowm,{key:"eat"},this);
+    this.button_eat.onInputUp.add(up, { key: "eat" }, this);
+
 	rat_player = game.add.sprite(150,500, 'rat_player');
 	game.physics.enable(rat_player,Phaser.Physics.ARCADE);
 	rat_player.facing = 'right';
@@ -106,9 +127,8 @@ var mainpage ={
 	rat_player.body.collideWorldBounds = true;
 	rat_player.inputEnabled = true;
 	rat_player.input.enableDrag(true);
-	bounds = new Phaser.Rectangle(30, 400, 360, 300);
+	bounds = new Phaser.Rectangle(30, 400, 360, 250);
 	rat_player.input.boundsRect = bounds;
-	//參數設定
 	//按鈕設定
 	this.button_end = game.add.button(345, 640, 'endb');
 	this.button_end.scale.set(0.9);
@@ -126,10 +146,10 @@ var mainpage ={
     this.button_ach.onInputUp.add(up, { key: "achieve" }, this); 
 	
 	this.button_mood = game.add.button(355, 30, 'mood');
+	this.button_mood.scale.set(0.38);
 	this.button_mood.onInputDown.add( dowm,{key:"mood"},this);
     this.button_mood.onInputUp.add(up, { key: "mood" }, this);
 	
-	this.button_mood.scale.set(0.38);
 	this.button_weather = game.add.button(295, 30, 'weather');
 	this.button_weather.scale.set(0.3);
 	
@@ -165,7 +185,21 @@ var mainpage ={
 		$("#day").hide();
 		game.state.start('littlegame');
 	}
-	//game.physics.arcade.collide(rat_player, layer);
+	if(trigger.eat === 1)
+	{
+		food_choice = 1;
+		switch(food_choice)
+		{
+			case 1:
+				bamboo = game.add.sprite(170,615,'bamboo');
+				bamboo.scale.set(0.7);
+				for(i = 0;i < 6;i++)
+					bamboo.moveDown();
+				break;
+			default:
+			break;
+		}
+	}
 	if(game.physics.arcade.collide(rat_player, layer)&& rat_player.body.onWall())
 		collide_num = 1;
 	rat_player.angle = 0;
@@ -176,77 +210,66 @@ var mainpage ={
 		rat_player.angle = 90;
 		rat_player.play('catch');
 	}
-	else if(move_num < 6)
+	else
 	{
-		if(collide_num === 1&& rat_player.facing === 'left')
+		switch(move_num)
 		{
-			rat_player.frame = 5;
-			rat_player.body.velocity.y = 0;
-		}
-		else
-		{
-			rat_player.body.velocity.y = 50*up_num;
-			collide_num = 0;
-			rat_player.body.velocity.x = -100;
-			rat_player.play('left');
-			if (rat_player.facing !== 'left')
-				rat_player.facing = 'left';
+			case 1:
+			{
+				if(collide_num === 1&& rat_player.facing === 'left')
+				{
+					rat_player.frame = 5;
+					rat_player.body.velocity.y = 0;
+				}
+				else
+				{
+					rat_player.body.velocity.y = 50*up_num;
+					collide_num = 0;
+					rat_player.body.velocity.x = -100;
+					rat_player.play('left');
+					if (rat_player.facing !== 'left')
+						rat_player.facing = 'left';
+				}
+			}
+			break;
+			case 2:
+			{
+				if(collide_num === 1&& rat_player.facing === 'right' )
+				{
+					rat_player.frame = 0;
+					rat_player.body.velocity.y = 0;
+				}
+				else
+				{
+					rat_player.body.velocity.y = 50*up_num;
+					collide_num = 0;
+					rat_player.body.velocity.x = 100;
+					rat_player.play('right');
+					if (rat_player.facing !== 'right') 
+						rat_player.facing = 'right';
+				}
+			}
+			break;
+			case 3:
+			{
+				rat_player.body.velocity.x = 0;
+				rat_player.body.velocity.y = 0;
+				if (rat_player.facing === 'left') 
+					rat_player.frame = 5;
+				if (rat_player.facing === 'right') 
+					rat_player.frame = 0;
+			}
+			break;
+			default:
+			break;
 		}
 	}
-	else if(move_num >= 6 && move_num < 11)
-	{
-		if(collide_num === 1&& rat_player.facing === 'right' )
-		{
-			rat_player.frame = 0;
-			rat_player.body.velocity.y = 0;
-		}
-		else
-		{
-			rat_player.body.velocity.y = 50*up_num;
-			collide_num = 0;
-			rat_player.body.velocity.x = 100;
-			rat_player.play('right');
-			if (rat_player.facing !== 'right') 
-				rat_player.facing = 'right';
-		}
-	}	
-	else if(move_num >= 11)
-	{
-		rat_player.body.velocity.x = 0;
-		rat_player.body.velocity.y = 0;
-		if (rat_player.facing === 'left') 
-			rat_player.frame = 5;
-        if (rat_player.facing === 'right') 
-			rat_player.frame = 0;
-	}	
 	if(rat_mood > 0)
 		button_mood.frame = 0;
 	else if(rat_mood < 0)
 		button_mood.frame = 1;
 	else
 		button_mood.frame = 2;
-	//方向控制
-	/*
-    if (cursors.left.isDown) {
-        rat_player.body.velocity.x = -100;
-        rat_player.play('left');
-        if (rat_player.facing !== 'left')
-		    rat_player.facing = 'left';
-    }
-
-    else if (cursors.right.isDown ) {	
-        rat_player.body.velocity.x = 100;
-        rat_player.play('right');
-        if (rat_player.facing !== 'right') 
-            rat_player.facing = 'right';
-	}
-	else if (cursors.up.isDown ) {	
-        rat_player.body.velocity.y = -50;
-	}
-	else if (cursors.down.isDown ) {	
-        rat_player.body.velocity.y = 50;
-	}
-	*/
 	},
 	render:()=>{
 		//game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 32);
@@ -256,7 +279,7 @@ var mainpage ={
 };
 
 function updateMoveNum(){
-	move_num = game.rnd.integerInRange(1, 15);
+	move_num = game.rnd.integerInRange(1,3);
 };
 function updowm(){
 	up_num = game.rnd.integerInRange(-1,1);
@@ -378,6 +401,8 @@ function as_return(){
 	});
 };
 $(document).ready(function(){	
+	//$("#ratname").hide();
+	$("#status").hide();
 	$("#cover").hide();
 	$("#setting").hide();
 	$("#achieve").hide();
