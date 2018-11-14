@@ -67,6 +67,7 @@ function deviceType() {
 		atemp.setAttribute('id','a3');
 	} else {
 		device_type = 1;
+		$("#status").css({"width":"420px","height":"720px"});
 		$("#day").css({"top":"90px","left":"300px","font-size":"1.8em"});
 		$("#ratname").css({"position":"absolute","top":"653px","left":"190px"});
 		$("#ratnamesize").css({"font-size":"1.2em"});
@@ -80,7 +81,8 @@ var game = new Phaser.Game(420,720, Phaser.AUTO, 'game');
 var mainpage ={
   preload:()=>{
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
-	game.load.image('back','assets/img/background.png');		
+	game.load.image('back','assets/img/back.png');		
+	game.load.image('back2','assets/img/background.png');	
 	game.load.image('endb','assets/img/endb3.png');
 	game.load.image('setb','assets/img/setb2.png');		
 	game.load.image('achb','assets/img/achb2.png');
@@ -106,11 +108,12 @@ var mainpage ={
 	Phaser.Canvas.setImageRenderingCrisp(game.canvas);
 	//載入
 	map = game.add.tilemap('map');
-	map.addTilesetImage('wall','wall');
 	map.addTilesetImage('back','back');
-	map.createLayer('layer2');
+	map.addTilesetImage('wall','wall');
 	layer = map.createLayer('layer1');
+	map.createLayer('layer2');
 	map.setCollision(1,true,layer);
+	
 	
 	this.button_eat = game.add.button(160, 640, 'bowl');
 	this.button_eat.scale.set(0.8);
