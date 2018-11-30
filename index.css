@@ -117,16 +117,10 @@
 }
 #window
 {
-<<<<<<< HEAD
   position:absolute;
   top:22vh;
   left:14vw;
   width:75vw;
-=======
-	position:absolute;
-	top:25vh;
-	left:5vw;
->>>>>>> a1025b7d6b0b689c27cf674b48951c35ae1d1917
 }
 .setting_container {
 	display: grid;
