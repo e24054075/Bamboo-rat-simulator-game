@@ -123,6 +123,15 @@
   	left:14vw;
   	width:75vw;
 }
+#paper
+{
+    z-index:-1;
+    position:absolute;
+    top:19vh;
+    left:5vw;
+    width:90vw;
+    height:70vh;
+}
 #health-bar
 {
 	position:absolute;
