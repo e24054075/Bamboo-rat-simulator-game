@@ -19,7 +19,7 @@
 }
 #cover
 {
-  z-index:1;
+  	z-index:1;
 	position:absolute;
 	top:0px;
 	left:0px;
@@ -118,10 +118,10 @@
 }
 #window
 {
-  position:absolute;
-  top:22vh;
-  left:14vw;
-  width:75vw;
+  	position:absolute;
+  	top:22vh;
+  	left:14vw;
+  	width:75vw;
 }
 .setting_container {
 	display: grid;
