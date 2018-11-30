@@ -16,6 +16,9 @@ var up_num;
 var device_type;
 var food_choice = 0;
 var i;
+var bar_type,bar_input;
+var bar_value = [50,50,50,50];
+
 
 function dowm() {
     switch (this.key) {
@@ -161,6 +164,7 @@ var mainpage ={
 	}
 	if(trigger.eat === 1)
 	{
+		bar_animation(1,30);
 		food_choice = 1;
 		switch(food_choice)
 		{
@@ -371,9 +375,11 @@ function as_return(){
 		}
 	});
 };
+function bar_animation(){
+	$("#optionA").click(function(){
+	$("#bar"+bar_type).animate({width:'+='+ bar_input+'vw'},1000);
+	});
 $(document).ready(function(){	
-	//$("#ratname").hide();
-	//$("#status").hide();
 	$("#cover").hide();
 	$("#setting").hide();
 	$("#achieve").hide();
@@ -384,4 +390,5 @@ $(document).ready(function(){
 	as_return();
 	$('#day').text("DAY "+day);
 	deviceType();
+	bar_animation();
 });
