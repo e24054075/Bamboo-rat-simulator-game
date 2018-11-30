@@ -267,7 +267,7 @@
 {
 	display: grid;
 	grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
-	grid-template-rows: 10% 20% 20% 20% 20% 20% 20% 20%;
+	grid-template-rows: 15% 20% 20% 20% 20% 20% 20% 20%;
 	padding: 5px;
 	overflow: scroll;
 }
