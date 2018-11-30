@@ -378,7 +378,20 @@ function as_return(){
 function bar_animation(){
 	$("#optionA").click(function(){
 	$("#bar"+bar_type).animate({width:'+='+ bar_input+'vw'},1000);
-	});
+	})};
+$("#optionA").click(function(){
+  $("#cover").hide();
+  $("#optionA").hide();
+  $("#optionB").hide();
+  $("#paper").hide();
+});
+
+$("#optionB").click(function(){
+  $("#cover").hide();
+  $("#optionA").hide();
+  $("#optionB").hide();
+  $("#paper").hide();
+});
 $(document).ready(function(){	
 	$("#cover").hide();
 	$("#setting").hide();
