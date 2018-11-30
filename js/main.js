@@ -75,10 +75,9 @@ var game = new Phaser.Game(420,720, Phaser.AUTO, 'game');
 var mainpage ={
   preload:()=>{
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
-	game.load.image('background','assets/img/background.png');			
+	game.load.image('bgimage','assets/img/bgimage.png');			
 	game.load.image('endb','assets/img/endb3.png');
 	game.load.image('setb','assets/img/setb2.png');		
-	game.load.image('achb','assets/img/achb2.png');
 	game.load.image('wall','assets/img/wall.png');
 	game.load.image('wall2','assets/img/wall2.png');
 	game.load.image('bowl','assets/img/bowl.png');
@@ -100,7 +99,7 @@ var mainpage ={
 	Phaser.Canvas.setImageRenderingCrisp(game.canvas);
 	//載入
 	map = game.add.tilemap('map');
-	map.addTilesetImage('background','background');
+	map.addTilesetImage('bgimage','bgimage');
 	map.addTilesetImage('wall','wall');
 	map.addTilesetImage('wall2','wall2');
 	map.createLayer('layer3');
