@@ -151,11 +151,11 @@ var mainpage ={
 	{
 		day++;
 		$('#day').text("DAY "+day);
-		if(day%10 === 0 && rat_scale != 1.8)
+		if(day%10 === 0 && rat_scale <= 1.5)
 		{
 			rat_player.body.x = 160;
 			rat_player.body.y = 525;
-			rat_scale += day*0.011;
+			rat_scale += day*0.005;
 			rat_player.scale.set(rat_scale);
 		}
 		gameTimer = game.time.now + 750;
