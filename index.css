@@ -258,3 +258,31 @@
     background: #4CAF50;
     cursor: pointer;
 }
+
+.achieve_container 
+{
+	display: grid;
+	grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+	grid-template-rows: 10% 20% 20% 20% 20% 20% 20% 20%;
+	padding: 0px;
+	overflow: scroll;
+}
+.achieve_container > div{
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	font-size: 30px;
+	text-align: center;
+	padding: 10px;
+}
+.achieve_header{
+	grid-column: 1 / 11;
+}
+.achieve_icon{
+	grid-column: 1 / 3;
+}
+.achieve_title{
+	grid-column: 3 / 6;
+}
+.achieve_content{
+	grid-column: 6 / 11;
+}

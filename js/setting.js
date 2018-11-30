@@ -6,3 +6,7 @@ volume_slider.oninput = function() {
 	bamboorat1_voice.volume = volume_slider.value/100;
 	bamboorat1_voice.play();
 }
+
+$("#achieve_btn").click(function(){
+	$("#achieve").show();
+})

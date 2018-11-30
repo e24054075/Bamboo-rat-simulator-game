@@ -365,6 +365,7 @@ function as_return(){
 		if(as_type === 2)
 		{
 			$("#cover").hide();
+			$("#achieve").hide();
 			$("#setting").hide();
 			$("#return").hide();
 		}
