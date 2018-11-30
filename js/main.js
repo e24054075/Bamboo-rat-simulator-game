@@ -163,8 +163,6 @@ var mainpage ={
 		$("#optionA").show();
 		$("#optionB").show();
 		$("#cover").show();
-    $(".event_title").show();
-    $(".event_content").show();
 	}
 	if(trigger.set === 1 && trigger.achieve!= 1)
 	{
@@ -175,7 +173,6 @@ var mainpage ={
 	}
 	if(trigger.eat === 1)
 	{
-		bar_animation(1,30);
 		food_choice = 1;
 		switch(food_choice)
 		{
@@ -392,8 +389,6 @@ $("#optionA").click(function(){
   $("#optionA").hide();
   $("#optionB").hide();
   $("#paper").hide();
-  $(".event_title").hide();
-  $(".event_content").hide();
   bar_value[bar_type-1] += bar_input;
   if(bar_value[bar_type-1] > 100)
 	  bar_value[bar_type-1] = 100;
@@ -408,8 +403,6 @@ $("#optionB").click(function(){
   $("#optionA").hide();
   $("#optionB").hide();
   $("#paper").hide();
-  $(".event_title").hide();
-  $(".event_content").hide();
    bar_value[bar_type-1] += bar_input*-1;
   if(bar_value[bar_type-1] > 100)
 	  bar_value[bar_type-1] = 100;
@@ -425,8 +418,6 @@ $(document).ready(function(){
   $("#paper").hide();
   $("#optionA").hide();
   $("#optionB").hide();
-  $(".event_title").hide();
-  $(".event_content").hide();
 	as_return();
 	$('#day').text("DAY "+day);
 	deviceType();
