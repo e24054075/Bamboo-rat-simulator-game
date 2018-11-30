@@ -176,6 +176,11 @@
   width:40vw;
   height:30vh;
 }
+.event_title
+{
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size:30px;
+}
 #eb1
 {
 	position:absolute;
