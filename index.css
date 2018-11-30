@@ -122,12 +122,30 @@
 }
 #paper
 {
-    z-index:2;
-    position:absolute;
-    top:19vh;
-    left:5vw;
-    width:90vw;
-    height:70vh;
+  z-index:2;
+  position:absolute;
+  top:13vh;
+  left:5vw;
+  width:90vw;
+  height:85vh;
+}
+#optionA
+{
+  z-index:3;
+  position:absolute;
+  top:65vh;
+  left:10vw;
+  width:40vw;
+  height:30vh;
+}
+#optionB
+{
+  z-index:3;
+  position:absolute;
+  top:65vh;
+  left:50vw;
+  width:40vw;
+  height:30vh;
 }
 #eb1
 {
