@@ -151,13 +151,16 @@ var mainpage ={
 	{
 		day++;
 		$('#day').text("DAY "+day);
-		if(day%10 === 0)
-			rat_player.scale.set(rat_scale+ day*0.022);
+		if(day%10 === 0 && rat_scale != 1.8)
+		{
+			rat_scale += day*0.022;
+			rat_player.scale.set(rat_scale);
+		}
 		gameTimer = game.time.now + 750;
-    $("#paper").show();
-    $("#optionA").show();
-    $("#optionB").show();
-    $("#cover").show();
+		$("#paper").show();
+		$("#optionA").show();
+		$("#optionB").show();
+		$("#cover").show();
 	}
 	if(trigger.set === 1 && trigger.achieve!= 1)
 	{
