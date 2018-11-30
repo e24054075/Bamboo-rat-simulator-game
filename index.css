@@ -30,7 +30,7 @@
 #setting
 {
 	position:absolute;
-	/*z-index:2;*/
+	z-index:2;
 	background-color:yellow;
 	top:10vh;
 	left:20vw;
@@ -43,7 +43,7 @@
 #achieve
 {
 	position:absolute;
-	/*z-index:2;*/
+	z-index:2;
 	background-color:yellow;
 	top:10vh;
 	left:20vw;
