@@ -381,6 +381,7 @@ $("#optionA").click(function(){
   $("#optionA").hide();
   $("#optionB").hide();
   $("#paper").hide();
+  bar_input = bar_input/100*59;
   $("#bar"+bar_type).animate({width:'+='+ bar_input+'vw'},1000);
 });
 
@@ -389,6 +390,7 @@ $("#optionB").click(function(){
   $("#optionA").hide();
   $("#optionB").hide();
   $("#paper").hide();
+  bar_input = bar_input/100*59*-1;
   $("#bar"+bar_type).animate({width:'+='+ bar_input+'vw'},1000);
 });
 $(document).ready(function(){	
