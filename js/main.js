@@ -128,7 +128,7 @@ var mainpage ={
 	rat_player.body.collideWorldBounds = true;
 	rat_player.inputEnabled = true;
 	rat_player.input.enableDrag(true);
-	bounds = new Phaser.Rectangle(30, 400, 360, 250);
+	bounds = new Phaser.Rectangle(30, 450, 360, 200);
 	rat_player.input.boundsRect = bounds;
 	//按鈕設定
 	this.button_end = game.add.button(345, 655, 'endb');
@@ -153,7 +153,9 @@ var mainpage ={
 		$('#day').text("DAY "+day);
 		if(day%10 === 0 && rat_scale != 1.8)
 		{
-			rat_scale += day*0.022;
+			rat_player.body.x = 160;
+			rat_player.body.y = 525;
+			rat_scale += day*0.011;
 			rat_player.scale.set(rat_scale);
 		}
 		gameTimer = game.time.now + 750;
@@ -252,7 +254,7 @@ var mainpage ={
 	},
 	render:()=>{
 		//game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 32);
-		//game.debug.spriteInfo(rat_player,32,32);
+		//game.debug.spriteInfo(rat_player,32,400);
 		//game.debug.spriteBounds(rat_player);
 	},
 };
@@ -388,8 +390,12 @@ $("#optionA").click(function(){
   $("#optionA").hide();
   $("#optionB").hide();
   $("#paper").hide();
-  bar_input = bar_input/100*59;
-  $("#bar"+bar_type).animate({width:'+='+ bar_input+'vw'},1000);
+  bar_value[bar_type-1] += bar_input;
+  if(bar_value[bar_type-1] > 100)
+	  bar_value[bar_type-1] = 100;
+  else if(bar_value[bar_type-1] < 0)
+	  bar_value[bar_type-1] = 0;
+  $("#bar"+bar_type).animate({width: bar_value[bar_type-1]/100*59+'vw'},1000);
 });
 
 $("#optionB").click(function(){
@@ -398,8 +404,12 @@ $("#optionB").click(function(){
   $("#optionA").hide();
   $("#optionB").hide();
   $("#paper").hide();
-  bar_input = bar_input/100*59*-1;
-  $("#bar"+bar_type).animate({width:'+='+ bar_input+'vw'},1000);
+   bar_value[bar_type-1] += bar_input*-1;
+  if(bar_value[bar_type-1] > 100)
+	  bar_value[bar_type-1] = 100;
+  else if(bar_value[bar_type-1] < 0)
+	  bar_value[bar_type-1] = 0;
+  $("#bar"+bar_type).animate({width: bar_value[bar_type-1]/100*59+'vw'},1000);
 });
 $(document).ready(function(){	
 	$("#cover").hide();
