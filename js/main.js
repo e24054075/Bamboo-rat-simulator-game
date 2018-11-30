@@ -16,8 +16,8 @@ var up_num;
 var device_type;
 var food_choice = 0;
 var i;
-var bar_type = 1;
 var bar_input = 20;
+var bar_type = 1;
 var bar_value = [50,50,50,50];
 
 
@@ -377,6 +377,7 @@ function as_return(){
 	});
 };
 $("#optionA").click(function(){
+  bar_input = 20;
   $("#cover").hide();
   $("#optionA").hide();
   $("#optionB").hide();
@@ -386,6 +387,7 @@ $("#optionA").click(function(){
 });
 
 $("#optionB").click(function(){
+  bar_input = 20;
   $("#cover").hide();
   $("#optionA").hide();
   $("#optionB").hide();
