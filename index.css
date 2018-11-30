@@ -178,15 +178,24 @@
 }
 .event_title
 {
+  z-index:3;
+  position:absolute;
   font-family: 'Noto Sans TC', sans-serif;
-  font-size:60px;
+  font-size:85px;
   font-weight:900;
+  top:26vh;
+  left:13vw;
+  width:80vw;
 }
 .event_content
 {
+  z-index:3;
   font-family: 'Noto Sans TC', sans-serif;
-  font-size:40px;
-  font-weight:600;
+  font-size:60px;
+  position:absolute;
+  top:35vh;
+  left:15vw;
+  width:70vw;
 }
 #eb1
 {
