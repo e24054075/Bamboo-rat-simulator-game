@@ -116,11 +116,39 @@
 #window
 {
 	position:absolute;
+	top:25vh;
 	top:21.5vh;
 	left:12.5vw;
 	width:75vw;
-	height:22vh;
+  	height:22vh;
 }
+#paper
+{
+   z-index:2;
+   position:absolute;
+   top:13vh;
+   left:5vw;
+   width:90vw;
+   height:85vh;
+ }
+ #optionA
+ {
+   z-index:3;
+   position:absolute;
+   top:65vh;
+   left:10vw;
+   width:40vw;
+   height:30vh;
+ }
+ #optionB
+ {
+   z-index:3;
+   position:absolute;
+   top:65vh;
+   left:50vw;
+   width:40vw;
+   height:30vh;
+ }
 #paper
 {
   z-index:2;
