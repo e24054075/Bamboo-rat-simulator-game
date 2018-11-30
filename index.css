@@ -272,6 +272,11 @@
 	overflow: scroll;
 }
 .achieve_container > div{
+	background: url(./assets/img/rat_race.png);
+	background-color: rgba(255, 255, 255, 0.8);
+	background-size: 100% 30px;
+	background-repeat: no-repeat;
+	background-position: bottom;
 	background-color: rgba(255, 255, 255, 0.8);
 	border: 1px solid rgba(0, 0, 0, 0.8);
 	font-size: 30px;
