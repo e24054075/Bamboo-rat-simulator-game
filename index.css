@@ -31,7 +31,7 @@
 {
 	position:absolute;
 	z-index:2;
-	background-color:yellow;
+	background-color:rgb(187, 137, 30);
 	top:10vh;
 	left:20vw;
 	width:60vw;
@@ -217,11 +217,15 @@
 {
 	display: grid;
 	grid-template-rows: 15% 25% 20% 20% 20%;
-	padding: 0px;
+	padding: 5px;
 }
 .setting_item 
 {
+	background: url(./assets/img/rat_race.png);
 	background-color: rgba(255, 255, 255, 0.8);
+	background-size: 100% 30px;
+	background-repeat: no-repeat;
+	background-position: bottom;
 	border: 1px solid rgba(0, 0, 0, 0.8);
 	font-size: 30px;
 	text-align: center;
@@ -264,7 +268,7 @@
 	display: grid;
 	grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
 	grid-template-rows: 10% 20% 20% 20% 20% 20% 20% 20%;
-	padding: 0px;
+	padding: 5px;
 	overflow: scroll;
 }
 .achieve_container > div{
