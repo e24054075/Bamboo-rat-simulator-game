@@ -82,18 +82,24 @@
 	position:absolute;
 	top:2vh;
 	left:2vw;
+	width:3vw;
+	height:3vh;
 }
 #force
 {
 	position:absolute;
 	top:6vh;
 	left:2vw;
+	width:3vw;
+	height:3vh;
 }
 #mental
 {
 	position:absolute;
 	top:10vh;
-	left:2vw;
+	left:1.4vw;
+	width:3.5vw;
+	height:3.5vh;
 }
 #charm
 {
@@ -104,15 +110,23 @@
 #weather
 {
 	position:absolute;
-	top:2vh;
-	left:80vw;
+	top:3vh;
+	left:85vw;
+	width:8vw;
+	height:8vh;
 }
 #window
 {
+<<<<<<< HEAD
   position:absolute;
   top:22vh;
   left:14vw;
   width:75vw;
+=======
+	position:absolute;
+	top:25vh;
+	left:5vw;
+>>>>>>> a1025b7d6b0b689c27cf674b48951c35ae1d1917
 }
 .setting_container {
 	display: grid;
