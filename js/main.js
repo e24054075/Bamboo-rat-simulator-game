@@ -377,6 +377,13 @@ $("#optionA").click(function(){
   $("#optionB").hide();
   $("#paper").hide();
 });
+
+$("#optionB").click(function(){
+  $("#cover").hide();
+  $("#optionA").hide();
+  $("#optionB").hide();
+  $("#paper").hide();
+});
 $(document).ready(function(){	
 	//$("#ratname").hide();
 	//$("#status").hide();
