@@ -116,9 +116,10 @@
 #window
 {
 	position:absolute;
-	top:25vh;
+	top:21.5vh;
 	left:12.5vw;
 	width:75vw;
+  height:22vh;
 }
 #paper
 {
