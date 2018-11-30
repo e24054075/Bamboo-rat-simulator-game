@@ -6,7 +6,7 @@
 }
 #game
 {
-	
+	position:abosulte;
 }
 #status
 {
@@ -15,7 +15,7 @@
 	top:0vh;
 	left:0vw;
 	width:100vw;
-	height:15vh;
+	height:20vh;
 }
 #cover
 {
@@ -40,17 +40,6 @@
 	font-size:4em;
 	font-weight:400;
 }
-.setting_container {
-	display: grid;
-	grid-template-rows: auto auto auto auto auto;
-	padding: 0px;
-  }
-.setting-item {
-	background-color: rgba(255, 255, 255, 0.8);
-	border: 1px solid rgba(0, 0, 0, 0.8);
-	font-size: 30px;
-	padding: 20px;
-  }
 #achieve
 {
 	position:absolute;
@@ -84,7 +73,48 @@
 #ratname
 {
 	position:absolute;
-	top:90vh;
+	bottom:-75px;
 	left:44.2vw;
 	font-family:"Noto Sans TC",sans-serif;
 }
+#health
+{
+	position:absolute;
+	top:2vh;
+	left:2vw;
+}
+#force
+{
+	position:absolute;
+	top:6vh;
+	left:2vw;
+}
+#mental
+{
+	position:absolute;
+	top:10vh;
+	left:2vw;
+}
+#charm
+{
+	position:absolute;
+	top:14vh;
+	left:2vh;
+}
+#weather
+{
+	position:absolute;
+	top:2vh;
+	left:80vw;
+}
+.setting_container {
+	display: grid;
+	grid-template-rows: auto auto auto auto auto;
+	padding: 0px;
+  }
+.setting-item {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	font-size: 30px;
+	padding: 20px;
+  }
