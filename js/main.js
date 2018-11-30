@@ -1,9 +1,8 @@
 var phaserwidth = window.innerWidth;
 var phaserheight = window.innerHeight;
-var phaserwid = 600*phaserwidth/phaserheight;
 
 var day = 1;
-var trigger = {end:0,achieve:0,set:0,mood:0,eat:0};
+var trigger = {end:0,set:0,mood:0,eat:0};
 var gameTimer = 0;
 var gameTimer2 = 0;
 var gameTimer3 = 0;
@@ -23,9 +22,6 @@ function dowm() {
         case "end":
             trigger.end =1;
             break;
-        case "achieve":
-			trigger.achieve =1;
-            break;
         case "set":
 			trigger.set = 1;
             break;
@@ -43,9 +39,6 @@ function up() {
     switch (this.key) {
         case "end":
             trigger.end = 0;
-            break;
-        case "achieve":
-			trigger.achieve = 0;
             break;
         case "set":
 			trigger.set = 0;
@@ -65,11 +58,12 @@ function deviceType() {
 		device_type = 0;
 		var atemp = document.getElementById('a1');
 		atemp.setAttribute('id','a3');
+		document.getElementById("game").style.marginTop = phaserheight-(720*phaserwidth/420)+"px";
 	} else {
 		device_type = 1;
-		$("#status").css({"width":"420px","height":"720px"});
+		$("#status").css({"width":"420px","height":"160px"});
 		$("#day").css({"top":"90px","left":"300px","font-size":"1.8em"});
-		$("#ratname").css({"position":"absolute","top":"653px","left":"190px"});
+		$("#ratname").css({"position":"absolute","top":"668px","left":"190px"});
 		$("#ratnamesize").css({"font-size":"1.2em"});
 		var atemp = document.getElementById('a2');
 		atemp.setAttribute('id','a3');
@@ -81,17 +75,14 @@ var game = new Phaser.Game(420,720, Phaser.AUTO, 'game');
 var mainpage ={
   preload:()=>{
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
-	game.load.image('back','assets/img/cage.png');		
-	game.load.image('back2','assets/img/background.png');	
+	game.load.image('background','assets/img/background.png');			
 	game.load.image('endb','assets/img/endb3.png');
 	game.load.image('setb','assets/img/setb2.png');		
 	game.load.image('achb','assets/img/achb2.png');
 	game.load.image('wall','assets/img/wall.png');
+	game.load.image('wall2','assets/img/wall2.png');
 	game.load.image('bowl','assets/img/bowl.png');
-  game.load.image('window','assets/img/window.png');
 	game.load.image('bamboo','assets/img/bamboo2.png');
-	game.load.spritesheet('mood','assets/img/mood.png', 120, 121);
-	game.load.spritesheet('weather','assets/img/weather.png', 177, 177);
 	game.load.spritesheet('rat_player','assets/img/rat5.png', 210, 114);
 	},
   create:()=>{	
@@ -109,14 +100,16 @@ var mainpage ={
 	Phaser.Canvas.setImageRenderingCrisp(game.canvas);
 	//載入
 	map = game.add.tilemap('map');
-	map.addTilesetImage('back','back');
+	map.addTilesetImage('background','background');
 	map.addTilesetImage('wall','wall');
+	map.addTilesetImage('wall2','wall2');
+	map.createLayer('layer3');
 	layer = map.createLayer('layer1');
 	map.createLayer('layer2');
 	map.setCollision(1,true,layer);
 	
 	
-	this.button_eat = game.add.button(160, 640, 'bowl');
+	this.button_eat = game.add.button(160, 655, 'bowl');
 	this.button_eat.scale.set(0.8);
 	this.button_eat.onInputDown.add( dowm,{key:"eat"},this);
     this.button_eat.onInputUp.add(up, { key: "eat" }, this);
@@ -134,33 +127,19 @@ var mainpage ={
 	bounds = new Phaser.Rectangle(30, 400, 360, 250);
 	rat_player.input.boundsRect = bounds;
 	//按鈕設定
-	this.button_end = game.add.button(345, 640, 'endb');
+	this.button_end = game.add.button(345, 655, 'endb');
 	this.button_end.scale.set(0.9);
     this.button_end.onInputDown.add( dowm,{key:"end"},this);
     this.button_end.onInputUp.add(up, { key: "end" }, this);  
 	
-	this.button_set = game.add.button(10, 640, 'setb');
+	this.button_set = game.add.button(10, 655, 'setb');
 	this.button_set.scale.set(0.9);
     this.button_set.onInputDown.add( dowm,{key:"set"},this);
     this.button_set.onInputUp.add(up, { key: "set" }, this);  
 	
-	this.button_ach = game.add.button(80, 640, 'achb');
-	this.button_ach.scale.set(0.9);
-    this.button_ach.onInputDown.add( dowm,{key:"achieve"},this);
-    this.button_ach.onInputUp.add(up, { key: "achieve" }, this); 
-	
-	this.button_mood = game.add.button(355, 30, 'mood');
-	this.button_mood.scale.set(0.38);
-	this.button_mood.onInputDown.add( dowm,{key:"mood"},this);
-    this.button_mood.onInputUp.add(up, { key: "mood" }, this);
-	
-	this.button_weather = game.add.button(295, 30, 'weather');
-	this.button_weather.scale.set(0.3);
-	
 	game.time.events.loop(Phaser.Timer.SECOND*2,updateMoveNum, this);
 	game.time.events.loop(Phaser.Timer.SECOND*2,updowm, this);
 	
-	cursors = game.input.keyboard.createCursorKeys();
 	},
   update:()=>{
 	//按鍵觸發
@@ -170,13 +149,6 @@ var mainpage ={
 		$('#day').text("DAY "+day);
 		gameTimer = game.time.now + 750;
 	}
-	if(trigger.achieve === 1 && trigger.set != 1)
-	{
-		$("#cover").show();
-		$("#achieve").show();
-		$("#return").show();
-		as_type = 1;
-	}
 	if(trigger.set === 1 && trigger.achieve!= 1)
 	{
 		$("#cover").show();
@@ -184,20 +156,15 @@ var mainpage ={
 		$("#return").show();
 		as_type = 2;
 	}
-	if(trigger.mood === 1)
-	{
-		$("#day").hide();
-		game.state.start('littlegame');
-	}
 	if(trigger.eat === 1)
 	{
 		food_choice = 1;
 		switch(food_choice)
 		{
 			case 1:
-				bamboo = game.add.sprite(170,615,'bamboo');
+				bamboo = game.add.sprite(170,630,'bamboo');
 				bamboo.scale.set(0.7);
-				for(i = 0;i < 6;i++)
+				for(i = 0;i < 3;i++)
 					bamboo.moveDown();
 				break;
 			default:
@@ -268,12 +235,6 @@ var mainpage ={
 			break;
 		}
 	}
-	if(rat_mood > 0)
-		button_mood.frame = 0;
-	else if(rat_mood < 0)
-		button_mood.frame = 1;
-	else
-		button_mood.frame = 2;
 	},
 	render:()=>{
 		//game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 32);
@@ -301,6 +262,7 @@ var littlegame ={
 	game.load.image('obstacle2','assets/img/rock.png');		
 	},
   create:()=>{	
+	$("#ratname").hide();
     //物理引擎
     game.physics.startSystem(Phaser.Physics.ARCADE);
 	game.physics.arcade.gravity.y = 350;
@@ -375,6 +337,7 @@ var littlegame ={
 	if(rat_life === 0)
 	{
 		$("#day").show();
+		$("#ratname").show();
 		game.state.start('mainpage');
 	}
 	},
@@ -406,7 +369,7 @@ function as_return(){
 };
 $(document).ready(function(){	
 	//$("#ratname").hide();
-	$("#status").hide();
+	//$("#status").hide();
 	$("#cover").hide();
 	$("#setting").hide();
 	$("#achieve").hide();
