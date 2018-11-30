@@ -93,7 +93,7 @@
 	width:3vw;
 	height:3vh;
 }
-#mental
+#mood
 {
 	position:absolute;
 	top:10vh;
@@ -117,10 +117,45 @@
 }
 #window
 {
-  position:absolute;
-  top:22vh;
-  left:14vw;
-  width:75vw;
+	position:absolute;
+	top:25vh;
+	left:5vw;
+}
+#health-bar
+{
+	position:absolute;
+	top:2.5vh;
+	left:8vw;
+	height:2.5vh;
+	width:50vw;
+	background-color:#750000;
+}
+#force-bar
+{
+	position:absolute;
+	top:6.5vh;
+	left:8vw;
+	height:2.5vh;
+	width:50vw;
+	background-color:#750000;
+}
+#mood-bar
+{
+	position:absolute;
+	top:10.5vh;
+	left:8vw;
+	height:2.5vh;
+	width:50vw;
+	background-color:#750000;
+}
+#charm-bar
+{
+	position:absolute;
+	top:14.5vh;
+	left:8vw;
+	height:2.5vh;
+	width:50vw;
+	background-color:#750000;
 }
 .setting_container {
 	display: grid;
