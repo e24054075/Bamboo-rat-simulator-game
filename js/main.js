@@ -371,6 +371,10 @@ function as_return(){
 		}
 	});
 };
+$("#optionA").click(function(){
+  $("#cover").hide();
+  $("#optionA").hide();
+});
 $(document).ready(function(){	
 	//$("#ratname").hide();
 	//$("#status").hide();
