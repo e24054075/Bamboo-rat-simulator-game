@@ -163,6 +163,8 @@ var mainpage ={
 		$("#optionA").show();
 		$("#optionB").show();
 		$("#cover").show();
+    $(".event_title").show();
+    $(".event_content").show();
 	}
 	if(trigger.set === 1 && trigger.achieve!= 1)
 	{
@@ -390,6 +392,8 @@ $("#optionA").click(function(){
   $("#optionA").hide();
   $("#optionB").hide();
   $("#paper").hide();
+  $(".event_title").hide();
+  $(".event_content").hide();
   bar_value[bar_type-1] += bar_input;
   if(bar_value[bar_type-1] > 100)
 	  bar_value[bar_type-1] = 100;
@@ -419,6 +423,8 @@ $(document).ready(function(){
   $("#paper").hide();
   $("#optionA").hide();
   $("#optionB").hide();
+  $(".event_title").hide();
+  $(".event_content").hide();
 	as_return();
 	$('#day').text("DAY "+day);
 	deviceType();
