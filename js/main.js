@@ -155,7 +155,7 @@ var mainpage ={
 		{
 			rat_player.body.x = 160;
 			rat_player.body.y = 525;
-			rat_scale += 0.055;
+			rat_scale += 0.09;
 			rat_player.scale.set(rat_scale);
 		}
 		gameTimer = game.time.now + 750;
