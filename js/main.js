@@ -147,6 +147,7 @@ var mainpage ={
 		day++;
 		$('#day').text("DAY "+day);
 		gameTimer = game.time.now + 750;
+    $("#paper").show();
 	}
 	if(trigger.set === 1 && trigger.achieve!= 1)
 	{
@@ -373,6 +374,7 @@ $(document).ready(function(){
 	$("#setting").hide();
 	$("#achieve").hide();
 	$("#return").hide();
+  $("#paper").hide();
 	as_return();
 	$('#day').text("DAY "+day);
 	deviceType();

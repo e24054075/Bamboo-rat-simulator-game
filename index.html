@@ -57,16 +57,34 @@
 			<img id="charm-bar" src="./assets/img/green_bar.png" >
 			<img src="./assets/img/window.png" id="window">
 			<div id="setting" class = "setting_container">
-				<div class="setting_item"><h1>設定</h1></div>
-				<div class="setting_item">設定1</div>
-				<div class="setting_item">設定2</div>
-				<div class="setting_item">設定3</div>
-				<div class="setting_item" ><a href = "https://genius92606.github.io/Bamboo-rat-simulator/">about us</a></div>
+				<div class="setting_item">
+					<h1>設定</h1>
+				</div>
+				<div class="setting_item">
+					<h1>音量</h1>
+					<input type="range" class = "slider" id = "volume_slider" min="0" max="100" step="1" value="50">
+					<audio id="bamboorat1">
+						<source src="./assets/mp3/bamboorat1.mp3" type="audio/mpeg">
+							Your browser does not support the audio element.
+					</audio>
+				</div>
+				<div class="setting_item">
+					<h1>成就</h1>
+				</div>
+				<div class="setting_item">
+					<h1>無</h1>
+				</div>
+				<div class="setting_item">
+					<a href="https://genius92606.github.io/Bamboo-rat-simulator/">about us</a>
+				</div>
 			</div>
 			<div id="return">
 				<img src="./assets/img/return.png" height="100%">
-			</div>
+      </div>
+      <img src="./assets/img/window.png" id="window">
+      <img src="./assets/img/paper.png" id="paper">
 		</div>
 		<script src="./js/main.js"></script>
+		<script src="./js/setting.js"></script>
 	</body>
 </html>
