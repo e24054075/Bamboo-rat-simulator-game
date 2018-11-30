@@ -179,7 +179,14 @@
 .event_title
 {
   font-family: 'Noto Sans TC', sans-serif;
-  font-size:30px;
+  font-size:60px;
+  font-weight:900;
+}
+.event_content
+{
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size:40px;
+  font-weight:600;
 }
 #eb1
 {
