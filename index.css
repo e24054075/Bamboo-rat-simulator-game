@@ -263,6 +263,13 @@
     cursor: pointer;
 }
 
+#achieve_icon{
+	background: url(./assets/img/achb2.png);
+	height: 30%;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
 .achieve_container 
 {
 	display: grid;
