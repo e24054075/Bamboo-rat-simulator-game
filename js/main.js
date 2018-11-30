@@ -148,6 +148,7 @@ var mainpage ={
 		$('#day').text("DAY "+day);
 		gameTimer = game.time.now + 750;
     $("#paper").show();
+    $("#cover").show();
 	}
 	if(trigger.set === 1 && trigger.achieve!= 1)
 	{
