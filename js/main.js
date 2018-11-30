@@ -148,6 +148,8 @@ var mainpage ={
 		$('#day').text("DAY "+day);
 		gameTimer = game.time.now + 750;
     $("#paper").show();
+    $("#optionA").show();
+    $("#optionB").show();
     $("#cover").show();
 	}
 	if(trigger.set === 1 && trigger.achieve!= 1)
@@ -376,6 +378,8 @@ $(document).ready(function(){
 	$("#achieve").hide();
 	$("#return").hide();
   $("#paper").hide();
+  $("#optionA").hide();
+  $("#optionB").hide();
 	as_return();
 	$('#day').text("DAY "+day);
 	deviceType();
