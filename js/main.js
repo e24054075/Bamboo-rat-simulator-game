@@ -16,6 +16,7 @@ var up_num;
 var device_type;
 var food_choice = 0;
 var i;
+var rat_scale = 0.7;
 var bar_input = 20;
 var bar_type = 1;
 var bar_value = [50,50,50,50];
@@ -116,9 +117,9 @@ var mainpage ={
 	this.button_eat.scale.set(0.8);
 	this.button_eat.onInputDown.add( dowm,{key:"eat"},this);
     this.button_eat.onInputUp.add(up, { key: "eat" }, this);
-
 	rat_player = game.add.sprite(150,500, 'rat_player');
 	game.physics.enable(rat_player,Phaser.Physics.ARCADE);
+	rat_player.scale.set(rat_scale);
 	rat_player.facing = 'right';
 	rat_player.animations.add('left', [6,7,8,9], 7, true);
     rat_player.animations.add('right', [1,2,3,4], 7, true);
@@ -150,6 +151,8 @@ var mainpage ={
 	{
 		day++;
 		$('#day').text("DAY "+day);
+		if(day%10 === 0)
+			rat_player.scale.set(rat_scale+ day*0.022);
 		gameTimer = game.time.now + 750;
     $("#paper").show();
     $("#optionA").show();
