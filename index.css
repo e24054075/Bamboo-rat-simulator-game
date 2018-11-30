@@ -110,8 +110,9 @@
 #window
 {
   position:absolute;
-  top:25vh;
-  left:40vw;
+  top:22vh;
+  left:14vw;
+  width:75vw;
 }
 .setting_container {
 	display: grid;
