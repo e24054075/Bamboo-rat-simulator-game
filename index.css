@@ -107,6 +107,12 @@
 	top:2vh;
 	left:80vw;
 }
+#window
+{
+  position:absolute;
+  top:25vh;
+  left:40vw;
+}
 .setting_container {
 	display: grid;
 	grid-template-rows: auto auto auto auto auto;
