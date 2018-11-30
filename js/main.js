@@ -81,7 +81,7 @@ var game = new Phaser.Game(420,720, Phaser.AUTO, 'game');
 var mainpage ={
   preload:()=>{
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
-	game.load.image('back','assets/img/bgimage.png');		
+	game.load.image('back','assets/img/cage.png');		
 	game.load.image('back2','assets/img/background.png');	
 	game.load.image('endb','assets/img/endb3.png');
 	game.load.image('setb','assets/img/setb2.png');		
