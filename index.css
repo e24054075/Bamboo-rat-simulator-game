@@ -197,6 +197,26 @@
   left:15vw;
   width:70vw;
 }
+.optionA_text
+{
+    z-index:3;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size:60px;
+    position:absolute;
+    top:72vh;
+    left:14vw;
+    width:35vw;
+}
+.optionB_text
+{
+    z-index:3;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size:60px;
+    position:absolute;
+    top:72vh;
+    left:54.5vw;
+    width:35vw;
+}
 #eb1
 {
 	position:absolute;
