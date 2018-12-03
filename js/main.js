@@ -395,6 +395,8 @@ $("#optionA").click(function(){
   $("#paper").hide();
   $(".event_title").hide();
   $(".event_content").hide();
+  $(".optionA_text").hide();
+  $(".optionB_text").hide();
   bar_value[bar_type-1] += bar_input;
   if(bar_value[bar_type-1] > 100)
 	  bar_value[bar_type-1] = 100;
