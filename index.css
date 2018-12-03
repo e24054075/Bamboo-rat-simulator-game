@@ -160,7 +160,7 @@
 }
 #optionA
 {
-  z-index:3;
+  z-index:2;
   position:absolute;
   top:65vh;
   left:10vw;
@@ -169,7 +169,7 @@
 }
 #optionB
 {
-  z-index:3;
+  z-index:2;
   position:absolute;
   top:65vh;
   left:50vw;
@@ -205,6 +205,7 @@
     position:absolute;
     top:72vh;
     left:14vw;
+    height:20vh;
     width:35vw;
 }
 .optionB_text
@@ -215,6 +216,7 @@
     position:absolute;
     top:72vh;
     left:54.5vw;
+    height:20vh;
     width:35vw;
 }
 #eb1

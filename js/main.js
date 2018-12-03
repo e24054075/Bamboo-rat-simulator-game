@@ -387,7 +387,7 @@ function as_return(){
 		}
 	});
 };
-$("#optionA").click(function(){
+$(".optionA_text").click(function(){
   bar_input = 20;
   $("#cover").hide();
   $("#optionA").hide();
@@ -405,7 +405,7 @@ $("#optionA").click(function(){
   $("#bar"+bar_type).animate({width: bar_value[bar_type-1]/100*59+'vw'},1000);
 });
 
-$("#optionB").click(function(){
+$(".optionB_text").click(function(){
   bar_input = 20;
   $("#cover").hide();
   $("#optionA").hide();
