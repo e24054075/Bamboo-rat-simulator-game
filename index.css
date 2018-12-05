@@ -103,15 +103,25 @@
 {
 	position:absolute;
 	top:14vh;
-	left:2vh;
+	left:0.8vh;
+	width:3.5vw;
+	height:3.5vh;
 }
 #weather
 {
 	position:absolute;
 	top:3vh;
-	left:85vw;
+	left:77vw;
 	width:8vw;
 	height:8vh;
+}
+#sky
+{
+	position:absolute;
+	top:24.5vh;
+	left:25vw;
+	width:50vw;
+  	height:15vh;
 }
 #window
 {
@@ -122,6 +132,7 @@
 	width:75vw;
   	height:22vh;
 }
+
 #paper
 {
    z-index:2;

@@ -14,7 +14,6 @@ var rat_jump = 0;
 var move_num;
 var up_num;
 var device_type;
-var food_choice = 0;
 var i;
 var rat_scale = 0.7;
 var bar_input = 20;
@@ -87,6 +86,9 @@ var mainpage ={
 	game.load.image('wall2','assets/img/wall2.png');
 	game.load.image('bowl','assets/img/bowl.png');
 	game.load.image('bamboo','assets/img/bamboo2.png');
+	game.load.image('corn','assets/img/corn.png');
+	game.load.image('rice','assets/img/rice.png');
+	game.load.image('grass','assets/img/grass.png');
 	game.load.spritesheet('rat_player','assets/img/rat5.png', 210, 114);
 	},
   create:()=>{	
@@ -123,7 +125,7 @@ var mainpage ={
 	rat_player.facing = 'right';
 	rat_player.animations.add('left', [6,7,8,9], 7, true);
     rat_player.animations.add('right', [1,2,3,4], 7, true);
-	rat_player.animations.add('catch', [10,11],10, true);
+	rat_player.animations.add('catch', [10,11],12, true);
 	rat_player.anchor.setTo(0.5,0.5);
 	rat_player.body.collideWorldBounds = true;
 	rat_player.inputEnabled = true;
@@ -168,7 +170,7 @@ var mainpage ={
     $(".optionA_text").show();
     $(".optionB_text").show();
 	}
-	if(trigger.set === 1 && trigger.achieve!= 1)
+	if(trigger.set === 1 )
 	{
 		$("#cover").show();
 		$("#setting").show();
@@ -177,14 +179,40 @@ var mainpage ={
 	}
 	if(trigger.eat === 1)
 	{
-		food_choice = 1;
-		switch(food_choice)
+		$("#main").hide();
+		game.state.start('spin');
+	}
+	if(prize >= 0)
+	{
+		switch(prize)
 		{
-			case 1:
+			case 0:
 				bamboo = game.add.sprite(170,630,'bamboo');
 				bamboo.scale.set(0.7);
 				for(i = 0;i < 3;i++)
 					bamboo.moveDown();
+				prize = -1;
+				break;
+			case 1:
+				corn = game.add.sprite(175,608,'corn');
+				corn.scale.set(0.7);
+				for(i = 0;i < 3;i++)
+					corn.moveDown();
+				prize = -1;
+				break;
+			case 2:
+				rice = game.add.sprite(172,614,'rice');
+				rice.scale.set(1.1);
+				for(i = 0;i < 3;i++)
+					rice.moveDown();
+				prize = -1;
+				break;
+			case 3:
+				grass = game.add.sprite(174,602,'grass');
+				grass.scale.set(0.7);
+				for(i = 0;i < 3;i++)
+					grass.moveDown();
+				prize = -1;
 				break;
 			default:
 			break;
@@ -355,8 +383,7 @@ var littlegame ={
 		obstacle.kill();
 	if(rat_life === 0)
 	{
-		$("#day").show();
-		$("#ratname").show();
+		$("#main").show();
 		game.state.start('mainpage');
 	}
 	},
@@ -370,6 +397,61 @@ var littlegame ={
 
 game.state.add('littlegame',littlegame);
 
+var wheel; 
+var canSpin;
+var slices = 4;
+var slicePrizes = ["新鮮嫩竹子","玉米","米糠拌飯","芒草"];
+var prize;
+var prizeText;
+var spinGame = function(game){};
+spinGame.prototype ={
+	preload:function(){
+		game.load.image("wheel", "./assets/img/plat.png");
+		game.load.image("pin", "./assets/img/spin.png");     
+    },
+  	create:function(){
+		game.time.desiredFps = 60;
+  		game.stage.backgroundColor = "#99ffcc";
+  		wheel = game.add.sprite(game.width / 2, game.width / 2, "wheel");
+		wheel.scale.set(0.5);
+        wheel.anchor.set(0.5);
+        var pin = game.add.sprite(game.width / 2, game.width / 2, "pin");
+        pin.anchor.set(0.5);
+        prizeText = game.add.text(game.world.centerX, 400, "");
+        prizeText.anchor.set(0.5);
+        prizeText.align = "center";
+        canSpin = true;
+        game.input.onDown.add(this.spin, this);		
+		i= 0;
+	},
+    spin(){
+          if(canSpin){  
+               prizeText.text = "";
+               var rounds = game.rnd.between(200, 600);
+               var degrees = game.rnd.between(0, 360);
+               prize = slices - 1 - Math.floor(degrees / (360 / slices));
+               canSpin = false;
+               var spinTween = game.add.tween(wheel).to({
+                    angle: 360 * rounds + degrees
+               }, 1500, Phaser.Easing.Quadratic.Out, true);
+               spinTween.onComplete.add(this.winPrize, this);
+          }
+    },
+    winPrize(){
+          prizeText.text = slicePrizes[prize];
+		  gameTimer = game.time.now;
+		  i = 1;
+		  
+    },
+	update:function(){
+		if(game.time.now > gameTimer + 3000 && i == 1)
+		{
+			$("#main").show();
+			game.state.start("mainpage");
+		}
+	}
+}
+game.state.add("spin",spinGame);
 function as_return(){
 	$("#return").click(function(){
 		if(as_type === 1)
@@ -387,8 +469,26 @@ function as_return(){
 		}
 	});
 };
+function bar_control(b_input,b_type){
+	bar_value[b_type-1] += b_input;
+	if(bar_value[b_type-1] > 100)
+		bar_value[b_type-1] = 100;
+	else if(bar_value[b_type-1] < 0)
+		bar_value[b_type-1] = 0;
+	$("#bar"+b_type).animate({width: bar_value[b_type-1]/100*59+'vw'},1000);
+};
+function four_bar_conrtrol(a,b,c,d){
+	if(a != 0)
+		bar_control(a,1);
+	if(b != 0)
+		bar_control(b,2);
+	if(c != 0)
+		bar_control(c,3);
+	if(d != 0)
+		bar_control(d,4);
+};
 $(".optionA_text").click(function(){
-  bar_input = 20;
+  four_bar_conrtrol(0,0,0,20);
   $("#cover").hide();
   $("#optionA").hide();
   $("#optionB").hide();
@@ -397,16 +497,10 @@ $(".optionA_text").click(function(){
   $(".event_content").hide();
   $(".optionA_text").hide();
   $(".optionB_text").hide();
-  bar_value[bar_type-1] += bar_input;
-  if(bar_value[bar_type-1] > 100)
-	  bar_value[bar_type-1] = 100;
-  else if(bar_value[bar_type-1] < 0)
-	  bar_value[bar_type-1] = 0;
-  $("#bar"+bar_type).animate({width: bar_value[bar_type-1]/100*59+'vw'},1000);
 });
 
 $(".optionB_text").click(function(){
-  bar_input = 20;
+  four_bar_conrtrol(0,0,-10,-20);
   $("#cover").hide();
   $("#optionA").hide();
   $("#optionB").hide();
@@ -415,12 +509,10 @@ $(".optionB_text").click(function(){
   $(".event_content").hide();
   $(".optionA_text").hide();
   $(".optionB_text").hide();
-   bar_value[bar_type-1] += bar_input*-1;
-  if(bar_value[bar_type-1] > 100)
-	  bar_value[bar_type-1] = 100;
-  else if(bar_value[bar_type-1] < 0)
-	  bar_value[bar_type-1] = 0;
-  $("#bar"+bar_type).animate({width: bar_value[bar_type-1]/100*59+'vw'},1000);
+});
+$("#weather").click(function(){
+		$("#main").hide();
+		game.state.start('littlegame')
 });
 $(document).ready(function(){	
 	$("#cover").hide();
