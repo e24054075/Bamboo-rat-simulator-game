@@ -1,0 +1,109 @@
+#login_back
+{
+  position:absolute;
+  top:0;
+  width:100vw;
+  height:100vh;
+}
+#user
+{
+  position:absolute;
+  top:41.5vh;
+  left:40vw;
+}
+#username_input
+{
+  font-size:60px;
+  width:40vw;
+}
+#password_input
+{
+  position:relative;
+  font-size:60px;
+  top:3.5vh;
+  width:40vw;
+}
+#user_summit
+{
+  position:relative;
+  width:20vw;
+  top:6.5vh;
+  font-size:50px;
+  left:-12vh;
+}
+#register
+{
+  position:relative;
+  top:6.5vh;
+  width:20vw;
+  font-size:50px;
+}
+#user_output
+{
+  position:relative;
+  font-size:60px;
+  top:6vh;
+  left:-30vw;<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+}
+
+#start_back
+{
+  position:absolute;
+  top:0;
+  width:100vw;
+  height:100vh;
+}
+#start_button
+{
+  position:absolute;
+  top:80vh;
+  left:35vw;
+  width:30vw;
+}
+#enroll_back
+{
+    position:absolute;
+    top:0;
+    width:100vw;
+    height:100vh;  
+}
+#new_user
+{
+  position:absolute;
+  top:41.5vh;
+  left:40vw;
+}
+#new_username_input
+{
+  font-size:60px;
+  width:40vw;
+}
+#new_password_input
+{
+  position:relative;
+  font-size:60px;
+  top:3.5vh;
+  width:40vw;
+}
+#register_return
+{
+position:relative;
+width:20vw;
+top:6.5vh;
+font-size:50px;
+left:-12vh;
+}
+#new_register
+{
+position:relative;
+top:6.5vh;
+width:20vw;
+font-size:50px;
+}
+#new_user_output
+{
+  position:relative;
+  font-size:60px;
+  top:6vh;
+  left:-30vw;
+}
