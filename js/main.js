@@ -19,6 +19,7 @@ var rat_scale = 0.7;
 var bar_input = 20;
 var bar_type = 1;
 var bar_value = [50,50,50,50];
+var content_data=[["123","456777777777777777777777777777777777777777777777777777777777","789","101112"],["abc","def","ghi","kjl"]];
 
 
 function dowm() {
@@ -487,6 +488,12 @@ function four_bar_conrtrol(a,b,c,d){
 	if(d != 0)
 		bar_control(d,4);
 };
+function content_change(id_num){
+	$(".event_title").text(""+content_data[id_num][0]);
+    $(".event_content").text(""+content_data[id_num][1]);
+    $(".optionA_text").text(""+content_data[id_num][2]);
+    $(".optionB_text").text(""+content_data[id_num][3]);
+};
 $(".optionA_text").click(function(){
   four_bar_conrtrol(0,0,0,20);
   $("#cover").hide();
@@ -497,6 +504,7 @@ $(".optionA_text").click(function(){
   $(".event_content").hide();
   $(".optionA_text").hide();
   $(".optionB_text").hide();
+  content_change(0);
 });
 
 $(".optionB_text").click(function(){
@@ -509,6 +517,7 @@ $(".optionB_text").click(function(){
   $(".event_content").hide();
   $(".optionA_text").hide();
   $(".optionB_text").hide();
+  content_change(1);
 });
 $("#weather").click(function(){
 		$("#main").hide();
