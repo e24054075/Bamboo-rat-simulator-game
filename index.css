@@ -322,7 +322,7 @@
     background: #4CAF50;
     cursor: pointer;
 }
-#achieve_icon{
+#achieve_img{
 	background: url("./assets/img/achb2.png");
 	height: 30%;
 	width: 100%;
@@ -333,7 +333,7 @@
 {
 	display: grid;
 	grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
-	grid-template-rows: 15% 20% 20% 20% 20% 20% 20% 20%;
+	/*grid-template-rows:generate by javascript ;*/
 	padding: 5px;
 	overflow: scroll;
 }
@@ -349,9 +349,10 @@
 	text-align: center;
 	padding: 10px;
 }
+/*
 .achieve_header{
 	grid-column: 1 / 11;
-}
+}*/
 .achieve_icon{
 	grid-column: 1 / 3;
 }

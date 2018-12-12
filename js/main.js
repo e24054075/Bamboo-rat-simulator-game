@@ -550,3 +550,4 @@ $(document).ready(function(){
 	$('#day').text("DAY "+day);
 	deviceType();
 });
+
