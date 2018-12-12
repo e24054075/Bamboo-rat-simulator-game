@@ -19,6 +19,12 @@ var rat_scale = 0.7;
 var bar_input = 20;
 var bar_type = 1;
 var bar_value = [50,50,50,50];
+var event_id = 0;
+var content_data=[
+["有朋自遠方來","今天主人的朋友來參觀農場，快要經過我的籠子了，我該怎麼辦?","開始大聲嚶嚶嚶的叫","安靜的在角落磨牙","主人和朋友注意到我把我抓起來把玩一番","平安度過",[0,0,5,20],[0,5,-10,0]],
+["竹鼠聖誕交換禮物","聖誕節快到了，竹鼠們辦了交換禮物大會，面前剩下兩個禮物，你要選哪個?","紅色大禮物","綠色小禮物","裡面是個等身竹鼠玩偶","一根磨牙棒",[0,0,20,10],[10,10,10,0]],
+["abv","def","ghi","kjl","end1","end2",[0,-10,-10,-20],[-30,0,0,10]]
+];
 
 
 function dowm() {
@@ -469,13 +475,42 @@ function as_return(){
 		}
 	});
 };
-function bar_control(b_input,b_type){
-	bar_value[b_type-1] += b_input;
-	if(bar_value[b_type-1] > 100)
-		bar_value[b_type-1] = 100;
-	else if(bar_value[b_type-1] < 0)
-		bar_value[b_type-1] = 0;
-	$("#bar"+b_type).animate({width: bar_value[b_type-1]/100*59+'vw'},1000);
+function getRandom(min,max){
+    return Math.floor(Math.random()*(max-min+1))+min;
+};
+$(".optionA_text").click(function(){
+	four_bar_conrtrol(content_data[event_id][6][0],content_data[event_id][6][1],content_data[event_id][6][2],content_data[event_id][6][3]);
+	$("#optionA").hide();
+	$("#optionB").hide();
+	$(".optionA_text").hide();
+	$(".optionB_text").hide();
+	document.getElementById("T1-1").innerHTML="結果";
+	document.getElementById("C1-1").innerHTML=content_data[event_id][4];
+	event_end();
+});
+
+$(".optionB_text").click(function(){
+	four_bar_conrtrol(content_data[event_id][7][0],content_data[event_id][6][1],content_data[event_id][6][2],content_data[event_id][6][3]);
+	$("#optionA").hide();
+	$("#optionB").hide();
+	$(".optionA_text").hide();
+	$(".optionB_text").hide();
+	document.getElementById("T1-1").innerHTML="結果";
+	document.getElementById("C1-1").innerHTML=content_data[event_id][5];
+	event_end();
+});
+function event_end(){
+	$("#paper").click(function(){
+		$("#cover").hide();
+	    $("#paper").hide();
+	    $(".event_title").hide();
+	    $(".event_content").hide();
+		event_id = getRandom(0,2);
+		document.getElementById("T1-1").innerHTML=content_data[event_id][0];
+		document.getElementById("C1-1").innerHTML=content_data[event_id][1];
+		document.getElementById("A1-1").innerHTML=content_data[event_id][2];
+		document.getElementById("B1-1").innerHTML=content_data[event_id][3];
+	});
 };
 function four_bar_conrtrol(a,b,c,d){
 	if(a != 0)
@@ -487,29 +522,14 @@ function four_bar_conrtrol(a,b,c,d){
 	if(d != 0)
 		bar_control(d,4);
 };
-$(".optionA_text").click(function(){
-  four_bar_conrtrol(0,0,0,20);
-  $("#cover").hide();
-  $("#optionA").hide();
-  $("#optionB").hide();
-  $("#paper").hide();
-  $(".event_title").hide();
-  $(".event_content").hide();
-  $(".optionA_text").hide();
-  $(".optionB_text").hide();
-});
-
-$(".optionB_text").click(function(){
-  four_bar_conrtrol(0,0,-10,-20);
-  $("#cover").hide();
-  $("#optionA").hide();
-  $("#optionB").hide();
-  $("#paper").hide();
-   $(".event_title").hide();
-  $(".event_content").hide();
-  $(".optionA_text").hide();
-  $(".optionB_text").hide();
-});
+function bar_control(b_input,b_type){
+	bar_value[b_type-1] += b_input;
+	if(bar_value[b_type-1] > 100)
+		bar_value[b_type-1] = 100;
+	else if(bar_value[b_type-1] < 0)
+		bar_value[b_type-1] = 0;
+	$("#bar"+b_type).animate({width: bar_value[b_type-1]/100*59+'vw'},1000);
+};
 $("#weather").click(function(){
 		$("#main").hide();
 		game.state.start('littlegame')
