@@ -43,9 +43,9 @@
 {
 	position:absolute;
 	z-index:2;
-	background-color:yellow;
-	top:0px;
-	left:0px;
+	background-color:rgb(211, 132, 14);
+	top:10vh;
+	left:20vw;
 	width:60vw;
 	height:60vh;
 	font-family:"Microsoft JhengHei";
