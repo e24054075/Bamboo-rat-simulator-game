@@ -2,12 +2,11 @@ var phaserwidth = window.innerWidth;
 var phaserheight = window.innerHeight;
 
 var day = 1;
-var trigger = {end:0,set:0,mood:0,eat:0};
+var trigger = {ach:0,end:0,set:0,mood:0,eat:0};
 var gameTimer = 0;
 var gameTimer2 = 0;
 var gameTimer3 = 0;
 var collide_num = 0;
-var as_type = 0;
 var rat_life;
 var rat_mood = 0;
 var rat_jump = 0;
@@ -32,32 +31,33 @@ function dowm() {
         case "end":
             trigger.end =1;
             break;
-        case "set":
-			trigger.set = 1;
-            break;
-        case "mood":
-			trigger.mood = 1;
-            break;  
-		case "eat":
-			trigger.eat = 1;
-			break;
         default:
             break;
     }
 };
 function up() {
     switch (this.key) {
+		case "ach":
+			$("#cover").show();
+			$("#setting").show();
+			$("#return").show();
+			$("#achieve").show();
+			break;
         case "end":
             trigger.end = 0;
             break;
         case "set":
-			trigger.set = 0;
+			$("#cover").show();
+			$("#setting").show();
+			$("#return").show();
             break;
         case "mood":
-			trigger.mood = 0;
+			$("#main").hide();
+			game.state.start('littlegame');
             break;
 		case "eat":
-			trigger.eat = 0;
+			$("#main").hide();
+			game.state.start('spin');
 			break;
         default:
             break;
@@ -87,6 +87,7 @@ var mainpage ={
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
 	game.load.image('bgimage','assets/img/bgimage.png');			
 	game.load.image('endb','assets/img/endb3.png');
+	game.load.image('achb','assets/img/achb2.png');
 	game.load.image('setb','assets/img/setb2.png');		
 	game.load.image('wall','assets/img/wall.png');
 	game.load.image('wall2','assets/img/wall2.png');
@@ -95,7 +96,7 @@ var mainpage ={
 	game.load.image('corn','assets/img/corn.png');
 	game.load.image('rice','assets/img/rice.png');
 	game.load.image('grass','assets/img/grass.png');
-	game.load.spritesheet('rat_player','assets/img/rat4.png', 210, 114);
+	game.load.spritesheet('rat_player','assets/img/rat5.png', 210, 114);
 	},
   create:()=>{	
     //物理引擎
@@ -144,6 +145,11 @@ var mainpage ={
     this.button_end.onInputDown.add( dowm,{key:"end"},this);
     this.button_end.onInputUp.add(up, { key: "end" }, this);  
 	
+	this.button_ach = game.add.button(80, 655, 'achb');
+	this.button_ach.scale.set(0.9);
+    this.button_ach.onInputDown.add( dowm,{key:"ach"},this);
+    this.button_ach.onInputUp.add(up, { key: "ach" }, this);  
+	
 	this.button_set = game.add.button(10, 655, 'setb');
 	this.button_set.scale.set(0.9);
     this.button_set.onInputDown.add( dowm,{key:"set"},this);
@@ -173,20 +179,8 @@ var mainpage ={
 		$("#cover").show();
 		$(".event_title").show();
 		$(".event_content").show();
-    $(".optionA_text").show();
-    $(".optionB_text").show();
-	}
-	if(trigger.set === 1 )
-	{
-		$("#cover").show();
-		$("#setting").show();
-		$("#return").show();
-		as_type = 2;
-	}
-	if(trigger.eat === 1)
-	{
-		$("#main").hide();
-		game.state.start('spin');
+		$(".optionA_text").show();
+		$(".optionB_text").show();
 	}
 	if(prize >= 0)
 	{
@@ -458,23 +452,12 @@ spinGame.prototype ={
 	}
 }
 game.state.add("spin",spinGame);
-function as_return(){
-	$("#return").click(function(){
-		if(as_type === 1)
-		{
-			$("#cover").hide();		
-			$("#achieve").hide();
-			$("#return").hide();
-		}
-		if(as_type === 2)
-		{
-			$("#cover").hide();
-			$("#achieve").hide();
-			$("#setting").hide();
-			$("#return").hide();
-		}
+$("#return").click(function(){
+		$("#cover").hide();		
+		$("#achieve").hide();
+		$("#setting").hide();
+		$("#return").hide();
 	});
-};
 function getRandom(min,max){
     return Math.floor(Math.random()*(max-min+1))+min;
 };
@@ -546,8 +529,6 @@ $(document).ready(function(){
     $(".event_content").hide();
     $(".optionA_text").hide();
     $(".optionB_text").hide();
-	as_return();
 	$('#day').text("DAY "+day);
 	deviceType();
 });
-
