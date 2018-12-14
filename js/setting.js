@@ -41,3 +41,8 @@ $("#achieve").ready(function(){
 $("#achieve_btn").click(function(){
 	$("#achieve").show();
 })
+
+/*data saving !*/
+$("#save_img").click(finction(){
+
+})
