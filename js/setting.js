@@ -43,6 +43,6 @@ $("#achieve_btn").click(function(){
 })
 
 /*data saving !*/
-$("#save_img").click(finction(){
+$("#save_img").click(function(){
 
 })
