@@ -86,9 +86,9 @@ var mainpage ={
   preload:()=>{
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
 	game.load.image('bgimage','assets/img/bgimage.png');			
-	game.load.image('endb','assets/img/endb3.png');
-	game.load.image('achb','assets/img/achb2.png');
-	game.load.image('setb','assets/img/setb2.png');		
+	game.load.image('endb','assets/img/sleep.png');
+	game.load.image('achb','assets/img/history.png');
+	game.load.image('setb','assets/img/setting.png');		
 	game.load.image('wall','assets/img/wall.png');
 	game.load.image('wall2','assets/img/wall2.png');
 	game.load.image('bowl','assets/img/bowl.png');
