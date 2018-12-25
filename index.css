@@ -3,6 +3,10 @@
   margin: 0px;
   padding: 0px;
 }
+#start_menu
+{
+display:none;
+}
 #game
 {
 	position:abosulte;
