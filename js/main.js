@@ -103,6 +103,7 @@ var mainpage ={
 	game.load.image('corn','assets/img/corn.png');
 	game.load.image('rice','assets/img/rice.png');
 	game.load.image('grass','assets/img/grass.png');
+	game.load.image('photo','assets/img/food_photo.png');
 	game.load.spritesheet('rat_player','assets/img/rat4.png', 210, 114);
 	},
   create:()=>{	
