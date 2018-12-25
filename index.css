@@ -149,7 +149,6 @@ display:none;
   	height:22vh;
 }
 
-
 #paper
 {
    z-index:2;
@@ -352,11 +351,7 @@ display:none;
 	grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
 	/*grid-template-rows:generate by javascript ;*/
 	padding: 5px;
-	overflow-y: scroll;
-}
-.achieve_container ::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
+	overflow: scroll;
 }
 .achieve_container > div{
 	background: url("./assets/img/rat_race.png");
