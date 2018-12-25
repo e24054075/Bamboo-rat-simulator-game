@@ -6,3 +6,11 @@
    position: fixed;
    width:200px;
 }
+#loading_bg
+{
+   z-index: 1;
+   left: 42vw;
+   top: 50vh;
+   position: absolute;
+   width:100%;
+}
