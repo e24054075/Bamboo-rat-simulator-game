@@ -92,12 +92,12 @@ var game = new Phaser.Game(420,720, Phaser.AUTO, 'game');
 var mainpage ={
   preload:()=>{
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
-	game.load.image('bgimage','assets/img/bgimage.png');			
+	game.load.image('bgimage','assets/img/background_box.png');			
 	game.load.image('endb','assets/img/sleep.png');
 	game.load.image('achb','assets/img/history.png');
 	game.load.image('setb','assets/img/setting.png');		
 	game.load.image('wall','assets/img/wall.png');
-	game.load.image('wall2','assets/img/wall2.png');
+	game.load.image('wall2','assets/img/wall3.png');
 	game.load.image('bowl','assets/img/newbowl.png');
 	game.load.image('bamboo','assets/img/bamboo2.png');
 	game.load.image('corn','assets/img/corn.png');
@@ -461,13 +461,13 @@ spinGame.prototype ={
     spin(){
           if(canSpin){  
                prizeText.text = "";
-               var rounds = game.rnd.between(200, 600);
+               var rounds = game.rnd.between(2, 6);
                var degrees = game.rnd.between(0, 360);
                prize = slices - 1 - Math.floor(degrees / (360 / slices));
                canSpin = false;
                var spinTween = game.add.tween(wheel).to({
                     angle: 360 * rounds + degrees
-               }, 1500, Phaser.Easing.Quadratic.Out, true);
+               }, 150, Phaser.Easing.Quadratic.Out, true);
                spinTween.onComplete.add(this.winPrize, this);
           }
     },
