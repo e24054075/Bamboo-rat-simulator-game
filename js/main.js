@@ -20,9 +20,16 @@ var bar_type = 1;
 var bar_value = [50,50,50,50];
 var event_id = 0;
 var content_data=[
-["有朋自遠方來","今天主人的朋友來參觀農場，快要經過我的籠子了，我該怎麼辦?","開始大聲嚶嚶嚶的叫","安靜的在角落磨牙","主人和朋友注意到我把我抓起來把玩一番","平安度過",[0,0,5,20],[0,5,-10,0]],
+["有朋自遠方來","今天主人的朋友來參觀農場，快要經過我的籠子了，我該怎麼辦?","開始大聲嚶嚶嚶的叫","安靜的在角落磨牙","主人和朋友注意到我把我抓起來把玩一番","他們好像沒什麼注意我",[0,0,5,15],[0,5,-5,-10]],
 ["竹鼠聖誕交換禮物","聖誕節快到了，竹鼠們辦了交換禮物大會，面前剩下兩個禮物，你要選哪個?","紅色大禮物","綠色小禮物","裡面是個等身竹鼠玩偶","一根磨牙棒",[0,0,20,10],[10,10,10,0]],
-["abv","def","ghi","kjl","end1","end2",[0,-10,-10,-20],[-30,0,0,10]]
+["蜈蚣入侵","有隻蜈蚣鑽進籠子了，我該怎麼辦?","咬死它，看誰還敢闖進我的地盤","豪可怕喔，縮到一旁嚶嚶嚶","嘴巴有點麻麻的，該不會是中毒了吧?","好險!他繞了兩圈就爬出去了",[-10,15,0,0],[0,-10,0,0]],
+["家中流水水","牆壁似乎有一處一直漏水，我口有點渴我應該?","用來洗臉","全部喝光光","神清氣爽，好舒服呀","這水真好喝呀，清涼解渴",[10,0,10,10],[5,0,10,0]],
+["8+9竹鼠的嗆聲","隔壁的竹鼠前來挑釁，說我好肥，我要怎麼辦?","跟他拚了，你才肥，你全家都肥!","不理他，肥就肥嘛!我就是喜歡當肥宅鼠","打贏了!我是竹鼠之王，不過好像腿被抓傷了","他覺得跟我吵沒意思，去煩別人了",[-10,10,10,10],[5,-10,0,-10]],
+["窈窕鼠女君子好逑","主人放了一隻母竹鼠進我的籠子，面容姣好，是我的菜，我該怎麼做? ","害羞地躲在一旁，等她來跟我說話","跟她說:小姐妳好漂亮，想跟妳生孩子!","等了一個禮拜，她還是沒來跟我說話","她賞了我一巴掌，說以後再也不理我了…",[0,0,-10,0],[-10,0,-15,5]],
+["朋友的邀請","朋友問我要不要和他們一起玩啃竹子的遊戲，我該?","多無聊啊，不理他們自己唱歌","好啊!最喜歡啃竹子了","唱到沙啞，覺得自己好孤單…","交了一群鼠友，以後可以一起啃竹子了",[-10,-5,-10,10],[5,0,10,5]],
+["再見了，竹鼠","鄰居阿強被主人抓走了，不知道會有什麼下場?","一定是被抓去煮了，好傷心…","主人幫他做健康檢查，馬上就會回來的","廚房裡傳來陣陣撲鼻的香味","檢查了一個禮拜了還沒回來，是不是生大病了?",[-5,0,-10,5],[5,0,0,-5]],
+["鼠來飽","今天有點吃太多了，肚子不太舒服，我應該?","繞籠子10圈，運動一下","睡個覺醒來應該就好了吧","運動促進腸胃蠕動，上完廁所好多了","肚子好痛，睡不太著…",[15,5,10,10],[-15,0,-10,0]],
+
 ];
 
 
@@ -86,12 +93,12 @@ var mainpage ={
   preload:()=>{
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
 	game.load.image('bgimage','assets/img/bgimage.png');			
-	game.load.image('endb','assets/img/endb3.png');
-	game.load.image('achb','assets/img/achb2.png');
-	game.load.image('setb','assets/img/setb2.png');		
+	game.load.image('endb','assets/img/sleep.png');
+	game.load.image('achb','assets/img/history.png');
+	game.load.image('setb','assets/img/setting.png');		
 	game.load.image('wall','assets/img/wall.png');
 	game.load.image('wall2','assets/img/wall2.png');
-	game.load.image('bowl','assets/img/bowl.png');
+	game.load.image('bowl','assets/img/newbowl.png');
 	game.load.image('bamboo','assets/img/bamboo2.png');
 	game.load.image('corn','assets/img/corn.png');
 	game.load.image('rice','assets/img/rice.png');
@@ -122,7 +129,7 @@ var mainpage ={
 	map.setCollision(1,true,layer);
 	
 	
-	this.button_eat = game.add.button(160, 655, 'bowl');
+	this.button_eat = game.add.button(150, 640, 'bowl');
 	this.button_eat.scale.set(0.8);
 	this.button_eat.onInputDown.add( dowm,{key:"eat"},this);
     this.button_eat.onInputUp.add(up, { key: "eat" }, this);
@@ -187,8 +194,8 @@ var mainpage ={
 		switch(prize)
 		{
 			case 0:
-				bamboo = game.add.sprite(170,630,'bamboo');
-				bamboo.scale.set(0.7);
+				bamboo = game.add.sprite(166,630,'bamboo');
+				bamboo.scale.set(0.6);
 				for(i = 0;i < 3;i++)
 					bamboo.moveDown();
 				prize = -1;
@@ -201,15 +208,15 @@ var mainpage ={
 				prize = -1;
 				break;
 			case 2:
-				rice = game.add.sprite(172,614,'rice');
-				rice.scale.set(1.1);
+				rice = game.add.sprite(174,630,'rice');
+				rice.scale.set(0.8);
 				for(i = 0;i < 3;i++)
 					rice.moveDown();
 				prize = -1;
 				break;
 			case 3:
-				grass = game.add.sprite(174,602,'grass');
-				grass.scale.set(0.7);
+				grass = game.add.sprite(170,615,'grass');
+				grass.scale.set(0.6);
 				for(i = 0;i < 3;i++)
 					grass.moveDown();
 				prize = -1;
@@ -473,7 +480,7 @@ $(".optionA_text").click(function(){
 });
 
 $(".optionB_text").click(function(){
-	four_bar_conrtrol(content_data[event_id][7][0],content_data[event_id][6][1],content_data[event_id][6][2],content_data[event_id][6][3]);
+	four_bar_conrtrol(content_data[event_id][7][0],content_data[event_id][7][1],content_data[event_id][7][2],content_data[event_id][7][3]);
 	$("#optionA").hide();
 	$("#optionB").hide();
 	$(".optionA_text").hide();
@@ -488,7 +495,7 @@ function event_end(){
 	    $("#paper").hide();
 	    $(".event_title").hide();
 	    $(".event_content").hide();
-		event_id = getRandom(0,2);
+		event_id = getRandom(0,8);
 		document.getElementById("T1-1").innerHTML=content_data[event_id][0];
 		document.getElementById("C1-1").innerHTML=content_data[event_id][1];
 		document.getElementById("A1-1").innerHTML=content_data[event_id][2];
