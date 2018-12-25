@@ -120,13 +120,14 @@ display:none;
 	width:8vw;
 	height:8vh;
 }
+
 #sky
 {
 	position:absolute;
-	top:24.5vh;
-	left:25vw;
-	width:50vw;
-  	height:15vh;
+	top:23vh;
+	left:16vw;
+	width:70vw;
+  	height:19vh;
 }
 #window
 {
