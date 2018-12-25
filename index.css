@@ -124,7 +124,7 @@ display:none;
 	width:8vw;
 	height:8vh;
 }
-#food_photo
+#photo
 {
 	position:absolute;
 	top:26vh;
@@ -143,7 +143,7 @@ display:none;
 #window
 {
 	position:absolute;
-	top:21.5vh;
+	top:22vh;
 	left:27vw;
 	width:50vw;
   	height:22vh;
@@ -351,7 +351,11 @@ display:none;
 	grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
 	/*grid-template-rows:generate by javascript ;*/
 	padding: 5px;
-	overflow: scroll;
+	overflow-y: scroll;
+}
+.achieve_container ::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
 }
 .achieve_container > div{
 	background: url("./assets/img/rat_race.png");
