@@ -171,6 +171,7 @@ var mainpage ={
 	//按鍵觸發
 	if(trigger.end === 1&& game.time.now > gameTimer)
 	{
+		trigger.end = 0;
 		day++;
 		$('#day').text("DAY "+day);
 		if(day%10 === 0 && rat_scale <= 1.6)
@@ -198,29 +199,21 @@ var mainpage ={
 			case 0:
 				bamboo = game.add.sprite(166,630,'bamboo');
 				bamboo.scale.set(0.6);
-				for(i = 0;i < 3;i++)
-					bamboo.moveDown();
 				prize = -1;
 				break;
 			case 1:
 				corn = game.add.sprite(175,608,'corn');
 				corn.scale.set(0.7);
-				for(i = 0;i < 3;i++)
-					corn.moveDown();
 				prize = -1;
 				break;
 			case 2:
 				rice = game.add.sprite(170,619,'rice');
 				rice.scale.set(0.8);
-				for(i = 0;i < 3;i++)
-					rice.moveDown();
 				prize = -1;
 				break;
 			case 3:
 				grass = game.add.sprite(170,615,'grass');
 				grass.scale.set(0.6);
-				for(i = 0;i < 3;i++)
-					grass.moveDown();
 				prize = -1;
 				break;
 			default:
@@ -334,7 +327,7 @@ var littlegame ={
 	game.load.image('rat_race','assets/img/rat_race.png');
 	game.load.image('obstacle','assets/img/spike.png');	
 	game.load.image('obstacle2','assets/img/rock.png');		
-	game.load.physics('physics_data','assets/json/physics_data.json')
+	//game.load.physics('physics_data','assets/json/physics_data.json')
 	},
   create:()=>{	
 	$("#ratname").hide();
@@ -461,7 +454,7 @@ spinGame.prototype ={
                canSpin = false;
                var spinTween = game.add.tween(wheel).to({
                     angle: 360 * rounds + degrees
-               }, 100, Phaser.Easing.Quadratic.Out, true);
+               }, 1000, Phaser.Easing.Quadratic.Out, true);
                spinTween.onComplete.add(this.winPrize, this);
           }
     },
@@ -559,7 +552,7 @@ $("#set_button").click(function(){
 	$("#return").show();
 });
 $("#end_button").click(function(){
-	trigger.end = 0;
+	trigger.end = 1;
 });
 $(document).ready(function(){	
 	$("#cover").hide();
