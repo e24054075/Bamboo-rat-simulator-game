@@ -11,6 +11,10 @@ display:none;
 {
 	position:abosulte;
 }
+#start_menu
+{
+	display:none;
+}
 #status
 {
 	position:absolute;
@@ -123,25 +127,26 @@ display:none;
 #food_photo
 {
 	position:absolute;
-	top:26vh;
-	left:4vw;
-	width:20vw;
-  	height:14vh;
+	top:45vh;
+	left:33vw;
+	width:35vw;
+  	height:19vh;
 }
 #sky
 {
 	position:absolute;
 	top:23vh;
-	left:28vw;
-	width:48vw;
+	left:16vw;
+	width:70vw;
   	height:19vh;
 }
 #window
 {
 	position:absolute;
+	top:25vh;
 	top:21.5vh;
-	left:27vw;
-	width:50vw;
+	left:12.5vw;
+	width:75vw;
   	height:22vh;
 }
 
@@ -347,7 +352,11 @@ display:none;
 	grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
 	/*grid-template-rows:generate by javascript ;*/
 	padding: 5px;
-	overflow: scroll;
+	overflow-y: scroll;
+}
+.achieve_container ::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
 }
 .achieve_container > div{
 	background: url("./assets/img/rat_race.png");

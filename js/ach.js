@@ -63,3 +63,8 @@ var ach_data = [
 	$("#achieve_btn").click(function(){
 		$("#achieve").show();
 	})
+
+	function Unlock_ach(index) {
+		ach_data[index][3] = 1;
+		$("#achieve div:nth-child("+(index+1)*3+")").text(ach_data[index][2]);
+	}
