@@ -127,28 +127,28 @@ display:none;
 #food_photo
 {
 	position:absolute;
-	top:45vh;
-	left:33vw;
-	width:35vw;
-  	height:19vh;
+	top:26vh;
+	left:3vw;
+	width:22vw;
+  	height:13vh;
 }
 #sky
 {
 	position:absolute;
 	top:23vh;
-	left:16vw;
-	width:70vw;
+	left:28vw;
+	width:48vw;
   	height:19vh;
 }
 #window
 {
 	position:absolute;
-	top:25vh;
 	top:21.5vh;
-	left:12.5vw;
-	width:75vw;
+	left:27vw;
+	width:50vw;
   	height:22vh;
 }
+
 
 #paper
 {
