@@ -122,7 +122,7 @@ var mainpage ={
 	map.setCollision(1,true,layer);
 	
 	
-	this.button_eat = game.add.button(160, 630, 'bowl');
+	this.button_eat = game.add.button(160, 640, 'bowl');
 	this.button_eat.scale.set(0.8);
 	this.button_eat.onInputDown.add( dowm,{key:"eat"},this);
     this.button_eat.onInputUp.add(up, { key: "eat" }, this);
