@@ -1,10 +1,8 @@
-#loading
+#loading_gif
 {
-   background-image: url("./assets/img/loading.png");
-   background-size:cover;
-   background-position: center center;
    z-index: 1;
    left: 42vw;
    top: 50vh;
    position: fixed;
+   width:200px;
 }
