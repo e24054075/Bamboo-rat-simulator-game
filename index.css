@@ -291,20 +291,26 @@ display:none;
 #end_button
 {
 	position:absolute;
-	top:80vh;
-	left:85vw;
+	top:92vh;
+	left:80vw;
+	height:8vh;
+    width:8vw;
 }
 #ach_button
 {
 	position:absolute;
-	top:80vh;
-	left:15vw;
+	top:92vh;
+	left:18vw;
+	height:8vh;
+    width:8vw;
 }
 #set_button
 {
 	position:absolute;
-	top:80vh;
-	left:5vw;
+	top:92vh;
+	left:2vw;
+	height:8vh;
+    width:8vw;
 }
 .setting_container 
 {
