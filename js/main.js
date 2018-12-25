@@ -92,12 +92,11 @@ var game = new Phaser.Game(420,720, Phaser.AUTO, 'game');
 var mainpage ={
   preload:()=>{
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
-	game.load.image('bgimage','assets/img/background_box.png');			
+	game.load.image('background_box','assets/img/background_box.png');			
 	game.load.image('endb','assets/img/sleep.png');
 	game.load.image('achb','assets/img/history.png');
 	game.load.image('setb','assets/img/setting.png');		
 	game.load.image('wall','assets/img/wall.png');
-	game.load.image('wall2','assets/img/wall3.png');
 	game.load.image('bowl','assets/img/newbowl.png');
 	game.load.image('bamboo','assets/img/bamboo2.png');
 	game.load.image('corn','assets/img/corn.png');
@@ -121,10 +120,8 @@ var mainpage ={
 	Phaser.Canvas.setImageRenderingCrisp(game.canvas);
 	//載入
 	map = game.add.tilemap('map');
-	map.addTilesetImage('bgimage','bgimage');
+	map.addTilesetImage('background_box','background_box');
 	map.addTilesetImage('wall','wall');
-	map.addTilesetImage('wall2','wall2');
-	map.createLayer('layer3');
 	layer = map.createLayer('layer1');
 	map.createLayer('layer2');
 	map.setCollision(1,true,layer);
