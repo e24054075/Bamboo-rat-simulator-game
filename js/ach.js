@@ -1,4 +1,4 @@
-var arch_data = [
+var ach_data = [
 [1,"呱呱墜地"  ,"誕生第一隻竹署",0],
 [2,"頭好壯壯"  ,"健康百分百",0],
 [3,"風起雲湧"  ,"打贏其他竹鼠",0],
@@ -6,12 +6,13 @@ var arch_data = [
 [5,"有毒食品"  ,"誤食核廢料",0],
 [6,"成為網紅"  ,"被主人放上網路",0],
 [7,"馬鈴鼠燉肉","變成主人的晚餐",0],
-[8,"烤肉派對"  ,"(被)參加烤肉派對",0]
+[8,"烤肉派對"  ,"(被)參加烤肉派對",0],
+[9,"鼠生短短"  ,"第一次死亡",0]
 ];
 
 /*load achieve content*/
 $("#achieve").ready(function(){
-    var achieve_num = arch_data.length;
+    var achieve_num = ach_data.length;
 	var i;
 	var css_grid_row = "";
 	for(i = 0 ; i < achieve_num ; i++){
@@ -22,7 +23,7 @@ $("#achieve").ready(function(){
 		/*create achieve icon element*/
 		var ach_img = document.createElement("IMG");
 		ach_img.className = "achieve_icon_img";
-		ach_img.src = "./assets/img/arch/arch"+arch_data[i][0]+".png";
+		ach_img.src = "./assets/img/ach/ach"+ach_data[i][0]+".png";
 		ach_div_icon.appendChild(ach_img);
 
 		/*create achieve title container*/
@@ -30,7 +31,7 @@ $("#achieve").ready(function(){
         ach_div_title.className = "achieve_title";
         
         var ach_title_text_container = document.createElement("p");
-        var ach_title_text = document.createTextNode(arch_data[i][1]);
+        var ach_title_text = document.createTextNode(ach_data[i][1]);
         ach_title_text_container.appendChild(ach_title_text);
         ach_div_title.appendChild(ach_title_text_container);
 
@@ -39,7 +40,7 @@ $("#achieve").ready(function(){
         ach_div_content.className = "achieve_content";
         
         var ach_content_text_container = document.createElement("p");
-        var ach_content_text = document.createTextNode(arch_data[i][2]);
+        var ach_content_text = document.createTextNode(ach_data[i][2]);
         ach_content_text_container.appendChild(ach_content_text)
         ach_div_content.appendChild(ach_content_text_container);
 
