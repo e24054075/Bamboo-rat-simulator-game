@@ -124,7 +124,7 @@ display:none;
 	width:8vw;
 	height:8vh;
 }
-#food_photo
+#photo
 {
 	position:absolute;
 	top:26vh;
@@ -143,7 +143,7 @@ display:none;
 #window
 {
 	position:absolute;
-	top:25vh;
+	top:22vh;
 	left:27vw;
 	width:50vw;
   	height:22vh;
