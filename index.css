@@ -18,7 +18,7 @@ display:none;
 #status
 {
 	position:absolute;
-	background-color:rgb(253,236,166);
+	background-color:rgba(248, 211, 135, 0.96);
 	top:0vh;
 	left:0vw;
 	width:100vw;
@@ -51,7 +51,7 @@ display:none;
 {
 	position:absolute;
 	z-index:2;
-	background-color:rgba(248, 211, 135, 0.96);
+	background-color:rgb(248, 211, 135);
 	top:10vh;
 	left:20vw;
 	width:60vw;
