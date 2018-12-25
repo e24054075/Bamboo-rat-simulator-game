@@ -10,7 +10,7 @@
 {
    z-index: 5;
    left: 0;
-   top: 0;
+   top: 10;
    position: absolute;
    height:100%;
 }
