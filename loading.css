@@ -1,8 +1,10 @@
 #loading
 {
+   background-image: url("./assets/img/loading.png");
+   background-position: center center;
    z-index: 1;
-    left: 42vw;
-    top: 50vh;
-    position: fixed;
-    width: 200px;
+   left: 42vw;
+   top: 50vh;
+   position: fixed;
+   width: 200px;
 }
