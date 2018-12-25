@@ -208,7 +208,7 @@ var mainpage ={
 				prize = -1;
 				break;
 			case 3:
-				grass = game.add.sprite(170,602,'grass');
+				grass = game.add.sprite(170,615,'grass');
 				grass.scale.set(0.6);
 				for(i = 0;i < 3;i++)
 					grass.moveDown();
