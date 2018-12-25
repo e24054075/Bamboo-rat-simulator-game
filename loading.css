@@ -1,10 +1,16 @@
-#loading
+#loading_gif
 {
-   background-image: url("./assets/img/loading.png");
-   background-position: center center;
-   z-index: 1;
+   z-index: 6;
    left: 42vw;
    top: 50vh;
    position: fixed;
-   width: 200px;
+   width:200px;
+}
+#loading_bg
+{
+   z-index: 5;
+   left: 0;
+   top: 0;
+   position: absolute;
+   height:100%;
 }
