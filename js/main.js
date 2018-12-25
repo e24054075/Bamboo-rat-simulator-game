@@ -104,12 +104,13 @@ var mainpage ={
 	game.load.image('rice','assets/img/rice.png');
 	game.load.image('grass','assets/img/grass.png');
 	game.load.spritesheet('rat_player','assets/img/rat4.png', 210, 114);
+	game.load.spritesheet('hat','assets/img/hat.png', 84, 84);
 	},
   create:()=>{	
     //物理引擎
     game.physics.startSystem(Phaser.Physics.ARCADE);
 	game.physics.arcade.gravity.y = 0;
-	game.time.desiredFps = 30;
+	game.time.desiredFps = 60;
 	//視窗設定
 	game.scale.setGameSize(420,720);
 	if(device_type === 0){
@@ -128,11 +129,7 @@ var mainpage ={
 	map.createLayer('layer2');
 	map.setCollision(1,true,layer);
 	
-	
-	this.button_eat = game.add.button(150, 640, 'bowl');
-	this.button_eat.scale.set(0.8);
-	this.button_eat.onInputDown.add( dowm,{key:"eat"},this);
-    this.button_eat.onInputUp.add(up, { key: "eat" }, this);
+	//竹鼠
 	rat_player = game.add.sprite(150,500, 'rat_player');
 	game.physics.enable(rat_player,Phaser.Physics.ARCADE);
 	rat_player.scale.set(rat_scale);
@@ -146,7 +143,19 @@ var mainpage ={
 	rat_player.input.enableDrag(true);
 	bounds = new Phaser.Rectangle(30, 450, 360, 200);
 	rat_player.input.boundsRect = bounds;
+	//帽子
+	hat = game.add.sprite(160,470,'hat');
+	game.physics.enable(hat,Phaser.Physics.ARCADE);
+	hat.scale.set(rat_scale);
+	hat.body.allowGravity = false;
+	hat.body.immovable = true;
+	
 	//按鈕設定
+	this.button_eat = game.add.button(150, 640, 'bowl');
+	this.button_eat.scale.set(0.8);
+	this.button_eat.onInputDown.add( dowm,{key:"eat"},this);
+    this.button_eat.onInputUp.add(up, { key: "eat" }, this);
+	
 	this.button_end = game.add.button(345, 655, 'endb');
 	this.button_end.scale.set(0.9);
     this.button_end.onInputDown.add( dowm,{key:"end"},this);
@@ -164,7 +173,6 @@ var mainpage ={
 	
 	game.time.events.loop(Phaser.Timer.SECOND*2,updateMoveNum, this);
 	game.time.events.loop(Phaser.Timer.SECOND*2,updowm, this);
-	
 	},
   update:()=>{
 	//按鍵觸發
@@ -178,6 +186,7 @@ var mainpage ={
 			rat_player.body.y = 525;
 			rat_scale += 0.09;
 			rat_player.scale.set(rat_scale);
+			hat.scale.set(rat_scale);
 		}
 		gameTimer = game.time.now + 750;
 		$("#paper").show();
@@ -208,7 +217,7 @@ var mainpage ={
 				prize = -1;
 				break;
 			case 2:
-				rice = game.add.sprite(174,630,'rice');
+				rice = game.add.sprite(170,619,'rice');
 				rice.scale.set(0.8);
 				for(i = 0;i < 3;i++)
 					rice.moveDown();
@@ -228,6 +237,24 @@ var mainpage ={
 	if(game.physics.arcade.collide(rat_player, layer)&& rat_player.body.onWall())
 		collide_num = 1;
 	rat_player.angle = 0;
+	if(rat_player.input.isDragged)
+	{
+		hat.frame = 0;
+		hat.body.x = rat_player.body.x + 42;
+		hat.body.y = rat_player.body.y - 42;
+	}
+	else if(rat_player.facing === 'right')
+	{
+		hat.frame = 0;
+		hat.body.x = rat_player.body.x + 77;
+		hat.body.y = rat_player.body.y - 20;
+	}
+	else
+	{
+		hat.frame = 1;
+		hat.body.x = rat_player.body.x + 10;
+		hat.body.y = rat_player.body.y - 20;
+	}
 	if(rat_player.input.isDragged)
 	{
 		rat_player.body.velocity.x = 0;
@@ -476,7 +503,7 @@ $(".optionA_text").click(function(){
 	$(".optionB_text").hide();
 	document.getElementById("T1-1").innerHTML="結果";
 	document.getElementById("C1-1").innerHTML=content_data[event_id][4];
-	event_end();
+	event_end(1);
 });
 
 $(".optionB_text").click(function(){
@@ -487,10 +514,11 @@ $(".optionB_text").click(function(){
 	$(".optionB_text").hide();
 	document.getElementById("T1-1").innerHTML="結果";
 	document.getElementById("C1-1").innerHTML=content_data[event_id][5];
-	event_end();
+	event_end(1);
 });
-function event_end(){
+function event_end(a){
 	$("#paper").click(function(){
+		if(a == 1){
 		$("#cover").hide();
 	    $("#paper").hide();
 	    $(".event_title").hide();
@@ -500,7 +528,8 @@ function event_end(){
 		document.getElementById("C1-1").innerHTML=content_data[event_id][1];
 		document.getElementById("A1-1").innerHTML=content_data[event_id][2];
 		document.getElementById("B1-1").innerHTML=content_data[event_id][3];
-	});
+		a = 0;
+		}});
 };
 function four_bar_conrtrol(a,b,c,d){
 	if(a != 0)

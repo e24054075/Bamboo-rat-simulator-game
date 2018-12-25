@@ -11,6 +11,10 @@ display:none;
 {
 	position:abosulte;
 }
+#start_menu
+{
+	display:none;
+}
 #status
 {
 	position:absolute;
