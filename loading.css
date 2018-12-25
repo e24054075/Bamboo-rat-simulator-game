@@ -9,8 +9,8 @@
 #loading_bg
 {
    z-index: 5;
-   left: 0;
-   top: 5vh;
+   left: -2vw;
+   top: 1vh; 
    position: absolute;
    height:100%;
 }
