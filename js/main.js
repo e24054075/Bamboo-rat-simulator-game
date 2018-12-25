@@ -201,8 +201,8 @@ var mainpage ={
 				prize = -1;
 				break;
 			case 2:
-				rice = game.add.sprite(166,614,'rice');
-				rice.scale.set(0.6);
+				rice = game.add.sprite(170,625,'rice');
+				rice.scale.set(0.7);
 				for(i = 0;i < 3;i++)
 					rice.moveDown();
 				prize = -1;
