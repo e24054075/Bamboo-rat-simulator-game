@@ -91,7 +91,7 @@ var mainpage ={
 	game.load.image('setb','assets/img/setting.png');		
 	game.load.image('wall','assets/img/wall.png');
 	game.load.image('wall2','assets/img/wall2.png');
-	game.load.image('bowl','assets/img/bowl.png');
+	game.load.image('bowl','assets/img/newbowl.png');
 	game.load.image('bamboo','assets/img/bamboo2.png');
 	game.load.image('corn','assets/img/corn.png');
 	game.load.image('rice','assets/img/rice.png');
