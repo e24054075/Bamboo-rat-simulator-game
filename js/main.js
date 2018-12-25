@@ -310,7 +310,7 @@ game.state.start('mainpage');
 var littlegame ={
   preload:()=>{
 	game.load.spritesheet('rat_player','assets/img/rat3.png', 210, 182);
-	game.load.image('background_box','assets/img/rat_race_bg.png');		
+	game.load.image('background','assets/img/rat_race_bg.png');		
 	game.load.image('rat_race','assets/img/rat_race.png');
 	game.load.image('obstacle','assets/img/spike.png');	
 	game.load.image('obstacle2','assets/img/rock.png');		
