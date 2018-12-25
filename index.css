@@ -288,6 +288,24 @@ display:none;
 	height:2.5vh;
 	width:29.5vw;
 }
+#end_button
+{
+	position:absolute;
+	top:80vh;
+	left:85vw;
+}
+#ach_button
+{
+	position:absolute;
+	top:80vh;
+	left:15vw;
+}
+#set_button
+{
+	position:absolute;
+	top:80vh;
+	left:5vw;
+}
 .setting_container 
 {
 	display: grid;

@@ -58,10 +58,6 @@ function up() {
 			$("#setting").show();
 			$("#return").show();
             break;
-        case "mood":
-			$("#main").hide();
-			game.state.start('littlegame');
-            break;
 		case "eat":
 			$("#main").hide();
 			game.state.start('spin');
@@ -93,9 +89,9 @@ var mainpage ={
   preload:()=>{
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
 	game.load.image('background_box','assets/img/background_box.png');			
-	game.load.image('endb','assets/img/sleep.png');
-	game.load.image('achb','assets/img/history.png');
-	game.load.image('setb','assets/img/setting.png');		
+	//game.load.image('endb','assets/img/sleep.png');
+	//game.load.image('achb','assets/img/history.png');
+	//game.load.image('setb','assets/img/setting.png');		
 	game.load.image('wall','assets/img/wall.png');
 	game.load.image('bowl','assets/img/newbowl.png');
 	game.load.image('bamboo','assets/img/bamboo2.png');
@@ -152,7 +148,7 @@ var mainpage ={
 	this.button_eat.scale.set(0.8);
 	this.button_eat.onInputDown.add( dowm,{key:"eat"},this);
     this.button_eat.onInputUp.add(up, { key: "eat" }, this);
-	
+	/*
 	this.button_end = game.add.button(345, 655, 'endb');
 	this.button_end.scale.set(0.9);
     this.button_end.onInputDown.add( dowm,{key:"end"},this);
@@ -167,7 +163,7 @@ var mainpage ={
 	this.button_set.scale.set(0.9);
     this.button_set.onInputDown.add( dowm,{key:"set"},this);
     this.button_set.onInputUp.add(up, { key: "set" }, this);  
-	
+	*/
 	game.time.events.loop(Phaser.Timer.SECOND*2,updateMoveNum, this);
 	game.time.events.loop(Phaser.Timer.SECOND*2,updowm, this);
 	},
@@ -550,6 +546,20 @@ function bar_control(b_input,b_type){
 $("#weather").click(function(){
 		$("#main").hide();
 		game.state.start('littlegame')
+});
+$("#ach_button").click(function(){
+	$("#cover").show();
+	$("#setting").show();
+	$("#return").show();
+	$("#achieve").show();
+});
+$("#set_button").click(function(){
+	$("#cover").show();
+	$("#setting").show();
+	$("#return").show();
+});
+$("#end_button").click(function(){
+	trigger.end = 0;
 });
 $(document).ready(function(){	
 	$("#cover").hide();
