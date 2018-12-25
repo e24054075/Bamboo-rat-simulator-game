@@ -523,7 +523,7 @@ function event_end(a){
 	    $("#paper").hide();
 	    $(".event_title").hide();
 	    $(".event_content").hide();
-		event_id = getRandom(0,8);
+		event_id = getRandom(0,9);
 		document.getElementById("T1-1").innerHTML=content_data[event_id][0];
 		document.getElementById("C1-1").innerHTML=content_data[event_id][1];
 		document.getElementById("A1-1").innerHTML=content_data[event_id][2];
