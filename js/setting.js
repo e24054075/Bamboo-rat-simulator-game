@@ -7,9 +7,6 @@ volume_slider.oninput = function() {
 	bamboorat1_voice.play();
 }
 
-
-
-
 /*data saving !*/
 $("#save_img").click(function(){
 

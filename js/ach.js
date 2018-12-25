@@ -12,7 +12,10 @@ var ach_data = [
 	[11,"國父革命"     ,"第十次死亡",0],
 	[12,"我盡力了"     ,"死亡前生存十天以上",0],
 	[13,"Gold Class"  ,"死亡前生存三十天以上",0],
-	[14,"超載"         ,"我太胖了",0]
+	[14,"超載"         ,"我太胖了",0],
+	[15,"烤肉派對2"    ,"參加烤鄰居竹鼠的派對",0],
+	[16,"一代宗師"     ,"武力百分百",0],
+	[17,"全場焦點"     ,"注目度百分百",0]
 	];
 	
 	/*load achieve content*/
@@ -57,11 +60,6 @@ var ach_data = [
 			css_grid_row = css_grid_row + "12%";
 		}
 		$(".achieve_container").css("grid-template-rows",css_grid_row);
-	})
-	
-	/*show achieve page*/ 
-	$("#achieve_btn").click(function(){
-		$("#achieve").show();
 	})
 
 	function Unlock_ach(index) {

@@ -8,13 +8,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/2.6.2/phaser.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="sql.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="loading.css" />
 	<link href="./assets/img/favicon.ico" type="image/x-icon" rel="icon" />
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script src="https://code.jquery.com/jquery-1.6.1.min.js"></script>
 	<title>鼠翹翹</title>
 	</head>
 	<body stlye = 'margin = 0;'>
 		<div id="game"></div>
 		<div id="main">
+			<div>
+				<img src="./assets/img/paint.gif" id=loading>
+			</div>
+			
 			<div id="ratname">
 			<svg>
 			<defs>
@@ -76,9 +82,6 @@
 					<div class="setting_item" id = "save_btn">
 							<h1>存檔</h1>
 							<div id="save_img"></div>
-					</div>
-					<div class="setting_item">
-							<h1>無</h1>
 					</div>
 					<div class="setting_item">
 							<a href="https://genius92606.github.io/Bamboo-rat-simulator/"><h1>about us</h1></a>
@@ -148,6 +151,7 @@
 	  <script src="./js/main.js"></script>      
       <script src="./js/setting.js"></script>
 			<script src="./js/sql.js"></script>
-			<script src="./js/ach.js"></script>       
+			<script src="./js/ach.js"></script>
+			<script>$(window).load(function(){$('#loading').hide(1000);});</script>
 	</body>
 </html>

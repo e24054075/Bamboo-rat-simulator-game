@@ -18,7 +18,7 @@ display:none;
 #status
 {
 	position:absolute;
-	background-color:rgb(253,236,166);
+	background-color:rgba(248, 211, 135, 0.96);
 	top:0vh;
 	left:0vw;
 	width:100vw;
@@ -51,7 +51,7 @@ display:none;
 {
 	position:absolute;
 	z-index:2;
-	background-color:rgb(211, 132, 14);
+	background-color:rgb(248, 211, 135);
 	top:10vh;
 	left:20vw;
 	width:60vw;
@@ -74,7 +74,7 @@ display:none;
 	position:absolute;
 	top:13vh;
 	left:75vw;
-	font-family:"Times New Roman";
+	font-family:sans-serif;
 	font-size:4em;
 }
 #ratname
@@ -291,7 +291,7 @@ display:none;
 .setting_container 
 {
 	display: grid;
-	grid-template-rows: auto auto auto auto auto;
+	grid-template-rows: auto auto auto auto;
 	padding: 5px;
   }
 .setting_item 
