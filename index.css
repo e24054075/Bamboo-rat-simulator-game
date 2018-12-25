@@ -120,7 +120,14 @@ display:none;
 	width:8vw;
 	height:8vh;
 }
-
+#food_photo
+{
+	position:absolute;
+	top:28vh;
+	left:16vw;
+	width:70vw;
+  	height:19vh;
+}
 #sky
 {
 	position:absolute;
