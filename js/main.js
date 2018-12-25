@@ -92,7 +92,7 @@ var game = new Phaser.Game(420,720, Phaser.AUTO, 'game');
 var mainpage ={
   preload:()=>{
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
-	game.load.image('bgimage','assets/img/background_box.png');			
+	game.load.image('bgimage','assets/img/background_box1.png');			
 	game.load.image('endb','assets/img/sleep.png');
 	game.load.image('achb','assets/img/history.png');
 	game.load.image('setb','assets/img/setting.png');		
