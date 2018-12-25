@@ -434,13 +434,13 @@ spinGame.prototype ={
     spin(){
           if(canSpin){  
                prizeText.text = "";
-               var rounds = game.rnd.between(200, 600);
+               var rounds = game.rnd.between(2, 6);
                var degrees = game.rnd.between(0, 360);
                prize = slices - 1 - Math.floor(degrees / (360 / slices));
                canSpin = false;
                var spinTween = game.add.tween(wheel).to({
                     angle: 360 * rounds + degrees
-               }, 1500, Phaser.Easing.Quadratic.Out, true);
+               }, 150, Phaser.Easing.Quadratic.Out, true);
                spinTween.onComplete.add(this.winPrize, this);
           }
     },
