@@ -473,7 +473,7 @@ $(".optionA_text").click(function(){
 });
 
 $(".optionB_text").click(function(){
-	four_bar_conrtrol(content_data[event_id][7][0],content_data[event_id][6][1],content_data[event_id][6][2],content_data[event_id][6][3]);
+	four_bar_conrtrol(content_data[event_id][7][0],content_data[event_id][7][1],content_data[event_id][7][2],content_data[event_id][7][3]);
 	$("#optionA").hide();
 	$("#optionB").hide();
 	$(".optionA_text").hide();
