@@ -1,8 +1,8 @@
 #loading
 {
-    z-index: 1;
-    left: 48vw;
+   z-index: 1;
+    left: 42vw;
     top: 50vh;
-    position:absolute;
+    position: fixed;
     width: 200px;
 }
