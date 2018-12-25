@@ -58,11 +58,6 @@ var ach_data = [
 		}
 		$(".achieve_container").css("grid-template-rows",css_grid_row);
 	})
-	
-	/*show achieve page*/ 
-	$("#achieve_btn").click(function(){
-		$("#achieve").show();
-	})
 
 	function Unlock_ach(index) {
 		ach_data[index][3] = 1;
