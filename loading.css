@@ -1,3 +1,5 @@
+#loading
+{
     z-index: 1;
     padding: 10px 10px 5px;
     background: rgb(255, 0, 136);
@@ -10,3 +12,4 @@
     text-align: center;
     box-shadow: 2px 2px 10px;
     border-radius: 5px;
+}
