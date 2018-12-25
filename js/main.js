@@ -187,8 +187,8 @@ var mainpage ={
 		switch(prize)
 		{
 			case 0:
-				bamboo = game.add.sprite(170,630,'bamboo');
-				bamboo.scale.set(0.7);
+				bamboo = game.add.sprite(166,630,'bamboo');
+				bamboo.scale.set(0.6);
 				for(i = 0;i < 3;i++)
 					bamboo.moveDown();
 				prize = -1;
