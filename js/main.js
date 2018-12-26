@@ -14,6 +14,10 @@ var move_num;
 var up_num;
 var device_type;
 var i;
+
+var prize = -1;
+
+
 var rat_scale = 0.7;
 var bar_input = 20;
 var bar_type = 1;
@@ -31,13 +35,13 @@ var content_data=[
 ["鼠來飽","今天有點吃太多了，肚子不太舒服，我應該?","繞籠子10圈，運動一下","睡個覺醒來應該就好了吧","運動促進腸胃蠕動，上完廁所好多了","肚子好痛，睡不太著…",[15,5,10,10],[-15,0,-10,0]],
 
 ];
-
-
 function dowm() {
     switch (this.key) {
         case "end":
             trigger.end =1;
             break;
+		case "eat":
+			trigger.eat = 1;
         default:
             break;
     }
@@ -59,8 +63,10 @@ function up() {
 			$("#return").show();
             break;
 		case "eat":
-			$("#main").hide();
-			game.state.start('spin');
+			wheel.visible = true;
+			trigger.eat = 0;
+			/*$("#main").hide();
+			game.state.start('spin');*/
 			break;
         default:
             break;
@@ -69,15 +75,11 @@ function up() {
 function deviceType() {
 	if(navigator.userAgent.match(/mobile/i)) {
 		device_type = 0;
-		var atemp = document.getElementById('a1');
-		atemp.setAttribute('id','a3');
 		document.getElementById("game").style.marginTop = phaserheight-(720*phaserwidth/420)+"px";
 	} else {
 		device_type = 1;
 		$("#status").css({"width":"420px","height":"160px"});
 		$("#day").css({"top":"90px","left":"300px","font-size":"1.8em"});
-		$("#ratname").css({"position":"absolute","top":"668px","left":"190px"});
-		$("#ratnamesize").css({"font-size":"1.2em"});
 		var atemp = document.getElementById('a2');
 		atemp.setAttribute('id','a3');
 	}
@@ -88,10 +90,7 @@ var game = new Phaser.Game(420,720, Phaser.AUTO, 'game');
 var mainpage ={
   preload:()=>{
 	game.load.tilemap('map', 'assets/json/b_map.json', null,Phaser.Tilemap.TILED_JSON);
-	game.load.image('background_box','assets/img/background_box.png');			
-	//game.load.image('endb','assets/img/sleep.png');
-	//game.load.image('achb','assets/img/history.png');
-	//game.load.image('setb','assets/img/setting.png');		
+	game.load.image('background_box','assets/img/background_box.png');				
 	game.load.image('wall','assets/img/wall.png');
 	game.load.image('bowl','assets/img/newbowl.png');
 	game.load.image('bamboo','assets/img/bamboo2.png');
@@ -100,8 +99,11 @@ var mainpage ={
 	game.load.image('grass','assets/img/grass.png');
 	game.load.spritesheet('rat_player','assets/img/rat4.png', 210, 114);
 	game.load.spritesheet('hat','assets/img/hat.png', 84, 84);
+	game.load.image("wheel", "./assets/img/plat.png");
+	game.load.image("pin", "./assets/img/spin.png");     
 	},
   create:()=>{	
+    $('#day').text("DAY "+day);
     //物理引擎
     game.physics.startSystem(Phaser.Physics.ARCADE);
 	game.physics.arcade.gravity.y = 0;
@@ -142,30 +144,99 @@ var mainpage ={
 	hat.scale.set(rat_scale);
 	hat.body.allowGravity = false;
 	hat.body.immovable = true;
+  
+	game.time.events.loop(Phaser.Timer.SECOND*2,updateMoveNum, this);
+	game.time.events.loop(Phaser.Timer.SECOND*2,updowm, this);
 	
+	
+  	wheel = game.add.sprite(game.width / 2, 500, "wheel");
+	wheel.scale.set(0.5);
+    wheel.anchor.set(0.5);
+	wheel.visible = false;
+    pin = game.add.sprite(game.width / 2, 500, "pin");
+    pin.anchor.set(0.5);
+	pin.visible = false;
+    prizeText = game.add.text(game.world.centerX, 400, "");
+    prizeText.anchor.set(0.5);
+	prizeText.text = "";
+    prizeText.align = "center";
+	prizeText.visible = false;
 	//按鈕設定
 	this.button_eat = game.add.button(150, 640, 'bowl');
 	this.button_eat.scale.set(0.8);
-	this.button_eat.onInputDown.add( dowm,{key:"eat"},this);
-    this.button_eat.onInputUp.add(up, { key: "eat" }, this);
-	/*
-	this.button_end = game.add.button(345, 655, 'endb');
-	this.button_end.scale.set(0.9);
-    this.button_end.onInputDown.add( dowm,{key:"end"},this);
-    this.button_end.onInputUp.add(up, { key: "end" }, this);  
-	
-	this.button_ach = game.add.button(80, 655, 'achb');
-	this.button_ach.scale.set(0.9);
-    this.button_ach.onInputDown.add( dowm,{key:"ach"},this);
-    this.button_ach.onInputUp.add(up, { key: "ach" }, this);  
-	
-	this.button_set = game.add.button(10, 655, 'setb');
-	this.button_set.scale.set(0.9);
-    this.button_set.onInputDown.add( dowm,{key:"set"},this);
-    this.button_set.onInputUp.add(up, { key: "set" }, this);  
-	*/
-	game.time.events.loop(Phaser.Timer.SECOND*2,updateMoveNum, this);
-	game.time.events.loop(Phaser.Timer.SECOND*2,updowm, this);
+	//食物設定
+	bamboo = game.add.sprite(166,630,'bamboo');
+	bamboo.scale.set(0.6);
+	bamboo.visible = false;
+	corn = game.add.sprite(175,608,'corn');
+	corn.scale.set(0.7);
+	corn.visible = false;
+	rice = game.add.sprite(170,619,'rice');
+	rice.scale.set(0.8);
+	rice.visible = false;
+	grass = game.add.sprite(170,615,'grass');
+	grass.scale.set(0.6);
+	grass.visible = false;
+    this.button_eat.onInputUp.add(function(){
+		if(prize == -1)
+		{
+			prizeText.setText("");
+			game.time.desiredFps = 60;
+			wheel.visible = true;
+			pin.visible = true;
+			prizeText.visible = true;
+			var slices = 4;
+			var rounds = game.rnd.between(20, 60);
+			var degrees = game.rnd.between(0, 360);
+			prize = slices - 1 - Math.floor(degrees / (360 / slices));
+			canSpin = false;
+			var spinTween = game.add.tween(wheel).to({
+				angle: 360 * rounds + degrees
+			}, 1000, Phaser.Easing.Quadratic.Out, true);
+			spinTween.onComplete.add(function(){
+				switch(prize)
+				{
+					case 0:
+						prizeText.setText("新鮮嫩竹子");
+						break;
+					case 1:
+						prizeText.setText("玉米");
+						break;
+					case 2:
+						prizeText.setText("米糠拌飯");
+						break;
+					case 3:
+						prizeText.setText("芒草");
+						break;
+					default:
+					break;
+				}
+				game.input.onDown.add(function(){
+					wheel.visible = false;
+					pin.visible = false;
+					prizeText.visible = false;
+					game.time.desiredFps = 30;
+					switch(prize)
+					{
+						case 0:
+							bamboo.visible = true;
+							break;
+						case 1:
+							corn.visible = true;
+							break;
+						case 2:
+							rice.visible = true;
+							break;
+						case 3:
+							grass.visible = true;
+							break;
+						default:
+						break;
+					}
+				});	
+			});
+		}
+	});
 	},
   update:()=>{
 	//按鍵觸發
@@ -191,34 +262,24 @@ var mainpage ={
 		$(".event_content").show();
 		$(".optionA_text").show();
 		$(".optionB_text").show();
-	}
-	if(prize >= 0)
-	{
 		switch(prize)
 		{
 			case 0:
-				bamboo = game.add.sprite(166,630,'bamboo');
-				bamboo.scale.set(0.6);
-				prize = -1;
+				bamboo.visible = false;
 				break;
 			case 1:
-				corn = game.add.sprite(175,608,'corn');
-				corn.scale.set(0.7);
-				prize = -1;
+				corn.visible = false;
 				break;
 			case 2:
-				rice = game.add.sprite(170,619,'rice');
-				rice.scale.set(0.8);
-				prize = -1;
+				rice.visible = false;
 				break;
 			case 3:
-				grass = game.add.sprite(170,615,'grass');
-				grass.scale.set(0.6);
-				prize = -1;
+				grass.visible = false;
 				break;
 			default:
 			break;
 		}
+		prize = -1;
 	}
 	if(game.physics.arcade.collide(rat_player, layer)&& rat_player.body.onWall())
 		collide_num = 1;
@@ -316,7 +377,7 @@ function updateMoveNum(){
 function updowm(){
 	up_num = game.rnd.integerInRange(-1,1);
 };
-	
+
 game.state.add('mainpage', mainpage);
 game.state.start('mainpage');
 
@@ -417,13 +478,7 @@ var littlegame ={
 };
 
 game.state.add('littlegame',littlegame);
-
-var wheel; 
-var canSpin;
-var slices = 4;
-var slicePrizes = ["新鮮嫩竹子","玉米","米糠拌飯","芒草"];
-var prize;
-var prizeText;
+/*
 var spinGame = function(game){};
 spinGame.prototype ={
 	preload:function(){
@@ -443,7 +498,7 @@ spinGame.prototype ={
         prizeText.align = "center";
         canSpin = true;
         game.input.onDown.add(this.spin, this);		
-		i= 0;
+		//i= 0;
 	},
     spin(){
           if(canSpin){  
@@ -461,18 +516,17 @@ spinGame.prototype ={
     winPrize(){
           prizeText.text = slicePrizes[prize];
 		  gameTimer = game.time.now;
-		  i = 1;
-		  
+		  //i = 1;
+		  game.input.onDown.add(this.endspin, this);	
     },
+	endspin(){
+		$("#main").show();
+		game.state.start("mainpage");
+	},
 	update:function(){
-		if(game.time.now > gameTimer + 3000 && i == 1)
-		{
-			$("#main").show();
-			game.state.start("mainpage");
-		}
 	}
 }
-game.state.add("spin",spinGame);
+game.state.add("spin",spinGame);*/
 $("#return").click(function(){
 		$("#cover").hide();		
 		$("#achieve").hide();
@@ -566,6 +620,5 @@ $(document).ready(function(){
     $(".event_content").hide();
     $(".optionA_text").hide();
     $(".optionB_text").hide();
-	$('#day').text("DAY "+day);
 	deviceType();
 });
