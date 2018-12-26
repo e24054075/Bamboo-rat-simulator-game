@@ -17,25 +17,10 @@
 	<body stlye = 'margin = 0;'>
 		<div id="game"></div>
 		<div id="main">
-			<div class="loading">
-				<img src="./assets/img/paint.gif" id="loading_gif">
-				<img src="./assets/img/loading.png" id="loading_bg">
+			<div>
+				<img src="./assets/img/paint.gif" id=loading>
 			</div>
 			
-			<div id="ratname">
-			<svg>
-			<defs>
-				<path id="a1" d="M0 30 C120 70,140 35,450 0" stroke="#000" fill="none"/>
-			</defs>
-			<defs>
-				<path id="a2" d="M0 30 C30 50,60 30,450 0" stroke="#000" fill="none"/>
-			</defs>
-			<text id="ratnamesize" style = "font-size:3em">
-				<textPath xlink:href="#a3">竹鼠小明
-				</textPath>
-			</text>
-			</svg>
-			</div>
 			<div id= "cover"></div>
 			<div class = "status_container">
 				<div id= "status"></div>
@@ -162,6 +147,6 @@
       <script src="./js/setting.js"></script>
 			<script src="./js/sql.js"></script>
 			<script src="./js/ach.js"></script>
-			<script>$(window).load(function(){$('.loading').hide(1000);});</script>
+			<script>$(window).load(function(){$('#loading').hide(1000);});</script>
 	</body>
 </html>

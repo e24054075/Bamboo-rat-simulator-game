@@ -77,13 +77,6 @@ display:none;
 	font-family:sans-serif;
 	font-size:4em;
 }
-#ratname
-{
-	position:absolute;
-	bottom:-74px;
-	left:44.2vw;
-	font-family: 'Noto Sans TC', sans-serif;
-}
 #health
 {
 	position:absolute;
