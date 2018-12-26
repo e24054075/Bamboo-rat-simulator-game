@@ -17,10 +17,10 @@
 	<body stlye = 'margin = 0;'>
 		<div id="game"></div>
 		<div id="main">
-			<div>
-				<img src="./assets/img/paint.gif" id=loading>
+			<div class="loading">
+				<img src="./assets/img/paint.gif" id="loading_gif">
+				<img src="./assets/img/loading.png" id="loading_bg">
 			</div>
-			
 			<div id= "cover"></div>
 			<div class = "status_container">
 				<div id= "status"></div>
@@ -147,6 +147,7 @@
       <script src="./js/setting.js"></script>
 			<script src="./js/sql.js"></script>
 			<script src="./js/ach.js"></script>
-			<script>$(window).load(function(){$('#loading').hide(1000);});</script>
+			<script>$(window).load(function(){$('.loading').hide(1000);});</script>
 	</body>
 </html>
+
