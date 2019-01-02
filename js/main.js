@@ -100,7 +100,7 @@ var mainpage ={
 	game.load.spritesheet('rat_player','assets/img/rat4.png', 210, 114);
 	game.load.spritesheet('hat','assets/img/hat.png', 84, 84);
 	game.load.image("wheel", "./assets/img/plat.png");
-	game.load.image("pin", "./assets/img/spin3.png");     
+	game.load.image("pin", "./assets/img/spin.png");     
 	},
   create:()=>{	
     $('#day').text("DAY "+day);
@@ -155,7 +155,7 @@ var mainpage ={
 	wheel.visible = false;
     	pin = game.add.sprite(game.width / 2, 500, "pin");
   	pin.anchor.set(0.5);
-	pin.scale.set(0.3);
+	//pin.scale.set(0.3);
 	pin.visible = false;
 	//按鈕設定
 	this.button_eat = game.add.button(150, 640, 'bowl');
