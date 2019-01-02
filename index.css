@@ -3,17 +3,13 @@
   margin: 0px;
   padding: 0px;
 }
-#start_menu
-{
-display:none;
-}
+
 #game
 {
 	position:abosulte;
 }
-#start_menu
-{
-	display:none;
+#start_menu{
+  display:none;
 }
 #status
 {
@@ -367,11 +363,12 @@ display:none;
     cursor: pointer;
 }
 #save_img{
-	background: url("./assets/img/achb2.png");
-	height: 30%;
-	width: 100%;
-	background-repeat: no-repeat;
-	background-position: center;
+	position:absolute;
+	top:38vh;
+	left:25vw;
+	height: 10%;
+	width: 15%;
+	
 }
 .achieve_container 
 {

@@ -1,5 +1,5 @@
 var ach_data = [
-	[1, "呱呱墜地"     ,"誕生第一隻竹署",0],
+	[1, "呱呱墜地"     ,"誕生第一隻竹署",1],
 	[2, "頭好壯壯"     ,"健康百分百",0],
 	[3, "風起雲湧"     ,"打贏其他竹鼠",0],
 	[4, "安然無恙"     ,"平安度過第一個夜晚",0],
@@ -61,8 +61,33 @@ var ach_data = [
 		}
 		$(".achieve_container").css("grid-template-rows",css_grid_row);
 	})
-
-	function Unlock_ach(index) {
+	function check_ach_bar(){
+		if(bar_value[0] == 100){
+			Unlock_ach(1);
+		}
+		if(bar_value[1] == 100){
+			Unlock_ach(15);
+		}
+		if(bar_value[3] == 100){
+			Unlock_ach(16);
+		}
+	}
+	function check_ach_day(){
+		switch(day){
+			case 2:
+				Unlock_ach(3);
+				break;
+			case 10:
+				Unlock_ach(11);
+				break;
+			case 30:
+				Unlock_ach(12);
+				break;
+			default:
+				break;
+		}
+	}
+	function Unlock_ach(index) {/*start from 0*/
 		ach_data[index][3] = 1;
-		$("#achieve div:nth-child("+(index+1)*3+")").text(ach_data[index][2]);
+		$("#achieve div:nth-child("+(index+1)*3+") p").text(ach_data[index][2]);/*select ach content p element*/ 
 	}

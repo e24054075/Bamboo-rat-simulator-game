@@ -100,7 +100,7 @@ var mainpage ={
 	game.load.spritesheet('rat_player','assets/img/rat4.png', 210, 114);
 	game.load.spritesheet('hat','assets/img/hat.png', 84, 84);
 	game.load.image("wheel", "./assets/img/plat.png");
-	game.load.image("pin", "./assets/img/spin2.png");     
+	game.load.image("pin", "./assets/img/spin.png");     
 	},
   create:()=>{	
     $('#day').text("DAY "+day);
@@ -151,10 +151,11 @@ var mainpage ={
 	
   	wheel = game.add.sprite(game.width / 2, 500, "wheel");
 	wheel.scale.set(0.5);
-    wheel.anchor.set(0.5);
+    	wheel.anchor.set(0.5);
 	wheel.visible = false;
-    pin = game.add.sprite(game.width / 2, 500, "pin");
-    pin.anchor.set(0.5);
+    	pin = game.add.sprite(game.width / 2, 500, "pin");
+  	pin.anchor.set(0.5);
+	//pin.scale.set(0.3);
 	pin.visible = false;
 	//按鈕設定
 	this.button_eat = game.add.button(150, 640, 'bowl');
@@ -240,6 +241,7 @@ var mainpage ={
 	{
 		trigger.end = 0;
 		day++;
+		check_ach_day();/*define in ach js*/ 
 		$('#day').text("DAY "+day);
 		if(day%10 === 0 && rat_scale <= 1.6)
 		{
@@ -547,6 +549,7 @@ function four_bar_conrtrol(a,b,c,d){
 		bar_control(c,3);
 	if(d != 0)
 		bar_control(d,4);
+	check_ach_bar();/*define in ach js*/ 
 };
 function bar_control(b_input,b_type){
 	bar_value[b_type-1] += b_input;
