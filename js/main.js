@@ -241,6 +241,7 @@ var mainpage ={
 	{
 		trigger.end = 0;
 		day++;
+		check_ach_day();/*define in ach js*/ 
 		$('#day').text("DAY "+day);
 		if(day%10 === 0 && rat_scale <= 1.6)
 		{
@@ -578,7 +579,7 @@ function four_bar_conrtrol(a,b,c,d){
 		bar_control(c,3);
 	if(d != 0)
 		bar_control(d,4);
-	check_arch_bar();/*define in ach js*/ 
+	check_ach_bar();/*define in ach js*/ 
 };
 function bar_control(b_input,b_type){
 	bar_value[b_type-1] += b_input;

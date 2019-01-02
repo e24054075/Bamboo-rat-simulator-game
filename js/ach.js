@@ -61,7 +61,7 @@ var ach_data = [
 		}
 		$(".achieve_container").css("grid-template-rows",css_grid_row);
 	})
-	function check_arch_bar(){
+	function check_ach_bar(){
 		if(bar_value[0] == 100){
 			Unlock_ach(1);
 		}
@@ -70,6 +70,21 @@ var ach_data = [
 		}
 		if(bar_value[3] == 100){
 			Unlock_ach(16);
+		}
+	}
+	function check_ach_day(){
+		switch(day){
+			case 2:
+				Unlock_ach(3);
+				break;
+			case 10:
+				Unlock_ach(11);
+				break;
+			case 30:
+				Unlock_ach(12);
+				break;
+			default:
+				break;
 		}
 	}
 	function Unlock_ach(index) {/*start from 0*/
