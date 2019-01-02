@@ -154,7 +154,7 @@ var mainpage ={
     wheel.anchor.set(0.5);
 	wheel.visible = false;
     pin = game.add.sprite(game.width / 2, 500, "pin");
-    pin.anchor.set(0.5);
+    pin.anchor.set(0.3);
 	pin.visible = false;
 	//按鈕設定
 	this.button_eat = game.add.button(150, 640, 'bowl');
