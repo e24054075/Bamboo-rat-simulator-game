@@ -100,7 +100,7 @@ var mainpage ={
 	game.load.spritesheet('rat_player','assets/img/rat4.png', 210, 114);
 	game.load.spritesheet('hat','assets/img/hat.png', 84, 84);
 	game.load.image("wheel", "./assets/img/plat.png");
-	game.load.image("pin", "./assets/img/spin.png");     
+	game.load.image("pin", "./assets/img/spin2.png");     
 	},
   create:()=>{	
     $('#day').text("DAY "+day);
