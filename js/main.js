@@ -156,11 +156,6 @@ var mainpage ={
     pin = game.add.sprite(game.width / 2, 500, "pin");
     pin.anchor.set(0.5);
 	pin.visible = false;
-    prizeText = game.add.text(game.world.centerX, 400, "");
-    prizeText.anchor.set(0.5);
-	prizeText.text = "";
-    prizeText.align = "center";
-	prizeText.visible = false;
 	//按鈕設定
 	this.button_eat = game.add.button(150, 640, 'bowl');
 	this.button_eat.scale.set(0.8);
@@ -177,14 +172,13 @@ var mainpage ={
 	grass = game.add.sprite(170,615,'grass');
 	grass.scale.set(0.6);
 	grass.visible = false;
+	$("#food_text").hide();
     this.button_eat.onInputUp.add(function(){
 		if(prize == -1)
 		{
-			prizeText.setText("");
 			game.time.desiredFps = 60;
 			wheel.visible = true;
 			pin.visible = true;
-			prizeText.visible = true;
 			var slices = 4;
 			var rounds = game.rnd.between(20, 60);
 			var degrees = game.rnd.between(0, 360);
@@ -197,24 +191,25 @@ var mainpage ={
 				switch(prize)
 				{
 					case 0:
-						prizeText.setText("新鮮嫩竹子");
+						document.getElementById("food_text").innerHTML= "新鮮嫩竹子";
 						break;
 					case 1:
-						prizeText.setText("玉米");
+						document.getElementById("food_text").innerHTML= "玉米";
 						break;
 					case 2:
-						prizeText.setText("米糠拌飯");
+						document.getElementById("food_text").innerHTML= "米糠拌飯";
 						break;
 					case 3:
-						prizeText.setText("芒草");
+						document.getElementById("food_text").innerHTML= "芒草";
 						break;
 					default:
 					break;
 				}
+				$("#food_text").show();
 				game.input.onDown.add(function(){
 					wheel.visible = false;
 					pin.visible = false;
-					prizeText.visible = false;
+					$("#food_text").hide();
 					game.time.desiredFps = 30;
 					switch(prize)
 					{
@@ -233,6 +228,7 @@ var mainpage ={
 						default:
 						break;
 					}
+					game.input.onDown.removeAll();
 				});	
 			});
 		}

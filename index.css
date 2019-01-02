@@ -216,6 +216,17 @@ display:none;
     width:35vw;
 	word-break: break-all;
 }
+#food_text
+{
+	z-index:3;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size:60px;
+    position:absolute;
+    top:50vh;
+	left:30vw;
+	width:40vw;
+	text-align:center;
+}
 #eb1
 {
 	position:absolute;
