@@ -578,6 +578,7 @@ function four_bar_conrtrol(a,b,c,d){
 		bar_control(c,3);
 	if(d != 0)
 		bar_control(d,4);
+	check_arch_bar();
 };
 function bar_control(b_input,b_type){
 	bar_value[b_type-1] += b_input;
