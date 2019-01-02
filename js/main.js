@@ -14,7 +14,7 @@ var move_num;
 var up_num;
 var device_type;
 var i;
-
+var weather;
 var prize = -1;
 
 
@@ -100,7 +100,7 @@ var mainpage ={
 	game.load.spritesheet('rat_player','assets/img/rat4.png', 210, 114);
 	game.load.spritesheet('hat','assets/img/hat.png', 84, 84);
 	game.load.image("wheel", "./assets/img/plat.png");
-	game.load.image("pin", "./assets/img/spin2.png");     
+	game.load.image("pin", "./assets/img/spin.png");     
 	},
   create:()=>{	
     $('#day').text("DAY "+day);
@@ -276,34 +276,23 @@ var mainpage ={
 			break;
 		}
 		prize = -1;
+		set_weather();
 	}
 	if(game.physics.arcade.collide(rat_player, layer)&& rat_player.body.onWall())
+	{
 		collide_num = 1;
+		hat.body.velocity.x = 0;
+	}
 	rat_player.angle = 0;
-	if(rat_player.input.isDragged)
-	{
-		hat.frame = 0;
-		hat.body.x = rat_player.body.x + 42;
-		hat.body.y = rat_player.body.y - 42;
-	}
-	else if(rat_player.facing === 'right')
-	{
-		hat.frame = 0;
-		hat.body.x = rat_player.body.x + 77;
-		hat.body.y = rat_player.body.y - 20;
-	}
-	else
-	{
-		hat.frame = 1;
-		hat.body.x = rat_player.body.x + 10;
-		hat.body.y = rat_player.body.y - 20;
-	}
 	if(rat_player.input.isDragged)
 	{
 		rat_player.body.velocity.x = 0;
 		rat_player.body.velocity.y = 0;
 		rat_player.angle = 90;
 		rat_player.play('catch');
+		hat.frame = 0;
+		hat.body.x = rat_player.body.x + 42;
+		hat.body.y = rat_player.body.y - 42;
 	}
 	else
 	{
@@ -311,16 +300,22 @@ var mainpage ={
 		{
 			case 1:
 			{
+				hat.frame = 1;
+				hat.body.x = rat_player.body.x + 10;
+				hat.body.y = rat_player.body.y - 20;
 				if(collide_num === 1&& rat_player.facing === 'left')
 				{
 					rat_player.frame = 5;
 					rat_player.body.velocity.y = 0;
+					hat.body.velocity.y = 0;
 				}
 				else
 				{
 					rat_player.body.velocity.y = 50*up_num;
 					collide_num = 0;
 					rat_player.body.velocity.x = -100;
+					hat.body.velocity.x = -100;
+					hat.body.velocity.y = 50*up_num;
 					rat_player.play('left');
 					if (rat_player.facing !== 'left')
 						rat_player.facing = 'left';
@@ -329,16 +324,23 @@ var mainpage ={
 			break;
 			case 2:
 			{
+				hat.frame = 0;
+				hat.body.x = rat_player.body.x + 77;
+				hat.body.y = rat_player.body.y - 20;
 				if(collide_num === 1&& rat_player.facing === 'right' )
 				{
 					rat_player.frame = 0;
 					rat_player.body.velocity.y = 0;
+					hat.body.velocity.y = 0;
+					
 				}
 				else
 				{
 					rat_player.body.velocity.y = 50*up_num;
 					collide_num = 0;
 					rat_player.body.velocity.x = 100;
+					hat.body.velocity.x = 100;
+					hat.body.velocity.y = 50*up_num;
 					rat_player.play('right');
 					if (rat_player.facing !== 'right') 
 						rat_player.facing = 'right';
@@ -349,6 +351,8 @@ var mainpage ={
 			{
 				rat_player.body.velocity.x = 0;
 				rat_player.body.velocity.y = 0;
+				hat.body.velocity.x = 0;
+				hat.body.velocity.y = 0;
 				if (rat_player.facing === 'left') 
 					rat_player.frame = 5;
 				if (rat_player.facing === 'right') 
@@ -474,55 +478,6 @@ var littlegame ={
 };
 
 game.state.add('littlegame',littlegame);
-/*
-var spinGame = function(game){};
-spinGame.prototype ={
-	preload:function(){
-		game.load.image("wheel", "./assets/img/plat.png");
-		game.load.image("pin", "./assets/img/spin.png");     
-    },
-  	create:function(){
-		game.time.desiredFps = 60;
-  		game.stage.backgroundColor = "#99ffcc";
-  		wheel = game.add.sprite(game.width / 2, game.width / 2, "wheel");
-		wheel.scale.set(0.5);
-        wheel.anchor.set(0.5);
-        var pin = game.add.sprite(game.width / 2, game.width / 2, "pin");
-        pin.anchor.set(0.5);
-        prizeText = game.add.text(game.world.centerX, 400, "");
-        prizeText.anchor.set(0.5);
-        prizeText.align = "center";
-        canSpin = true;
-        game.input.onDown.add(this.spin, this);		
-		//i= 0;
-	},
-    spin(){
-          if(canSpin){  
-               prizeText.text = "";
-               var rounds = game.rnd.between(20, 60);
-               var degrees = game.rnd.between(0, 360);
-               prize = slices - 1 - Math.floor(degrees / (360 / slices));
-               canSpin = false;
-               var spinTween = game.add.tween(wheel).to({
-                    angle: 360 * rounds + degrees
-               }, 1000, Phaser.Easing.Quadratic.Out, true);
-               spinTween.onComplete.add(this.winPrize, this);
-          }
-    },
-    winPrize(){
-          prizeText.text = slicePrizes[prize];
-		  gameTimer = game.time.now;
-		  //i = 1;
-		  game.input.onDown.add(this.endspin, this);	
-    },
-	endspin(){
-		$("#main").show();
-		game.state.start("mainpage");
-	},
-	update:function(){
-	}
-}
-game.state.add("spin",spinGame);*/
 $("#return").click(function(){
 		$("#cover").hide();		
 		$("#achieve").hide();
@@ -553,6 +508,21 @@ $(".optionB_text").click(function(){
 	document.getElementById("C1-1").innerHTML=content_data[event_id][5];
 	event_end(1);
 });
+function set_weather(){
+	weather = getRandom(0,2);
+	switch(weather)
+	{
+		case 0:
+			document.getElementById("sky").src ="./assets/img/sky.jpg";
+			break;
+		case 1:
+			document.getElementById("sky").src ="./assets/img/sky_cloudy.jpg";
+			break;
+		case 2:
+			document.getElementById("sky").src ="./assets/img/sky_rainy.jpg";
+			break;
+	}
+};
 function event_end(a){
 	$("#paper").click(function(){
 		if(a == 1){
