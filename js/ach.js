@@ -89,5 +89,5 @@ var ach_data = [
 	}
 	function Unlock_ach(index) {/*start from 0*/
 		ach_data[index][3] = 1;
-		$("#achieve div:nth-child("+(index+1)*3+")").text(ach_data[index][2]);
+		$("#achieve div:nth-child("+(index+1)*3+") p").text(ach_data[index][2]);/*select ach content p element*/ 
 	}
