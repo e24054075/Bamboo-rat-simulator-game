@@ -139,7 +139,7 @@ var mainpage ={
 	bounds = new Phaser.Rectangle(30, 450, 360, 200);
 	rat_player.input.boundsRect = bounds;
 	//帽子
-	hat = game.add.sprite(160,470,'hat');
+	hat = game.add.sprite(158,442,'hat');
 	game.physics.enable(hat,Phaser.Physics.ARCADE);
 	hat.scale.set(rat_scale);
 	hat.body.allowGravity = false;
@@ -155,6 +155,7 @@ var mainpage ={
 	wheel.visible = false;
     pin = game.add.sprite(game.width / 2, 500, "pin");
     pin.anchor.set(0.5);
+	pin.scale.set(0.5);
 	pin.visible = false;
 	//按鈕設定
 	this.button_eat = game.add.button(150, 640, 'bowl');
