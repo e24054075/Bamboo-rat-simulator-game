@@ -100,7 +100,7 @@ var mainpage ={
 	game.load.spritesheet('rat_player','assets/img/rat4.png', 210, 114);
 	game.load.spritesheet('hat','assets/img/hat.png', 84, 84);
 	game.load.image("wheel", "./assets/img/plat.png");
-	game.load.image("pin", "./assets/img/spin.png");     
+	game.load.image("pin", "./assets/img/spin2.png");     
 	},
   create:()=>{	
     $('#day').text("DAY "+day);
@@ -155,7 +155,7 @@ var mainpage ={
 	wheel.visible = false;
     	pin = game.add.sprite(game.width / 2, 500, "pin");
   	pin.anchor.set(0.5);
-	//pin.scale.set(0.3);
+	pin.scale.set(0.5);
 	pin.visible = false;
 	//按鈕設定
 	this.button_eat = game.add.button(150, 640, 'bowl');
@@ -241,7 +241,6 @@ var mainpage ={
 	{
 		trigger.end = 0;
 		day++;
-		check_ach_day();/*define in ach js*/ 
 		$('#day').text("DAY "+day);
 		if(day%10 === 0 && rat_scale <= 1.6)
 		{
@@ -549,7 +548,6 @@ function four_bar_conrtrol(a,b,c,d){
 		bar_control(c,3);
 	if(d != 0)
 		bar_control(d,4);
-	check_ach_bar();/*define in ach js*/ 
 };
 function bar_control(b_input,b_type){
 	bar_value[b_type-1] += b_input;
@@ -568,14 +566,38 @@ $("#ach_button").click(function(){
 	$("#setting").show();
 	$("#return").show();
 	$("#achieve").show();
+	document.getElementById("ach_button").style.height="10vh";
+    document.getElementById("ach_button").style.width="10vw";
+    document.getElementById("ach_button").style.top="90vh";
+    document.getElementById("ach_button").style.left="17.5vw";
+    setTimeout(function(){  document.getElementById("ach_button").style.height="8vh";
+    document.getElementById("ach_button").style.width="8vw";
+    document.getElementById("ach_button").style.top="92vh";
+    document.getElementById("ach_button").style.left="18vw"; },200);
 });
 $("#set_button").click(function(){
 	$("#cover").show();
 	$("#setting").show();
 	$("#return").show();
+	document.getElementById("set_button").style.height="10vh";
+    document.getElementById("set_button").style.width="10vw";
+    document.getElementById("set_button").style.top="90vh";
+    document.getElementById("set_button").style.left="1.7vw";
+    setTimeout(function(){  document.getElementById("set_button").style.height="8vh";
+    document.getElementById("set_button").style.width="8vw";
+    document.getElementById("set_button").style.top="92vh";
+    document.getElementById("set_button").style.left="2vw"; },200);
 });
 $("#end_button").click(function(){
 	trigger.end = 1;
+	document.getElementById("set_button").style.height="10vh";
+    document.getElementById("set_button").style.width="10vw";
+    document.getElementById("set_button").style.top="90vh";
+    document.getElementById("set_button").style.left="79.5vw";
+    setTimeout(function(){  document.getElementById("set_button").style.height="8vh";
+    document.getElementById("set_button").style.width="8vw";
+    document.getElementById("set_button").style.top="92vh";
+    document.getElementById("set_button").style.left="80vw"; },200);
 });
 $(document).ready(function(){	
 	$("#cover").hide();
