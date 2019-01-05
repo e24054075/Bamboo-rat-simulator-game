@@ -33,7 +33,7 @@ var ach_data = [
 		for(i = 0 ; i < ach_data.length ; i++){
 			/*Load DB data to local*/
 			if(user_ach_data[i] == 1){
-				ach_data[i][3] = 1;
+				ach_data[i][3] = 2;
 			}
 
 			/*create achieve icon container*/
