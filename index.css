@@ -327,14 +327,14 @@
 	background-position: bottom;
 	border: 1px solid rgba(0, 0, 0, 0.8);
 	padding: 90px;
-	height: 50%;
+	height: 99%;
 	width: 100%;
   }
   .slider 
   {
     -webkit-appearance: none;
     position:absolute;
-        top:25vh;
+        top:25.5vh;
 	left:5.5vw;
     width: 80%;
     height: 2%;
@@ -367,15 +367,15 @@
 }
 #set_set{
 	position:absolute;
-        top:1vh;
+        top:-1vh;
 	left:6.9vw;
-	height: 28%;
+	height: 30%;
 	width: 80%;
 	
 }
 #set_volume{
 	position:absolute;
-        top:7vh;
+        top:11.5vh;
 	left:6.9vw;
 	height: 28%;
 	width: 80%;
@@ -383,17 +383,9 @@
 }
 #save_img{
 	position:absolute;
-        top:25vh;
-	left:7vw;
-	height: 26%;
-	width: 80%;
-	
-}
-#set_about{
-	position:absolute;
-        top:42vh;
+        top:28vh;
 	left:6.9vw;
-	height: 32%;
+	height: 30%;
 	width: 80%;
 	
 }
