@@ -362,6 +362,14 @@
     background: #4CAF50;
     cursor: pointer;
 }
+#set_volume{
+	position:absolute;
+        top:45vh;
+	left:6.9vw;
+	height: 28%;
+	width: 80%;
+	
+}
 #save_img{
 	position:absolute;
         top:35vh;
