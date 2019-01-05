@@ -1,6 +1,7 @@
 var phaserwidth = window.innerWidth;
 var phaserheight = window.innerHeight;
 
+var ach_status = "0x0";/*User achieve data (HEX format) [low index]1000000000[high index]*/
 var day = 1;
 var trigger = {ach:0,end:0,set:0,mood:0,eat:0};
 var gameTimer = 0;
