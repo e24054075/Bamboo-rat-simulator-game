@@ -388,7 +388,7 @@ var littlegame ={
 	game.load.spritesheet('rat_player','assets/img/rat3.png', 210, 182);
 	game.load.image('background','assets/img/rat_race_bg.png');		
 	game.load.image('rat_race','assets/img/rat_race.png');
-	game.load.image('obstacle','assets/img/fire.png');	
+	game.load.image('obstacle','assets/img/fire2.png');	
 	game.load.image('obstacle2','assets/img/rock.png');		
 	//game.load.physics('physics_data','assets/json/physics_data.json')
 	},
