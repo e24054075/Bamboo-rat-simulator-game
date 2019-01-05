@@ -35,14 +35,14 @@ $("#save_img")
 .bind('touchstart',function(){
   document.getElementById("save_img").style.height="33%";
     document.getElementById("save_img").style.width="82%";
-    document.getElementById("save_img").style.top="41vh";
-    document.getElementById("save_img").style.left="5.7vw";
+    document.getElementById("save_img").style.top="27vh";
+    document.getElementById("save_img").style.left="6.5vw";
 })
 .bind('touchend',function(){
   document.getElementById("save_img").style.height="30%";
   document.getElementById("save_img").style.width="80%";
-  document.getElementById("save_img").style.top="43vh";
-  document.getElementById("save_img").style.left="6.0vw"; 
+  document.getElementById("save_img").style.top="28vh";
+  document.getElementById("save_img").style.left="6.9vw"; 
   $.ajax({
   method: "get",
   url: "./save",
