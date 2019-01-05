@@ -1,6 +1,7 @@
 var phaserwidth = window.innerWidth;
 var phaserheight = window.innerHeight;
 
+var ach_status = "0x1";/*User achieve data (HEX format) [low index]1000000000[high index]*/
 var day = 1;
 var trigger = {ach:0,end:0,set:0,mood:0,eat:0};
 var gameTimer = 0;
@@ -241,7 +242,6 @@ var mainpage ={
 	{
 		trigger.end = 0;
 		day++;
-		check_ach_day();/*define in ach js*/ 
 		$('#day').text("DAY "+day);
 		if(day%10 === 0 && rat_scale <= 1.6)
 		{
@@ -271,6 +271,8 @@ var mainpage ={
 		}
 		prize = -1;
 		set_weather();
+		check_ach_day();/*define in ach js*/ 
+		check_ach_size();/*define in ach js*/ 
 	}
 	if(game.physics.arcade.collide(rat_player, layer)&& rat_player.body.onWall())
 	{
@@ -382,7 +384,7 @@ var littlegame ={
 	game.load.spritesheet('rat_player','assets/img/rat3.png', 210, 182);
 	game.load.image('background','assets/img/rat_race_bg.png');		
 	game.load.image('rat_race','assets/img/rat_race.png');
-	game.load.image('obstacle','assets/img/fire.png');	
+	game.load.image('obstacle','assets/img/fire2.png');	
 	game.load.image('obstacle2','assets/img/rock.png');		
 	//game.load.physics('physics_data','assets/json/physics_data.json')
 	},
@@ -443,9 +445,9 @@ var littlegame ={
 	rat_jump = 0;
 	if(game.time.now > gameTimer2)
 	{
-		obstacle = game.add.sprite(1000,395,'obstacle');
+		obstacle = game.add.sprite(1000,385,'obstacle');
 		game.physics.enable(obstacle,Phaser.Physics.ARCADE);
-		obstacle.scale.set(0.3);
+		obstacle.scale.set(0.6);
 		obstacle.body.allowGravity = false;
 		obstacle.body.immovable = true;
 		obstacle.body.velocity.x = -350;
@@ -571,7 +573,8 @@ $("#event_button").click(function(){
 		$(".optionB_text").show();
 	}
 });
-$("#ach_button").bind('touchstart',function(){
+$("#ach_button")
+.bind('touchstart',function(){
   document.getElementById("ach_button").style.height="10vh";
     document.getElementById("ach_button").style.width="10vw";
     document.getElementById("ach_button").style.top="90vh";
@@ -588,7 +591,8 @@ $("#ach_button").bind('touchstart',function(){
 	$("#achieve").show(); 
  
 });
-$("#set_button").bind('touchstart',function(){
+$("#set_button")
+.bind('touchstart',function(){
   document.getElementById("set_button").style.height="10vh";
     document.getElementById("set_button").style.width="10vw";
     document.getElementById("set_button").style.top="90vh";
@@ -604,7 +608,8 @@ $("#set_button").bind('touchstart',function(){
 	$("#return").show();
  
 });
-$("#end_button").bind('touchstart',function(){
+$("#end_button")
+.bind('touchstart',function(){
   document.getElementById("end_button").style.height="10vh";
     document.getElementById("end_button").style.width="10vw";
     document.getElementById("end_button").style.top="90vh";

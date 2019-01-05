@@ -334,23 +334,26 @@ display:none;
 {
 	background: url("./assets/img/rat_race.png");
 	background-color: rgba(255, 255, 255, 0.8);
-	background-size: 100% 30px;
+	background-size: 100% 10px;
 	background-repeat: no-repeat;
 	background-position: bottom;
 	border: 1px solid rgba(0, 0, 0, 0.8);
-	font-size: 30px;
-	text-align: center;
-	padding: 10px;
+	padding: 90px;
+	height: 50%;
+	width: 100%;
   }
   .slider 
   {
     -webkit-appearance: none;
+    position:absolute;
+        top:25vh;
+	left:5.5vw;
     width: 80%;
-    height: 30%;
+    height: 2%;
     border-radius: 5px;   
-    background: #d3d3d3;
+    background: #037ff4b8;
     outline: none;
-    opacity: 0.7;
+    opacity: 0.8;
     -webkit-transition: .2s;
 	transition: opacity .2s;
 	margin: 10px;
@@ -374,12 +377,36 @@ display:none;
     background: #4CAF50;
     cursor: pointer;
 }
+#set_set{
+	position:absolute;
+        top:1vh;
+	left:6.9vw;
+	height: 28%;
+	width: 80%;
+	
+}
+#set_volume{
+	position:absolute;
+        top:7vh;
+	left:6.9vw;
+	height: 28%;
+	width: 80%;
+	
+}
 #save_img{
-	background: url("./assets/img/achb2.png");
-	height: 30%;
-	width: 30%;
-	background-repeat: no-repeat;
-	background-position: center;
+	position:absolute;
+        top:25vh;
+	left:7vw;
+	height: 26%;
+	width: 80%;
+	
+}
+#set_about{
+	position:absolute;
+        top:42vh;
+	left:6.9vw;
+	height: 32%;
+	width: 80%;
 }
 .achieve_container 
 {
