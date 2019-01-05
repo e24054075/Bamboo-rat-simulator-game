@@ -33,16 +33,16 @@ $("#start_menu img[id='start_button']").click(function(e){
 
 $("#save_img")
 .bind('touchstart',function(){
-  document.getElementById("save_img").style.height="13%";
-    document.getElementById("save_img").style.width="18%";
-    document.getElementById("save_img").style.top="37vh";
-    document.getElementById("save_img").style.left="24.3vw";
+  document.getElementById("save_img").style.height="33%";
+    document.getElementById("save_img").style.width="82%";
+    document.getElementById("save_img").style.top="27vh";
+    document.getElementById("save_img").style.left="6.5vw";
 })
 .bind('touchend',function(){
-  document.getElementById("save_img").style.height="10%";
-  document.getElementById("save_img").style.width="15%";
-  document.getElementById("save_img").style.top="38vh";
-  document.getElementById("save_img").style.left="25vw"; 
+  document.getElementById("save_img").style.height="30%";
+  document.getElementById("save_img").style.width="80%";
+  document.getElementById("save_img").style.top="28vh";
+  document.getElementById("save_img").style.left="6.9vw"; 
   $.ajax({
   method: "get",
   url: "./save",
@@ -56,7 +56,7 @@ $("#save_img")
     Username:running_username
   },
   success: function(data){
-    
+    alert("儲存成功!");
   
   }
 })
