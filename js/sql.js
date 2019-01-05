@@ -4,7 +4,7 @@ $("#start_menu img[id='start_button']").click(function(e){
   document.getElementById("start_menu").style.display="none";
   document.getElementById("login").style.display="block";
 })
-
+  //login and get data from sql
   $("#user img[id='user_summit']").click(function(e){
     e.preventDefault()
     
@@ -25,7 +25,7 @@ $("#start_menu img[id='start_button']").click(function(e){
           ach_status=data.ach_status1;
           $("#day").text("day "+day);
           running_username=data.running_username1;
-          
+          ach_data_ready();
         }
       }
     })
