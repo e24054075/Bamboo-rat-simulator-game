@@ -20,7 +20,9 @@ var ach_data = [
 	];
 	
 	/*load achieve content and user data*/
-
+	$("#achieve").ready(function(){
+		ach_data_ready();
+	})
 	function ach_data_ready(){
 		/*Prepare User data first */
 		user_ach_data = parseInt(ach_status,16).toString(2);		/*Parse user achieve data from HEX to BIN format*/
@@ -29,6 +31,11 @@ var ach_data = [
 		var i;
 		var css_grid_row = "";
 		for(i = 0 ; i < ach_data.length ; i++){
+			/*Load DB data to local*/
+			if(user_ach_data[i] == 1){
+				ach_data[i][3] = 1;
+			}
+
 			/*create achieve icon container*/
 			var ach_div_icon = document.createElement("div");
 			ach_div_icon.className = "achieve_icon";
@@ -36,9 +43,14 @@ var ach_data = [
 			/*create achieve icon element*/
 			var ach_img = document.createElement("img");
 			ach_img.className = "achieve_icon_img";
-			if(ach_data[i][3] == 2)	ach_img.src = "./assets/img/ach/ach"+ach_data[i][0]+".png";
+			if(user_ach_data[i] == 1)	ach_img.src = "./assets/img/ach/ach"+ach_data[i][0]+".png";
 			else						ach_img.src = "./assets/img/ach/ach00.png";
 			ach_div_icon.appendChild(ach_img);
+
+			/*register icon onclick event*/
+			$(".achieve_icon").click(function(){
+				User_click($(this).index());/*Parse achieve index*/
+			})
 	
 			/*create achieve title container*/
 			var ach_div_title = document.createElement("div");
@@ -53,7 +65,7 @@ var ach_data = [
 			ach_div_content.className = "achieve_content";
 				var ach_content_text_container = document.createElement("p");
 				var ach_content_text;
-				if(ach_data[i][3] == 2) ach_content_text = document.createTextNode(ach_data[i][2]);
+				if(user_ach_data[i] == 1) ach_content_text = document.createTextNode(ach_data[i][2]);
 				else 					ach_content_text = document.createTextNode("LOCKED");
 				ach_content_text_container.appendChild(ach_content_text)
 			ach_div_content.appendChild(ach_content_text_container);
@@ -62,9 +74,6 @@ var ach_data = [
 			css_grid_row = css_grid_row + "12%";
 		}
 		$(".achieve_container").css("grid-template-rows",css_grid_row);
-		$(".achieve_icon").click(function(){
-			User_click($(this).index());/*Parse achieve index*/
-		})
 	}
 
 	function check_ach_bar(){

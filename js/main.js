@@ -3,7 +3,7 @@ var phaserheight = window.innerHeight;
 
 var ach_status = "0x1";/*User achieve data (HEX format) [low index]1000000000[high index]*/
 var day = 1;
-var trigger = {end:0,eat:0};
+var trigger = {ach:0,end:0,set:0,mood:0,eat:0};
 var gameTimer = 0;
 var gameTimer2 = 0;
 var gameTimer3 = 0;
@@ -38,8 +38,44 @@ var content_data=[
 ["主人視察","主人今天來整理環境，發現我的食物沒吃完，我應該?","趕快衝去吃，能吃多快吃多快","收掉我的廚餘吧!老子吃不完!","主人說:「恩…這隻竹鼠很愛吃喔，小心吃太多變太肥喔…」","主人說:「這隻竹鼠好像沒什麼食慾，不如我們把他…按摩一下好了」",[-10,0,0,15],[10,0,-10,5]],
 ["老鼠屎","有人拉屎在我的食物上，真是討厭，我該怎麼辦?","把屎拿走，丟給隔壁籠子的阿肥","都是纖維質，毫不在意","隔壁阿肥生氣的把屎丟回來，展開一場大戰","不小心吃到屎，肚子好像怪怪的",[0,15,0,15],[-10,0,-10,-10]],
 ["悶竹鼠","前幾天下雨，整個環境悶悶的，今天終於出太陽，我該怎麼辦?","躲到陰暗的角落","大字型躺在地上，悠閒地曬太陽","好涼快的角落，可以舒服的啃竹子了","頭好像暈暈的，會不會是中暑了?",[15,0,15,-10],[-15,0,-10,15]],
-["貪吃鬼","吃完了今天份的食物，可是還是覺得好餓，我應該?","趁隔壁竹鼠在睡覺，偷吃他的食物","當作減肥吧，睡個覺就不會餓了","偷到一半主人突然走過來盯著我看，嚇死我了","夢裡我到了竹子王國，吃了三天三夜…",[-15,0,-15,15],[10,0,20,0]],
 ];
+function dowm() {
+    switch (this.key) {
+        case "end":
+            trigger.end =1;
+            break;
+		case "eat":
+			trigger.eat = 1;
+        default:
+            break;
+    }
+};
+function up() {
+    switch (this.key) {
+		case "ach":
+			$("#cover").show();
+			$("#setting").show();
+			$("#return").show();
+			$("#achieve").show();
+			break;
+        case "end":
+            trigger.end = 0;
+            break;
+        case "set":
+			$("#cover").show();
+			$("#setting").show();
+			$("#return").show();
+            break;
+		case "eat":
+			wheel.visible = true;
+			trigger.eat = 0;
+			/*$("#main").hide();
+			game.state.start('spin');*/
+			break;
+        default:
+            break;
+    }       
+};
 function deviceType() {
 	if(navigator.userAgent.match(/mobile/i)) {
 		device_type = 0;
@@ -157,32 +193,50 @@ var mainpage ={
 				switch(prize)
 				{
 					case 0:
-						document.getElementById("warning_text").innerHTML= "今天的食物是:<br/>新鮮嫩竹子";
+						document.getElementById("food_text").innerHTML= "新鮮嫩竹子";
 						event_time = 3;
-						bamboo.visible = true;
 						break;
 					case 1:
-						document.getElementById("warning_text").innerHTML= "今天的食物是:<br/>玉米";
+						document.getElementById("food_text").innerHTML= "玉米";
 						event_time = 2;
-						corn.visible = true;
 						break;
 					case 2:
-						document.getElementById("warning_text").innerHTML= "今天的食物是:<br/>米糠拌飯";
+						document.getElementById("food_text").innerHTML= "米糠拌飯";
 						event_time = 3;
-						rice.visible = true;
 						break;
 					case 3:
-						document.getElementById("warning_text").innerHTML= "今天的食物是:<br/>芒草";
+						document.getElementById("food_text").innerHTML= "芒草";
 						event_time = 1;
-						grass.visible = true;
 						break;
 					default:
 					break;
 				}
 				document.getElementById("event_img").src="./assets/img/gogo"+event_time+".png";
-				$(".warning").show();
-				$("#board").show();
-				$("#cover").show();
+				$("#food_text").show();
+				game.input.onDown.add(function(){
+					wheel.visible = false;
+					pin.visible = false;
+					$("#food_text").hide();
+					game.time.desiredFps = 30;
+					switch(prize)
+					{
+						case 0:
+							bamboo.visible = true;
+							break;
+						case 1:
+							corn.visible = true;
+							break;
+						case 2:
+							rice.visible = true;
+							break;
+						case 3:
+							grass.visible = true;
+							break;
+						default:
+						break;
+					}
+					game.input.onDown.removeAll();
+				});	
 			});
 		}
 	});
@@ -214,7 +268,7 @@ var mainpage ={
 			case 2:
 				rice.visible = false;
 				break;
-			case 3: 
+			case 3:
 				grass.visible = false;
 				break;
 			default:
@@ -224,13 +278,6 @@ var mainpage ={
 		set_weather();
 		check_ach_day();/*define in ach js*/ 
 		check_ach_size();/*define in ach js*/ 
-	}
-	if(trigger.eat === 1&& game.time.now > gameTimer)
-	{
-		trigger.eat = 0;
-		wheel.visible = false;
-		pin.visible = false;
-		game.time.desiredFps = 30;
 	}
 	if(game.physics.arcade.collide(rat_player, layer)&& rat_player.body.onWall())
 	{
@@ -464,20 +511,23 @@ $(".optionB_text").click(function(){
 	document.getElementById("C1-1").innerHTML=content_data[event_id][5];
 	event_end(1);
 });
+$(".warning").click(function(){
+	
+	$(".warning").hide();
+	$("#board").hide();
+});
 function set_weather(){
 	weather = getRandom(0,2);
 	switch(weather)
 	{
 		case 0:
 			document.getElementById("sky").src ="./assets/img/sky.jpg";
-			four_bar_conrtrol(0,0,5,0);
 			break;
 		case 1:
 			document.getElementById("sky").src ="./assets/img/sky_cloudy.jpg";
 			break;
 		case 2:
 			document.getElementById("sky").src ="./assets/img/sky_rainy.jpg";
-			four_bar_conrtrol(0,0,-5,0);
 			break;
 	}
 };
@@ -522,14 +572,10 @@ $("#weather").click(function(){
 $("#board").click(function(){
 		$(".warning").hide();
 		$("#board").hide();
-		$("#cover").hide();
-		trigger.eat = 1;
 });
-$(".warning").click(function(){
+$("#warning_text").click(function(){
 		$(".warning").hide();
 		$("#board").hide();
-		$("#cover").hide();
-		trigger.eat = 1;
 });
 $("#task_button")
 .bind('touchstart',function(){
@@ -560,14 +606,12 @@ $("#task_button")
 	{
 		$(".warning").show();
 		$("#board").show();
-		$("#cover").show();
 		document.getElementById("warning_text").innerHTML="請點擊碗<br/>用轉盤選擇食物餵食竹鼠";
 	}
 	else
 	{
 		$(".warning").show();
 		$("#board").show();
-		$("#cover").show();
 		document.getElementById("warning_text").innerHTML="今天事件已完成<br/>請點擊睡覺結束";
 	}
 });
@@ -624,7 +668,6 @@ $("#end_button")
 	{
 		$(".warning").show();
 		$("#board").show();
-		$("#cover").show();
 		document.getElementById("warning_text").innerHTML="請先完成<br/>今天的事件";
 	}
  
