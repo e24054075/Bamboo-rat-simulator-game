@@ -24,6 +24,7 @@ var bar_input = 20;
 var bar_type = 1;
 var bar_value = [50,50,50,50];
 var event_id = 0;
+var event_time = 1;
 var content_data=[
 ["有朋自遠方來","今天主人的朋友來參觀農場，快要經過我的籠子了，我該怎麼辦?","開始大聲嚶嚶嚶的叫","安靜的在角落磨牙","主人和朋友注意到我把我抓起來把玩一番","他們好像沒什麼注意我",[0,0,5,15],[0,5,-5,-10]],
 ["竹鼠聖誕交換禮物","聖誕節快到了，竹鼠們辦了交換禮物大會，面前剩下兩個禮物，你要選哪個?","紅色大禮物","綠色小禮物","裡面是個等身竹鼠玩偶","一根磨牙棒",[0,0,20,10],[10,10,10,0]],
@@ -140,12 +141,12 @@ var mainpage ={
 	bounds = new Phaser.Rectangle(30, 450, 360, 200);
 	rat_player.input.boundsRect = bounds;
 	//帽子
-	hat = game.add.sprite(158,442,'hat');
+	/*hat = game.add.sprite(158,442,'hat');
 	game.physics.enable(hat,Phaser.Physics.ARCADE);
 	hat.scale.set(rat_scale);
 	hat.body.allowGravity = false;
 	hat.body.immovable = true;
-  
+  */
 	game.time.events.loop(Phaser.Timer.SECOND*2,updateMoveNum, this);
 	game.time.events.loop(Phaser.Timer.SECOND*2,updowm, this);
 	
@@ -185,7 +186,6 @@ var mainpage ={
 			var rounds = game.rnd.between(20, 60);
 			var degrees = game.rnd.between(0, 360);
 			prize = slices - 1 - Math.floor(degrees / (360 / slices));
-			canSpin = false;
 			var spinTween = game.add.tween(wheel).to({
 				angle: 360 * rounds + degrees
 			}, 1000, Phaser.Easing.Quadratic.Out, true);
@@ -249,17 +249,9 @@ var mainpage ={
 			rat_player.body.y = 525;
 			rat_scale += 0.09;
 			rat_player.scale.set(rat_scale);
-			hat.scale.set(rat_scale);
+			//hat.scale.set(rat_scale);
 		}
 		gameTimer = game.time.now + 750;
-		$("#paper").show();
-		$("#optionA").show();
-		$("#optionB").show();
-		$("#cover").show();
-		$(".event_title").show();
-		$(".event_content").show();
-		$(".optionA_text").show();
-		$(".optionB_text").show();
 		switch(prize)
 		{
 			case 0:
@@ -285,7 +277,7 @@ var mainpage ={
 	if(game.physics.arcade.collide(rat_player, layer)&& rat_player.body.onWall())
 	{
 		collide_num = 1;
-		hat.body.velocity.x = 0;
+		//hat.body.velocity.x = 0;
 	}
 	rat_player.angle = 0;
 	if(rat_player.input.isDragged)
@@ -294,9 +286,9 @@ var mainpage ={
 		rat_player.body.velocity.y = 0;
 		rat_player.angle = 90;
 		rat_player.play('catch');
-		hat.frame = 0;
+		/*hat.frame = 0;
 		hat.body.x = rat_player.body.x + 42;
-		hat.body.y = rat_player.body.y - 42;
+		hat.body.y = rat_player.body.y - 42;*/
 	}
 	else
 	{
@@ -304,22 +296,23 @@ var mainpage ={
 		{
 			case 1:
 			{
-				hat.frame = 1;
+				/*hat.frame = 1;
 				hat.body.x = rat_player.body.x + 10;
-				hat.body.y = rat_player.body.y - 20;
+				hat.body.y = rat_player.body.y - 20;*/
 				if(collide_num === 1&& rat_player.facing === 'left')
 				{
 					rat_player.frame = 5;
 					rat_player.body.velocity.y = 0;
-					hat.body.velocity.y = 0;
+					//hat.body.velocity.y = 0;
 				}
 				else
 				{
 					rat_player.body.velocity.y = 50*up_num;
 					collide_num = 0;
 					rat_player.body.velocity.x = -100;
-					hat.body.velocity.x = -100;
+					/*hat.body.velocity.x = -100;
 					hat.body.velocity.y = 50*up_num;
+					*/
 					rat_player.play('left');
 					if (rat_player.facing !== 'left')
 						rat_player.facing = 'left';
@@ -328,14 +321,15 @@ var mainpage ={
 			break;
 			case 2:
 			{
+				/*
 				hat.frame = 0;
 				hat.body.x = rat_player.body.x + 77;
-				hat.body.y = rat_player.body.y - 20;
+				hat.body.y = rat_player.body.y - 20;*/
 				if(collide_num === 1&& rat_player.facing === 'right' )
 				{
 					rat_player.frame = 0;
 					rat_player.body.velocity.y = 0;
-					hat.body.velocity.y = 0;
+					//hat.body.velocity.y = 0;
 					
 				}
 				else
@@ -343,8 +337,8 @@ var mainpage ={
 					rat_player.body.velocity.y = 50*up_num;
 					collide_num = 0;
 					rat_player.body.velocity.x = 100;
-					hat.body.velocity.x = 100;
-					hat.body.velocity.y = 50*up_num;
+					/*hat.body.velocity.x = 100;
+					hat.body.velocity.y = 50*up_num;*/
 					rat_player.play('right');
 					if (rat_player.facing !== 'right') 
 						rat_player.facing = 'right';
@@ -355,8 +349,8 @@ var mainpage ={
 			{
 				rat_player.body.velocity.x = 0;
 				rat_player.body.velocity.y = 0;
-				hat.body.velocity.x = 0;
-				hat.body.velocity.y = 0;
+				/*hat.body.velocity.x = 0;
+				hat.body.velocity.y = 0;*/
 				if (rat_player.facing === 'left') 
 					rat_player.frame = 5;
 				if (rat_player.facing === 'right') 
@@ -565,7 +559,20 @@ $("#weather").click(function(){
 		$("#main").hide();
 		game.state.start('littlegame')
 });
-
+$("#event_button").click(function(){
+	if(event_time > 0)
+	{
+		event_time--;
+		$("#paper").show();
+		$("#optionA").show();
+		$("#optionB").show();
+		$("#cover").show();
+		$(".event_title").show();
+		$(".event_content").show();
+		$(".optionA_text").show();
+		$(".optionB_text").show();
+	}
+});
 $("#ach_button")
 .bind('touchstart',function(){
   document.getElementById("ach_button").style.height="10vh";
@@ -582,7 +589,7 @@ $("#ach_button")
 	$("#setting").show();
 	$("#return").show();
 	$("#achieve").show(); 
- 
+	$('#ach_button img').attr('src', './assets/img/history.png');/*Change achieve icon to original one (no notification bell)*/
 });
 $("#set_button")
 .bind('touchstart',function(){

@@ -3,13 +3,17 @@
   margin: 0px;
   padding: 0px;
 }
-
+#start_menu
+{
+display:none;
+}
 #game
 {
 	position:abosulte;
 }
-#start_menu{
-  display:none;
+#start_menu
+{
+	display:none;
 }
 #status
 {
@@ -292,7 +296,7 @@
 {
 	position:absolute;
 	top:92vh;
-	left:80vw;
+	left:84vw;
 	height:8vh;
     width:8vw;
 }
@@ -304,11 +308,27 @@
 	height:8vh;
     width:8vw;
 }
+#event_button
+{
+	position:absolute;
+	top:92vh;
+	left:68vw;
+	height:8vh;
+    width:8vw;
+}
 #set_button
 {
 	position:absolute;
 	top:92vh;
 	left:2vw;
+	height:8vh;
+    width:8vw;
+}
+#task_button
+{
+	position:absolute;
+	top:92vh;
+	left:53vw;
 	height:8vh;
     width:8vw;
 }
@@ -322,23 +342,26 @@
 {
 	background: url("./assets/img/rat_race.png");
 	background-color: rgba(255, 255, 255, 0.8);
-	background-size: 100% 30px;
+	background-size: 100% 10px;
 	background-repeat: no-repeat;
 	background-position: bottom;
 	border: 1px solid rgba(0, 0, 0, 0.8);
-	font-size: 30px;
-	text-align: center;
-	padding: 10px;
+	padding: 90px;
+	height: 99%;
+	width: 100%;
   }
   .slider 
   {
     -webkit-appearance: none;
+    position:absolute;
+        top:25.5vh;
+	left:5.5vw;
     width: 80%;
-    height: 30%;
+    height: 2%;
     border-radius: 5px;   
-    background: #d3d3d3;
+    background: #037ff4b8;
     outline: none;
-    opacity: 0.7;
+    opacity: 0.8;
     -webkit-transition: .2s;
 	transition: opacity .2s;
 	margin: 10px;
@@ -362,9 +385,17 @@
     background: #4CAF50;
     cursor: pointer;
 }
+#set_set{
+	position:absolute;
+        top:-1vh;
+	left:6.9vw;
+	height: 30%;
+	width: 80%;
+	
+}
 #set_volume{
 	position:absolute;
-        top:45vh;
+        top:11.5vh;
 	left:6.9vw;
 	height: 28%;
 	width: 80%;
@@ -372,19 +403,17 @@
 }
 #save_img{
 	position:absolute;
-        top:35vh;
-	left:7vw;
-	height: 26%;
+        top:28vh;
+	left:6.9vw;
+	height: 30%;
 	width: 80%;
-	
 }
 #set_about{
 	position:absolute;
-        top:45vh;
+        top:43vh;
 	left:6.9vw;
-	height: 28%;
+	height: 30%;
 	width: 80%;
-	
 }
 .achieve_container 
 {
