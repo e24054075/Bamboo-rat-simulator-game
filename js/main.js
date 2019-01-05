@@ -484,7 +484,7 @@ var littlegame ={
 game.state.add('littlegame',littlegame);
 $("#return").click(function(){
 		$("#cover").hide();		
-		$("#achieve").hide("slow");
+		$("#achieve").hide();
 		$("#setting").hide("slow");
 		$("#return").hide();
 	});
@@ -515,7 +515,7 @@ $(".optionB_text").click(function(){
 $(".warning").click(function(){
 	
 	$(".warning").hide("slow");
-	$("#board").hide("slow");
+	setTimeout(function(){$("#board").hide("slow");}, 100);
 });
 function set_weather(){
 	weather = getRandom(0,2);
@@ -572,11 +572,12 @@ $("#weather").click(function(){
 });
 $("#board").click(function(){
 		$(".warning").hide("slow");
-		$("#board").hide("slow");
+		setTimeout(function(){$("#board").hide("slow");}, 100);
 });
 $("#warning_text").click(function(){
 		$(".warning").hide("slow");
-		$("#board").hide("slow");
+		setTimeout(function(){$("#board").hide("slow");}, 100);
+
 });
 $("#task_button")
 .bind('touchstart',function(){
@@ -607,14 +608,14 @@ $("#task_button")
 	{
 		
 		$("#board").show("slow");
-		$(".warning").show("slow");
+		setTimeout(function(){$(".warning").show("slow");}, 100);
 		document.getElementById("warning_text").innerHTML="請點擊碗<br/>用轉盤選擇食物餵食竹鼠";
 	}
 	else
 	{
 		
 		$("#board").show("slow");
-		$(".warning").show("slow");
+		setTimeout(function(){$(".warning").show("slow");}, 100);
 		document.getElementById("warning_text").innerHTML="今天事件已完成<br/>請點擊睡覺結束";
 	}
 });
@@ -633,7 +634,7 @@ $("#ach_button")
   $("#cover").show();
 	//$("#setting").show();
 	$("#return").show();
-	$("#achieve").show("slow"); 
+	$("#achieve").show(); 
 	$('#ach_button img').attr('src', './assets/img/history.png');/*Change achieve icon to original one (no notification bell)*/
 });
 $("#set_button")
@@ -671,7 +672,7 @@ $("#end_button")
 	{
 		
 		$("#board").show("slow");
-		$(".warning").show("slow");
+		setTimeout(function(){$(".warning").show("slow");}, 100);
 		document.getElementById("warning_text").innerHTML="請先完成<br/>今天的事件";
 	}
  
