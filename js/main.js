@@ -511,6 +511,11 @@ $(".optionB_text").click(function(){
 	document.getElementById("C1-1").innerHTML=content_data[event_id][5];
 	event_end(1);
 });
+$(".warning").click(function(){
+	
+	$(".warning").hide();
+	$("#board").hide();
+});
 function set_weather(){
 	weather = getRandom(0,2);
 	switch(weather)
