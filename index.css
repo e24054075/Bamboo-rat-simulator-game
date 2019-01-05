@@ -220,6 +220,18 @@
     width:35vw;
 	word-break: break-all;
 }
+.warning
+{
+    z-index:3;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size:70px;
+    position:absolute;
+    top:43vh;
+    left:34vw;
+    height:20vh;
+    width:40vw;
+	word-break: break-all;
+}
 #food_text
 {
 	z-index:3;
