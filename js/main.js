@@ -451,7 +451,7 @@ var littlegame ={
 	{
 		obstacle = game.add.sprite(1000,395,'obstacle');
 		game.physics.enable(obstacle,Phaser.Physics.ARCADE);
-		obstacle.scale.set(0.3);
+		obstacle.scale.set(0.6);
 		obstacle.body.allowGravity = false;
 		obstacle.body.immovable = true;
 		obstacle.body.velocity.x = -350;
