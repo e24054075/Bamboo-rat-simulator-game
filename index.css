@@ -364,18 +364,18 @@
 }
 #save_img{
 	position:absolute;
-        top:31vh;
+        top:35vh;
 	left:7vw;
-	height: 24%;
-	width: 75%;
+	height: 26%;
+	width: 80%;
 	
 }
 #set_about{
 	position:absolute;
-        top:31vh;
-	left:7vw;
-	height: 24%;
-	width: 75%;
+        top:45vh;
+	left:6.9vw;
+	height: 28%;
+	width: 80%;
 	
 }
 .achieve_container 
