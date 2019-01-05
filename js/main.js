@@ -586,7 +586,8 @@ $("#task_button")
 	}
 	else
 	{
-		
+		$("#board").show();
+		$(".warning").show();
 	}
 });
 $("#ach_button")
