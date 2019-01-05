@@ -135,7 +135,14 @@
 	width:50vw;
   	height:22vh;
 }
-
+#board
+{
+	position:absolute;
+	top:36vh;
+	left:14vw;
+	width:75vw;
+  	height:45vh;
+}
 #paper
 {
    z-index:2;
@@ -208,6 +215,17 @@
     left:54.5vw;
     height:20vh;
     width:35vw;
+	word-break: break-all;
+}
+.warning
+{
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size:55px;
+    position:absolute;
+    top:43vh;
+    left:34vw;
+    height:20vh;
+    width:40vw;
 	word-break: break-all;
 }
 #food_text

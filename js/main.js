@@ -24,7 +24,7 @@ var bar_input = 20;
 var bar_type = 1;
 var bar_value = [50,50,50,50];
 var event_id = 0;
-var event_time = 3;
+var event_time = 0;
 var content_data=[
 ["有朋自遠方來","今天主人的朋友來參觀農場，快要經過我的籠子了，我該怎麼辦?","開始大聲嚶嚶嚶的叫","安靜的在角落磨牙","主人和朋友注意到我把我抓起來把玩一番","他們好像沒什麼注意我",[0,0,5,15],[0,5,-5,-10]],
 ["竹鼠聖誕交換禮物","聖誕節快到了，竹鼠們辦了交換禮物大會，面前剩下兩個禮物，你要選哪個?","紅色大禮物","綠色小禮物","裡面是個等身竹鼠玩偶","一根磨牙棒",[0,0,20,10],[10,10,10,0]],
@@ -38,6 +38,7 @@ var content_data=[
 ["主人視察","主人今天來整理環境，發現我的食物沒吃完，我應該?","趕快衝去吃，能吃多快吃多快","收掉我的廚餘吧!老子吃不完!","主人說:「恩…這隻竹鼠很愛吃喔，小心吃太多變太肥喔…」","主人說:「這隻竹鼠好像沒什麼食慾，不如我們把他…按摩一下好了」",[-10,0,0,15],[10,0,-10,5]],
 ["老鼠屎","有人拉屎在我的食物上，真是討厭，我該怎麼辦?","把屎拿走，丟給隔壁籠子的阿肥","都是纖維質，毫不在意","隔壁阿肥生氣的把屎丟回來，展開一場大戰","不小心吃到屎，肚子好像怪怪的",[0,15,0,15],[-10,0,-10,-10]],
 ["悶竹鼠","前幾天下雨，整個環境悶悶的，今天終於出太陽，我該怎麼辦?","躲到陰暗的角落","大字型躺在地上，悠閒地曬太陽","好涼快的角落，可以舒服的啃竹子了","頭好像暈暈的，會不會是中暑了?",[15,0,15,-10],[-15,0,-10,15]],
+["貪吃鬼","吃完了今天份的食物，可是還是覺得好餓，我應該?","趁隔壁竹鼠在睡覺，偷吃他的食物","當作減肥吧，睡個覺就不會餓了","偷到一半主人突然走過來盯著我看，嚇死我了","夢裡我到了竹子王國，吃了三天三夜…",[-15,0,-15,15],[10,0,20,0]],
 ];
 function dowm() {
     switch (this.key) {
@@ -194,19 +195,24 @@ var mainpage ={
 				{
 					case 0:
 						document.getElementById("food_text").innerHTML= "新鮮嫩竹子";
+						event_time = 3;
 						break;
 					case 1:
 						document.getElementById("food_text").innerHTML= "玉米";
+						event_time = 2;
 						break;
 					case 2:
 						document.getElementById("food_text").innerHTML= "米糠拌飯";
+						event_time = 3;
 						break;
 					case 3:
 						document.getElementById("food_text").innerHTML= "芒草";
+						event_time = 1;
 						break;
 					default:
 					break;
 				}
+				document.getElementById("event_img").src="./assets/img/gogo"+event_time+".png";
 				$("#food_text").show();
 				game.input.onDown.add(function(){
 					wheel.visible = false;
@@ -506,6 +512,11 @@ $(".optionB_text").click(function(){
 	document.getElementById("C1-1").innerHTML=content_data[event_id][5];
 	event_end(1);
 });
+$(".warning").click(function(){
+	
+	$(".warning").hide();
+	$("#board").hide();
+});
 function set_weather(){
 	weather = getRandom(0,2);
 	switch(weather)
@@ -528,7 +539,7 @@ function event_end(a){
 	    $("#paper").hide();
 	    $(".event_title").hide();
 	    $(".event_content").hide();
-		event_id = getRandom(0,11);
+		event_id = getRandom(0,content_data.length-1);
 		document.getElementById("T1-1").innerHTML=content_data[event_id][0];
 		document.getElementById("C1-1").innerHTML=content_data[event_id][1];
 		document.getElementById("A1-1").innerHTML=content_data[event_id][2];
@@ -559,6 +570,14 @@ $("#weather").click(function(){
 		$("#main").hide();
 		game.state.start('littlegame')
 });
+$("#board").click(function(){
+		$(".warning").hide();
+		$("#board").hide();
+});
+$("#warning_text").click(function(){
+		$(".warning").hide();
+		$("#board").hide();
+});
 $("#task_button")
 .bind('touchstart',function(){
 	document.getElementById("task_button").style.height="10vh";
@@ -584,9 +603,17 @@ $("#task_button")
 		$(".optionA_text").show();
 		$(".optionB_text").show();
 	}
+	else if(prize == -1)
+	{
+		$(".warning").show();
+		$("#board").show();
+		document.getElementById("warning_text").innerHTML="請點擊碗<br/>用轉盤選擇食物餵食竹鼠";
+	}
 	else
 	{
-		
+		$(".warning").show();
+		$("#board").show();
+		document.getElementById("warning_text").innerHTML="今天事件已完成<br/>請點擊睡覺結束";
 	}
 });
 $("#ach_button")
@@ -632,11 +659,18 @@ $("#end_button")
     document.getElementById("end_button").style.left="82vw";
 })
 .bind('touchend',function(){
-  document.getElementById("end_button").style.height="8vh";
+	document.getElementById("end_button").style.height="8vh";
     document.getElementById("end_button").style.width="8vw";
     document.getElementById("end_button").style.top="92vh";
     document.getElementById("end_button").style.left="84vw";
-  trigger.end = 1;
+	if(event_time == 0 && prize!= -1)
+		trigger.end = 1;
+	else
+	{
+		$(".warning").show();
+		$("#board").show();
+		document.getElementById("warning_text").innerHTML="請先完成<br/>今天的事件";
+	}
  
 });
 $(document).ready(function(){	
@@ -651,5 +685,7 @@ $(document).ready(function(){
     $(".event_content").hide();
     $(".optionA_text").hide();
     $(".optionB_text").hide();
+	$(".warning").hide();
+	$("#board").hide();
 	deviceType();
 });
