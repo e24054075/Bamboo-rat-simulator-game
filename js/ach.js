@@ -24,7 +24,7 @@ var ach_data = [
 		/*Prepare User data first */
 		user_ach_data = parseInt(ach_status,16).toString(2);		/*Parse user achieve data from HEX to BIN format*/
 		user_ach_data = paddingRight(user_ach_data,ach_data.length);/*Status: [low index]1000000000[high index] */
-
+		alert(user_ach_data);
 		/*Load Achieve Content */
 		var i;
 		var css_grid_row = "";
