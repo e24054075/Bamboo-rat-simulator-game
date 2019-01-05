@@ -559,18 +559,18 @@ $("#weather").click(function(){
 		$("#main").hide();
 		game.state.start('littlegame')
 });
-$("#event_button")
+$("#task_button")
 .bind('touchstart',function(){
-	document.getElementById("event_button").style.height="10vh";
-    document.getElementById("event_button").style.width="10vw";
-    document.getElementById("event_button").style.top="90vh";
-    document.getElementById("event_button").style.left="66vw";
+	document.getElementById("task_button").style.height="10vh";
+    document.getElementById("task_button").style.width="10vw";
+    document.getElementById("task_button").style.top="90vh";
+    document.getElementById("task_button").style.left="66vw";
 })
 .bind('touchend',function(){
-	document.getElementById("event_button").style.height="8vh";
-    document.getElementById("event_button").style.width="8vw";
-    document.getElementById("event_button").style.top="92vh";
-    document.getElementById("event_button").style.left="68vw";
+	document.getElementById("task_button").style.height="8vh";
+    document.getElementById("task_button").style.width="8vw";
+    document.getElementById("task_button").style.top="92vh";
+    document.getElementById("task_button").style.left="68vw";
 	if(event_time > 0)
 	{
 		event_time--;

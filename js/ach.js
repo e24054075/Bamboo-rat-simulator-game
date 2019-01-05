@@ -21,10 +21,12 @@ var ach_data = [
 	
 	/*load achieve content and user data*/
 	$("#achieve").ready(function(){
+		ach_data_ready();
+	})
+	function ach_data_ready(){
 		/*Prepare User data first */
 		user_ach_data = parseInt(ach_status,16).toString(2);		/*Parse user achieve data from HEX to BIN format*/
 		user_ach_data = paddingRight(user_ach_data,ach_data.length);/*Status: [low index]1000000000[high index] */
-
 		/*Load Achieve Content */
 		var i;
 		var css_grid_row = "";
@@ -34,9 +36,10 @@ var ach_data = [
 			ach_div_icon.className = "achieve_icon";
 	
 			/*create achieve icon element*/
-			var ach_img = document.createElement("IMG");
+			var ach_img = document.createElement("img");
 			ach_img.className = "achieve_icon_img";
-			ach_img.src = "./assets/img/ach/ach"+ach_data[i][0]+".png";
+			if(user_ach_data[i] == '1')	ach_img.src = "./assets/img/ach/ach"+ach_data[i][0]+".png";
+			else						ach_img.src = "./assets/img/ach/ach00.png";
 			ach_div_icon.appendChild(ach_img);
 	
 			/*create achieve title container*/
@@ -61,7 +64,7 @@ var ach_data = [
 			css_grid_row = css_grid_row + "12%";
 		}
 		$(".achieve_container").css("grid-template-rows",css_grid_row);
-	})
+	}
 	function check_ach_bar(){
 		if(bar_value[0] == 100){
 			Unlock_ach(1);
@@ -100,6 +103,7 @@ var ach_data = [
 		ach_data[index][3] = 1;
 		user_ach_data = Str_ReplaceAt(user_ach_data,index,'1');/*Modify user achieve data(binary format)*/
 		ach_status = parseInt(user_ach_data,2).toString(16);   /*Writeback to var defined in main js(hex format)*/
+		$("#achieve div:nth-child("+((index)*3+1)+") img").attr('src', './assets/img/ach/ach01.png');
 		$("#achieve div:nth-child("+(index+1)*3+") p").text(ach_data[index][2]);/*select ach content p element and open it*/ 
 		$('#ach_button img').attr('src', './assets/img/history_new.png');
 	}

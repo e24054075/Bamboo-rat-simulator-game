@@ -3,18 +3,12 @@
   margin: 0px;
   padding: 0px;
 }
-#start_menu
-{
-display:none;
-}
+
 #game
 {
 	position:abosulte;
 }
-#start_menu
-{
-	display:none;
-}
+
 #status
 {
 	position:absolute;
@@ -324,6 +318,14 @@ display:none;
 	height:8vh;
     width:8vw;
 }
+#task_button
+{
+	position:absolute;
+	top:92vh;
+	left:68vw;
+	height:8vh;
+    width:8vw;
+}
 .setting_container 
 {
 	display: grid;
@@ -396,6 +398,13 @@ display:none;
 #save_img{
 	position:absolute;
         top:28vh;
+	left:6.9vw;
+	height: 30%;
+	width: 80%;
+}
+#set_about{
+	position:absolute;
+        top:43vh;
 	left:6.9vw;
 	height: 30%;
 	width: 80%;

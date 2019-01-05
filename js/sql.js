@@ -4,7 +4,7 @@ $("#start_menu img[id='start_button']").click(function(e){
   document.getElementById("start_menu").style.display="none";
   document.getElementById("login").style.display="block";
 })
-
+  //login and get data from sql
   $("#user img[id='user_summit']").click(function(e){
     e.preventDefault()
     
@@ -22,8 +22,10 @@ $("#start_menu img[id='start_button']").click(function(e){
           document.getElementById("login").style.display="none";
           four_bar_conrtrol(data.health1-50,data.force1-50,data.charm1-50,data.mood1-50);
           day=data.day1;
+          ach_status=data.ach_status1;
           $("#day").text("day "+day);
           running_username=data.running_username1;
+          ach_data_ready();
         }
       }
     })
@@ -49,6 +51,7 @@ $("#save_img")
     force1: bar_value[1],
     charm1: bar_value[2],
     mood1: bar_value[3],
+    ach_status1: ach_status,
     day1:day,
     Username:running_username
   },
