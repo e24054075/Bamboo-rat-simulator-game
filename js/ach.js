@@ -1,3 +1,4 @@
+var user_ach_data;/*User achieve data used in this js file (BIN format)*/
 var ach_data = [
 	[1, "呱呱墜地"     ,"誕生第一隻竹署",1],
 	[2, "頭好壯壯"     ,"健康百分百",0],
@@ -18,12 +19,16 @@ var ach_data = [
 	[17,"全場焦點"     ,"注目度百分百",0]
 	];
 	
-	/*load achieve content*/
+	/*load achieve content and user data*/
 	$("#achieve").ready(function(){
-		var achieve_num = ach_data.length;
+		/*Prepare User data first */
+		user_ach_data = parseInt(ach_status,16).toString(2);		/*Parse user achieve data from HEX to BIN format*/
+		user_ach_data = paddingRight(user_ach_data,ach_data.length);/*Status: [low index]1000000000[high index] */
+
+		/*Load Achieve Content */
 		var i;
 		var css_grid_row = "";
-		for(i = 0 ; i < achieve_num ; i++){
+		for(i = 0 ; i < ach_data.length ; i++){
 			/*create achieve icon container*/
 			var ach_div_icon = document.createElement("div");
 			ach_div_icon.className = "achieve_icon";
@@ -37,23 +42,19 @@ var ach_data = [
 			/*create achieve title container*/
 			var ach_div_title = document.createElement("div");
 			ach_div_title.className = "achieve_title";
-			
-			var ach_title_text_container = document.createElement("p");
-			var ach_title_text = document.createTextNode(ach_data[i][1]);
-			ach_title_text_container.appendChild(ach_title_text);
+				var ach_title_text_container = document.createElement("p");
+				var ach_title_text = document.createTextNode(ach_data[i][1]);
+				ach_title_text_container.appendChild(ach_title_text);
 			ach_div_title.appendChild(ach_title_text_container);
 	
 			/*create achieve content container*/
 			var ach_div_content = document.createElement("div");
 			ach_div_content.className = "achieve_content";
-			
-			var ach_content_text_container = document.createElement("p");
-			var ach_content_text;
-			if(ach_data[i][3] == 1) ach_content_text = document.createTextNode(ach_data[i][2]);
-			else 					ach_content_text = document.createTextNode("LOCKED");
-			
-			
-			ach_content_text_container.appendChild(ach_content_text)
+				var ach_content_text_container = document.createElement("p");
+				var ach_content_text;
+				if(user_ach_data[i] == '1') ach_content_text = document.createTextNode(ach_data[i][2]);
+				else 					ach_content_text = document.createTextNode("LOCKED");
+				ach_content_text_container.appendChild(ach_content_text)
 			ach_div_content.appendChild(ach_content_text_container);
 	
 			$("#achieve").append(ach_div_icon,ach_div_title,ach_div_content);
@@ -89,5 +90,22 @@ var ach_data = [
 	}
 	function Unlock_ach(index) {/*start from 0*/
 		ach_data[index][3] = 1;
-		$("#achieve div:nth-child("+(index+1)*3+") p").text(ach_data[index][2]);/*select ach content p element*/ 
+		user_ach_data = Str_ReplaceAt(user_ach_data,index,'1');/*Modify user achieve data(binary format)*/
+		ach_status = parseInt(user_ach_data,2).toString(16);   /*Writeback to var defined in main js(hex format)*/
+		$("#achieve div:nth-child("+(index+1)*3+") p").text(ach_data[index][2]);/*select ach content p element and open it*/ 
+	}
+
+
+	/**********************************************************************************/
+	/***********************Below Are String Operation Functions***********************/
+	/**********************************************************************************/
+
+	function paddingRight(str,lenght){/*Make 0x1000 to 0x10000000*/
+		if(str.length >= lenght)
+		return str;
+		else
+		return paddingRight(str+"0",lenght);
+	}
+	function Str_ReplaceAt(str,index,replacement){
+		return str.substr(0, index) + replacement+ str.substr(index + replacement.length);
 	}
