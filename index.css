@@ -324,6 +324,14 @@ display:none;
 	height:8vh;
     width:8vw;
 }
+#task_button
+{
+	position:absolute;
+	top:92vh;
+	left:54vw;
+	height:8vh;
+    width:8vw;
+}
 .setting_container 
 {
 	display: grid;
