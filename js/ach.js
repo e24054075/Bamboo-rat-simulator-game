@@ -96,7 +96,7 @@ var ach_data = [
 		}
 	}
 	function check_ach_size(){
-		if(rat_scale >1.5){
+		if(rat_scale >1){
 			Unlock_ach(13);
 		}
 	}
