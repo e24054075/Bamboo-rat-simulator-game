@@ -370,6 +370,14 @@
 	width: 75%;
 	
 }
+#set_about{
+	position:absolute;
+        top:31vh;
+	left:7vw;
+	height: 24%;
+	width: 75%;
+	
+}
 .achieve_container 
 {
 	display: grid;
