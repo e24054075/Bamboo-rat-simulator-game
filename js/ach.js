@@ -113,15 +113,16 @@ var ach_data = [
 	}
 	function User_click(index){
 		var i = index/3;
+		var selector = $("#achieve div:nth-child("+(index+1)+") img");
 		if(ach_data[i][3] != 1){
 			return;
 		}
 		ach_data[i][3] = 2;
-		$("#achieve div:nth-child("+(index+1)+") img").attr('src', "./assets/img/ach/ach"+ach_data[i][0]+".png");
-
-	//$('#ach_button img').attr('src', './assets/img/history.png');/*Change achieve icon to original one (no notification bell)*/
+		selector.slideUp("fast",function(){
+			selector.attr('src', "./assets/img/ach/ach"+ach_data[i][0]+".png");
+			selector.slideToggle("fast");
+		});
 	}
-
 
 	/**********************************************************************************/
 	/***********************Below Are String Operation Functions***********************/
