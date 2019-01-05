@@ -564,6 +564,14 @@ $("#weather").click(function(){
 		$("#main").hide();
 		game.state.start('littlegame')
 });
+$("#board").click(function(){
+		$(".warning").hide();
+		$("#board").hide();
+});
+$("#warning_text").click(function(){
+		$(".warning").hide();
+		$("#board").hide();
+});
 $("#task_button")
 .bind('touchstart',function(){
 	document.getElementById("task_button").style.height="10vh";
@@ -591,13 +599,15 @@ $("#task_button")
 	}
 	else if(prize == -1)
 	{
-		$("#notice_text").show();
-		console.log("請先點擊碗取得食物");
+		$(".warning").show();
+		$("#board").show();
+		document.getElementById("warning_text").innerHTML="請點擊碗<br/>用轉盤選擇食物餵食竹鼠";
 	}
 	else
 	{
-		$("#notice_text").show();
-		console.log("今天的事件已結束 請點擊睡覺結束");
+		$(".warning").show();
+		$("#board").show();
+		document.getElementById("warning_text").innerHTML="今天事件已完成<br/>請點擊睡覺結束";
 	}
 });
 $("#ach_button")
@@ -651,7 +661,9 @@ $("#end_button")
 		trigger.end = 1;
 	else
 	{
-		console.log("請先完成今天事件再點擊睡覺");
+		$(".warning").show();
+		$("#board").show();
+		document.getElementById("warning_text").innerHTML="請先完成<br/>今天的事件";
 	}
  
 });
@@ -667,6 +679,7 @@ $(document).ready(function(){
     $(".event_content").hide();
     $(".optionA_text").hide();
     $(".optionB_text").hide();
-	$("#notice_text").hide();
+	$(".warning").hide();
+	$("#board").hide();
 	deviceType();
 });

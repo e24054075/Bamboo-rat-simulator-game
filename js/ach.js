@@ -1,6 +1,6 @@
 var user_ach_data;/*User achieve data used in this js file (BIN format)*/
 var ach_data = [
-	[1, "呱呱墜地"     ,"誕生第一隻竹署",1],
+	[1, "呱呱墜地"     ,"誕生第一隻竹署",2],
 	[2, "頭好壯壯"     ,"健康百分百",0],
 	[3, "風起雲湧"     ,"打贏其他竹鼠",0],
 	[4, "安然無恙"     ,"平安度過第一個夜晚",0],
@@ -11,8 +11,8 @@ var ach_data = [
 	[9, "鼠生好難"     ,"第一次死亡",0],
 	[10,"我想活下去"   ,"第五次死亡",0],
 	[11,"國父革命"     ,"第十次死亡",0],
-	[12,"我盡力了"     ,"死亡前生存十天以上",0],
-	[13,"Gold Class"  ,"死亡前生存三十天以上",0],
+	[12,"我盡力了"     ,"生存十天以上",0],
+	[13,"Gold Class"  ,"生存三十天以上",0],
 	[14,"福氣"         ,"我太胖了",0],
 	[15,"烤肉派對2"    ,"參加烤鄰居竹鼠的派對",0],
 	[16,"一代宗師"     ,"武力百分百",0],
@@ -38,7 +38,7 @@ var ach_data = [
 			/*create achieve icon element*/
 			var ach_img = document.createElement("img");
 			ach_img.className = "achieve_icon_img";
-			if(user_ach_data[i] == '1')	ach_img.src = "./assets/img/ach/ach"+ach_data[i][0]+".png";
+			if(ach_data[i][3] == 2)	ach_img.src = "./assets/img/ach/ach"+ach_data[i][0]+".png";
 			else						ach_img.src = "./assets/img/ach/ach00.png";
 			ach_div_icon.appendChild(ach_img);
 	
@@ -55,7 +55,7 @@ var ach_data = [
 			ach_div_content.className = "achieve_content";
 				var ach_content_text_container = document.createElement("p");
 				var ach_content_text;
-				if(user_ach_data[i] == '1') ach_content_text = document.createTextNode(ach_data[i][2]);
+				if(ach_data[i][3] == 2) ach_content_text = document.createTextNode(ach_data[i][2]);
 				else 					ach_content_text = document.createTextNode("LOCKED");
 				ach_content_text_container.appendChild(ach_content_text)
 			ach_div_content.appendChild(ach_content_text_container);
@@ -64,7 +64,11 @@ var ach_data = [
 			css_grid_row = css_grid_row + "12%";
 		}
 		$(".achieve_container").css("grid-template-rows",css_grid_row);
+		$(".achieve_icon").click(function(){
+			User_click($(this).index());/*Parse achieve index*/
+		})
 	}
+
 	function check_ach_bar(){
 		if(bar_value[0] == 100){
 			Unlock_ach(1);
@@ -97,7 +101,7 @@ var ach_data = [
 		}
 	}
 	function Unlock_ach(index) {/*start from 0*/
-		if(ach_data[index][3] == 1){
+		if(ach_data[index][3] != 0){
 			return;
 		}
 		ach_data[index][3] = 1;
@@ -107,7 +111,16 @@ var ach_data = [
 		$("#achieve div:nth-child("+(index+1)*3+") p").text(ach_data[index][2]);/*select ach content p element and open it*/ 
 		$('#ach_button img').attr('src', './assets/img/history_new.png');
 	}
-	
+	function User_click(index){
+		var i = index/3;
+		if(ach_data[i][3] != 1){
+			return;
+		}
+		ach_data[i][3] = 2;
+		$("#achieve div:nth-child("+(index+1)+") img").attr('src', "./assets/img/ach/ach"+ach_data[i][0]+".png");
+
+	//$('#ach_button img').attr('src', './assets/img/history.png');/*Change achieve icon to original one (no notification bell)*/
+	}
 
 
 	/**********************************************************************************/
