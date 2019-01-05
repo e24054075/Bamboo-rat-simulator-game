@@ -242,7 +242,6 @@ var mainpage ={
 	{
 		trigger.end = 0;
 		day++;
-		check_ach_day();/*define in ach js*/ 
 		$('#day').text("DAY "+day);
 		if(day%10 === 0 && rat_scale <= 1.6)
 		{
@@ -280,6 +279,8 @@ var mainpage ={
 		}
 		prize = -1;
 		set_weather();
+		check_ach_day();/*define in ach js*/ 
+		check_ach_size();/*define in ach js*/ 
 	}
 	if(game.physics.arcade.collide(rat_player, layer)&& rat_player.body.onWall())
 	{

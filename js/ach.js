@@ -13,7 +13,7 @@ var ach_data = [
 	[11,"國父革命"     ,"第十次死亡",0],
 	[12,"我盡力了"     ,"死亡前生存十天以上",0],
 	[13,"Gold Class"  ,"死亡前生存三十天以上",0],
-	[14,"超載"         ,"我太胖了",0],
+	[14,"福氣"         ,"我太胖了",0],
 	[15,"烤肉派對2"    ,"參加烤鄰居竹鼠的派對",0],
 	[16,"一代宗師"     ,"武力百分百",0],
 	[17,"全場焦點"     ,"注目度百分百",0]
@@ -88,12 +88,21 @@ var ach_data = [
 				break;
 		}
 	}
+	function check_ach_size(){
+		if(rat_scale >1.5){
+			Unlock_ach(13);
+		}
+	}
 	function Unlock_ach(index) {/*start from 0*/
+		if(ach_data[index][3] == 1){
+			return;
+		}
 		ach_data[index][3] = 1;
 		user_ach_data = Str_ReplaceAt(user_ach_data,index,'1');/*Modify user achieve data(binary format)*/
 		ach_status = parseInt(user_ach_data,2).toString(16);   /*Writeback to var defined in main js(hex format)*/
 		$("#achieve div:nth-child("+(index+1)*3+") p").text(ach_data[index][2]);/*select ach content p element and open it*/ 
 	}
+	
 
 
 	/**********************************************************************************/
