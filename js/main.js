@@ -24,7 +24,7 @@ var bar_input = 20;
 var bar_type = 1;
 var bar_value = [50,50,50,50];
 var event_id = 0;
-var event_time = 1;
+var event_time = 3;
 var content_data=[
 ["有朋自遠方來","今天主人的朋友來參觀農場，快要經過我的籠子了，我該怎麼辦?","開始大聲嚶嚶嚶的叫","安靜的在角落磨牙","主人和朋友注意到我把我抓起來把玩一番","他們好像沒什麼注意我",[0,0,5,15],[0,5,-5,-10]],
 ["竹鼠聖誕交換禮物","聖誕節快到了，竹鼠們辦了交換禮物大會，面前剩下兩個禮物，你要選哪個?","紅色大禮物","綠色小禮物","裡面是個等身竹鼠玩偶","一根磨牙棒",[0,0,20,10],[10,10,10,0]],
@@ -559,10 +559,22 @@ $("#weather").click(function(){
 		$("#main").hide();
 		game.state.start('littlegame')
 });
-$("#event_button").click(function(){
+$("#event_button")
+.bind('touchstart',function(){
+	document.getElementById("event_button").style.height="10vh";
+    document.getElementById("event_button").style.width="10vw";
+    document.getElementById("event_button").style.top="90vh";
+    document.getElementById("event_button").style.left="66vw";
+})
+.bind('touchend',function(){
+	document.getElementById("event_button").style.height="8vh";
+    document.getElementById("event_button").style.width="8vw";
+    document.getElementById("event_button").style.top="92vh";
+    document.getElementById("event_button").style.left="68vw";
 	if(event_time > 0)
 	{
 		event_time--;
+		document.getElementById("event_img").src="./assets/img/gogo"+event_time+".png";
 		$("#paper").show();
 		$("#optionA").show();
 		$("#optionB").show();
@@ -571,6 +583,10 @@ $("#event_button").click(function(){
 		$(".event_content").show();
 		$(".optionA_text").show();
 		$(".optionB_text").show();
+	}
+	else
+	{
+		
 	}
 });
 $("#ach_button")
@@ -613,13 +629,13 @@ $("#end_button")
   document.getElementById("end_button").style.height="10vh";
     document.getElementById("end_button").style.width="10vw";
     document.getElementById("end_button").style.top="90vh";
-    document.getElementById("end_button").style.left="79.7vw";
+    document.getElementById("end_button").style.left="82vw";
 })
 .bind('touchend',function(){
   document.getElementById("end_button").style.height="8vh";
     document.getElementById("end_button").style.width="8vw";
     document.getElementById("end_button").style.top="92vh";
-    document.getElementById("end_button").style.left="80vw";
+    document.getElementById("end_button").style.left="84vw";
   trigger.end = 1;
  
 });
