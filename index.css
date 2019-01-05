@@ -138,11 +138,12 @@
 #board
 {
 	position:absolute;
-	top:36vh;
-	left:14vw;
-	width:75vw;
-  	height:45vh;
+	top:35vh;
+	left:20vw;
+	width:60vw;
+  	height:30vh;
 }
+
 #paper
 {
    z-index:2;
@@ -223,11 +224,12 @@
     font-size:55px;
     position:absolute;
     top:43vh;
-    left:34vw;
+    left:30vw;
     height:20vh;
     width:40vw;
 	word-break: break-all;
 }
+
 #food_text
 {
 	z-index:3;
