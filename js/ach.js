@@ -19,8 +19,11 @@ var ach_data = [
 	[17,"全場焦點"     ,"注目度百分百",0]
 	];
 	
+	/*uncomment below if no database*/
+	$("#achieve").ready(function(){
+		ach_data_ready();
+	})
 	/*load achieve content and user data*/
-	
 	function ach_data_ready(){
 		/*Prepare User data first */
 		user_ach_data = parseInt(ach_status,16).toString(2);		/*Parse user achieve data from HEX to BIN format*/
