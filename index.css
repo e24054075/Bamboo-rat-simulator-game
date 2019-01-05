@@ -138,7 +138,14 @@
 	width:50vw;
   	height:22vh;
 }
-
+#board
+{
+	position:absolute;
+	top:36vh;
+	left:14vw;
+	width:75vw;
+  	height:45vh;
+}
 #paper
 {
    z-index:2;
