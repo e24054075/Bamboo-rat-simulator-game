@@ -101,6 +101,7 @@ var ach_data = [
 		user_ach_data = Str_ReplaceAt(user_ach_data,index,'1');/*Modify user achieve data(binary format)*/
 		ach_status = parseInt(user_ach_data,2).toString(16);   /*Writeback to var defined in main js(hex format)*/
 		$("#achieve div:nth-child("+(index+1)*3+") p").text(ach_data[index][2]);/*select ach content p element and open it*/ 
+		$('#ach_button img').attr('src', './assets/img/history_new.png');
 	}
 	
 
