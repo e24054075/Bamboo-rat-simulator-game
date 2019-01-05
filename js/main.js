@@ -483,8 +483,8 @@ var littlegame ={
 game.state.add('littlegame',littlegame);
 $("#return").click(function(){
 		$("#cover").hide();		
-		$("#achieve").hide();
-		$("#setting").hide();
+		$("#achieve").hide("slow");
+		$("#setting").hide("slow");
 		$("#return").hide();
 	});
 function getRandom(min,max){
@@ -492,10 +492,10 @@ function getRandom(min,max){
 };
 $(".optionA_text").click(function(){
 	four_bar_conrtrol(content_data[event_id][6][0],content_data[event_id][6][1],content_data[event_id][6][2],content_data[event_id][6][3]);
-	$("#optionA").hide();
-	$("#optionB").hide();
-	$(".optionA_text").hide();
-	$(".optionB_text").hide();
+	$("#optionA").slideToggle();
+	$("#optionB").slideToggle();
+	$(".optionA_text").slideToggle();
+	$(".optionB_text").slideToggle();
 	document.getElementById("T1-1").innerHTML="結果";
 	document.getElementById("C1-1").innerHTML=content_data[event_id][4];
 	event_end(1);
@@ -503,18 +503,18 @@ $(".optionA_text").click(function(){
 
 $(".optionB_text").click(function(){
 	four_bar_conrtrol(content_data[event_id][7][0],content_data[event_id][7][1],content_data[event_id][7][2],content_data[event_id][7][3]);
-	$("#optionA").hide();
-	$("#optionB").hide();
-	$(".optionA_text").hide();
-	$(".optionB_text").hide();
+	$("#optionA").slideToggle();
+	$("#optionB").slideToggle();
+	$(".optionA_text").slideToggle();
+	$(".optionB_text").slideToggle();
 	document.getElementById("T1-1").innerHTML="結果";
 	document.getElementById("C1-1").innerHTML=content_data[event_id][5];
 	event_end(1);
 });
 $(".warning").click(function(){
 	
-	$(".warning").hide();
-	$("#board").hide();
+	$(".warning").hide("slow");
+	$("#board").hide("slow");
 });
 function set_weather(){
 	weather = getRandom(0,2);
@@ -535,7 +535,7 @@ function event_end(a){
 	$("#paper").click(function(){
 		if(a == 1){
 		$("#cover").hide();
-	    $("#paper").hide();
+	    $("#paper").slideToggle();
 	    $(".event_title").hide();
 	    $(".event_content").hide();
 		event_id = getRandom(0,content_data.length-1);
@@ -570,12 +570,12 @@ $("#weather").click(function(){
 		game.state.start('littlegame')
 });
 $("#board").click(function(){
-		$(".warning").hide();
-		$("#board").hide();
+		$(".warning").hide("slow");
+		$("#board").hide("slow");
 });
 $("#warning_text").click(function(){
-		$(".warning").hide();
-		$("#board").hide();
+		$(".warning").hide("slow");
+		$("#board").hide("slow");
 });
 $("#task_button")
 .bind('touchstart',function(){
@@ -593,25 +593,27 @@ $("#task_button")
 	{
 		event_time--;
 		document.getElementById("event_img").src="./assets/img/gogo"+event_time+".png";
-		$("#paper").show();
-		$("#optionA").show();
-		$("#optionB").show();
+		$("#paper").slideDown();
+		$("#optionA").slideDown();
+		$("#optionB").slideDown();
 		$("#cover").show();
-		$(".event_title").show();
-		$(".event_content").show();
-		$(".optionA_text").show();
-		$(".optionB_text").show();
+		$(".event_title").slideDown();
+		$(".event_content").slideDown();
+		$(".optionA_text").slideDown();
+		$(".optionB_text").slideDown();
 	}
 	else if(prize == -1)
 	{
-		$(".warning").show();
-		$("#board").show();
+		
+		$("#board").show("slow");
+		$(".warning").show("slow");
 		document.getElementById("warning_text").innerHTML="請點擊碗<br/>用轉盤選擇食物餵食竹鼠";
 	}
 	else
 	{
-		$(".warning").show();
-		$("#board").show();
+		
+		$("#board").show("slow");
+		$(".warning").show("slow");
 		document.getElementById("warning_text").innerHTML="今天事件已完成<br/>請點擊睡覺結束";
 	}
 });
@@ -628,9 +630,9 @@ $("#ach_button")
     document.getElementById("ach_button").style.top="92vh";
     document.getElementById("ach_button").style.left="18vw";
   $("#cover").show();
-	$("#setting").show();
+	//$("#setting").show();
 	$("#return").show();
-	$("#achieve").show(); 
+	$("#achieve").show("slow"); 
 	$('#ach_button img').attr('src', './assets/img/history.png');/*Change achieve icon to original one (no notification bell)*/
 });
 $("#set_button")
@@ -646,7 +648,7 @@ $("#set_button")
     document.getElementById("set_button").style.top="92vh";
     document.getElementById("set_button").style.left="2vw";
   $("#cover").show();
-	$("#setting").show();
+	$("#setting").show( "slow" );
 	$("#return").show();
  
 });
@@ -666,8 +668,9 @@ $("#end_button")
 		trigger.end = 1;
 	else
 	{
-		$(".warning").show();
-		$("#board").show();
+		
+		$("#board").show("slow");
+		$(".warning").show("slow");
 		document.getElementById("warning_text").innerHTML="請先完成<br/>今天的事件";
 	}
  
