@@ -20,12 +20,13 @@ $("#start_menu img[id='start_button']").click(function(e){
         if(data.word=="ok")
         {
           document.getElementById("login").style.display="none";
+          ach_status=data.ach_status1;
+          ach_data_ready();
           four_bar_conrtrol(data.health1-50,data.force1-50,data.charm1-50,data.mood1-50);
           day=data.day1;
-          ach_status=data.ach_status1;
           $("#day").text("day "+day);
           running_username=data.running_username1;
-          ach_data_ready();
+          
         }
       }
     })

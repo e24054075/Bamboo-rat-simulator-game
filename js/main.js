@@ -38,6 +38,7 @@ var content_data=[
 ["主人視察","主人今天來整理環境，發現我的食物沒吃完，我應該?","趕快衝去吃，能吃多快吃多快","收掉我的廚餘吧!老子吃不完!","主人說:「恩…這隻竹鼠很愛吃喔，小心吃太多變太肥喔…」","主人說:「這隻竹鼠好像沒什麼食慾，不如我們把他…按摩一下好了」",[-10,0,0,15],[10,0,-10,5]],
 ["老鼠屎","有人拉屎在我的食物上，真是討厭，我該怎麼辦?","把屎拿走，丟給隔壁籠子的阿肥","都是纖維質，毫不在意","隔壁阿肥生氣的把屎丟回來，展開一場大戰","不小心吃到屎，肚子好像怪怪的",[0,15,0,15],[-10,0,-10,-10]],
 ["悶竹鼠","前幾天下雨，整個環境悶悶的，今天終於出太陽，我該怎麼辦?","躲到陰暗的角落","大字型躺在地上，悠閒地曬太陽","好涼快的角落，可以舒服的啃竹子了","頭好像暈暈的，會不會是中暑了?",[15,0,15,-10],[-15,0,-10,15]],
+["貪吃鬼","吃完了今天份的食物，可是還是覺得好餓，我應該?","趁隔壁竹鼠在睡覺，偷吃他的食物","當作減肥吧，睡個覺就不會餓了","偷到一半主人突然走過來盯著我看，嚇死我了","夢裡我到了竹子王國，吃了三天三夜…",[-15,0,-15,15],[10,0,20,0]],
 ];
 function deviceType() {
 	if(navigator.userAgent.match(/mobile/i)) {
@@ -487,7 +488,7 @@ function event_end(a){
 	    $("#paper").hide();
 	    $(".event_title").hide();
 	    $(".event_content").hide();
-		event_id = getRandom(0,11);
+		event_id = getRandom(0,content_data.length-1);
 		document.getElementById("T1-1").innerHTML=content_data[event_id][0];
 		document.getElementById("C1-1").innerHTML=content_data[event_id][1];
 		document.getElementById("A1-1").innerHTML=content_data[event_id][2];

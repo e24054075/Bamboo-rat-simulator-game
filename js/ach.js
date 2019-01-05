@@ -20,9 +20,7 @@ var ach_data = [
 	];
 	
 	/*load achieve content and user data*/
-	$("#achieve").ready(function(){
-		ach_data_ready();
-	})
+
 	function ach_data_ready(){
 		/*Prepare User data first */
 		user_ach_data = parseInt(ach_status,16).toString(2);		/*Parse user achieve data from HEX to BIN format*/
@@ -96,7 +94,7 @@ var ach_data = [
 		}
 	}
 	function check_ach_size(){
-		if(rat_scale >1.5){
+		if(rat_scale >1){
 			Unlock_ach(13);
 		}
 	}
