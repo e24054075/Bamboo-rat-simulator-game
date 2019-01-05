@@ -24,7 +24,7 @@ var bar_input = 20;
 var bar_type = 1;
 var bar_value = [50,50,50,50];
 var event_id = 0;
-var event_time = 3;
+var event_time = 0;
 var content_data=[
 ["有朋自遠方來","今天主人的朋友來參觀農場，快要經過我的籠子了，我該怎麼辦?","開始大聲嚶嚶嚶的叫","安靜的在角落磨牙","主人和朋友注意到我把我抓起來把玩一番","他們好像沒什麼注意我",[0,0,5,15],[0,5,-5,-10]],
 ["竹鼠聖誕交換禮物","聖誕節快到了，竹鼠們辦了交換禮物大會，面前剩下兩個禮物，你要選哪個?","紅色大禮物","綠色小禮物","裡面是個等身竹鼠玩偶","一根磨牙棒",[0,0,20,10],[10,10,10,0]],
@@ -194,19 +194,24 @@ var mainpage ={
 				{
 					case 0:
 						document.getElementById("food_text").innerHTML= "新鮮嫩竹子";
+						event_time = 3;
 						break;
 					case 1:
 						document.getElementById("food_text").innerHTML= "玉米";
+						event_time = 2;
 						break;
 					case 2:
 						document.getElementById("food_text").innerHTML= "米糠拌飯";
+						event_time = 3;
 						break;
 					case 3:
 						document.getElementById("food_text").innerHTML= "芒草";
+						event_time = 1;
 						break;
 					default:
 					break;
 				}
+				document.getElementById("event_img").src="./assets/img/gogo"+event_time+".png";
 				$("#food_text").show();
 				game.input.onDown.add(function(){
 					wheel.visible = false;
@@ -584,9 +589,15 @@ $("#task_button")
 		$(".optionA_text").show();
 		$(".optionB_text").show();
 	}
+	else if(prize == -1)
+	{
+		$("#notice_text").show();
+		console.log("請先點擊碗取得食物");
+	}
 	else
 	{
-		
+		$("#notice_text").show();
+		console.log("今天的事件已結束 請點擊睡覺結束");
 	}
 });
 $("#ach_button")
@@ -632,11 +643,16 @@ $("#end_button")
     document.getElementById("end_button").style.left="82vw";
 })
 .bind('touchend',function(){
-  document.getElementById("end_button").style.height="8vh";
+	document.getElementById("end_button").style.height="8vh";
     document.getElementById("end_button").style.width="8vw";
     document.getElementById("end_button").style.top="92vh";
     document.getElementById("end_button").style.left="84vw";
-  trigger.end = 1;
+	if(event_time == 0 && prize!= -1)
+		trigger.end = 1;
+	else
+	{
+		console.log("請先完成今天事件再點擊睡覺");
+	}
  
 });
 $(document).ready(function(){	
@@ -651,5 +667,6 @@ $(document).ready(function(){
     $(".event_content").hide();
     $(".optionA_text").hide();
     $(".optionB_text").hide();
+	$("#notice_text").hide();
 	deviceType();
 });
