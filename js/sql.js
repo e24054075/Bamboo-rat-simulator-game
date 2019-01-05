@@ -56,7 +56,7 @@ $("#save_img")
     Username:running_username
   },
   success: function(data){
-    
+    alert("儲存成功!");
   
   }
 })
