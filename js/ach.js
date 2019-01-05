@@ -20,9 +20,9 @@ var ach_data = [
 	];
 	
 	/*uncomment below if no database*/
-	$("#achieve").ready(function(){
+	/*$("#achieve").ready(function(){
 		ach_data_ready();
-	})
+	})*/
 	/*load achieve content and user data*/
 	function ach_data_ready(){
 		/*Prepare User data first */
@@ -48,10 +48,7 @@ var ach_data = [
 			else						ach_img.src = "./assets/img/ach/ach00.png";
 			ach_div_icon.appendChild(ach_img);
 
-			/*register icon onclick event*/
-			$(".achieve_icon").click(function(){
-				User_click($(this).index());/*Parse achieve index*/
-			})
+
 	
 			/*create achieve title container*/
 			var ach_div_title = document.createElement("div");
@@ -75,6 +72,10 @@ var ach_data = [
 			css_grid_row = css_grid_row + "12%";
 		}
 		$(".achieve_container").css("grid-template-rows",css_grid_row);
+		/*register icon onclick event*/
+		$(".achieve_icon").click(function(){
+			User_click($(this).index());/*Parse achieve index*/
+		})
 	}
 
 	function check_ach_bar(){
