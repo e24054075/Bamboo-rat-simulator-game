@@ -3,13 +3,17 @@
   margin: 0px;
   padding: 0px;
 }
-
+#start_menu
+{
+display:none;
+}
 #game
 {
 	position:abosulte;
 }
-#start_menu{
-  display:none;
+#start_menu
+{
+	display:none;
 }
 #status
 {
@@ -292,7 +296,7 @@
 {
 	position:absolute;
 	top:92vh;
-	left:80vw;
+	left:84vw;
 	height:8vh;
     width:8vw;
 }
@@ -301,6 +305,14 @@
 	position:absolute;
 	top:92vh;
 	left:18vw;
+	height:8vh;
+    width:8vw;
+}
+#event_button
+{
+	position:absolute;
+	top:92vh;
+	left:68vw;
 	height:8vh;
     width:8vw;
 }
@@ -363,12 +375,11 @@
     cursor: pointer;
 }
 #save_img{
-	position:absolute;
-	top:38vh;
-	left:25vw;
-	height: 10%;
-	width: 15%;
-	
+	background: url("./assets/img/achb2.png");
+	height: 30%;
+	width: 30%;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 .achieve_container 
 {
