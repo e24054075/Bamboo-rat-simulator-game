@@ -449,7 +449,7 @@ var littlegame ={
 	rat_jump = 0;
 	if(game.time.now > gameTimer2)
 	{
-		obstacle = game.add.sprite(1000,395,'obstacle');
+		obstacle = game.add.sprite(1000,385,'obstacle');
 		game.physics.enable(obstacle,Phaser.Physics.ARCADE);
 		obstacle.scale.set(0.6);
 		obstacle.body.allowGravity = false;
