@@ -582,7 +582,7 @@ $("#ach_button")
 	$("#setting").show();
 	$("#return").show();
 	$("#achieve").show(); 
- 
+	$('#ach_button img').attr('src', './assets/img/history.png');/*Change achieve icon to original one (no notification bell)*/
 });
 $("#set_button")
 .bind('touchstart',function(){
