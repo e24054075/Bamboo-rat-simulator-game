@@ -23,7 +23,7 @@
 }
 #cover
 {
-  	z-index:1;
+	z-index:1;
 	position:absolute;
 	top:0px;
 	left:0px;
@@ -140,6 +140,7 @@
 }
 #board
 {
+	z-index:2;
 	position:absolute;
 	top:36vh;
 	left:14vw;
@@ -222,6 +223,7 @@
 }
 .warning
 {
+	z-index:2;
     font-family: 'Noto Sans TC', sans-serif;
     font-size:55px;
     position:absolute;

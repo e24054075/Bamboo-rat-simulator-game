@@ -511,11 +511,6 @@ $(".optionB_text").click(function(){
 	document.getElementById("C1-1").innerHTML=content_data[event_id][5];
 	event_end(1);
 });
-$(".warning").click(function(){
-	
-	$(".warning").hide();
-	$("#board").hide();
-});
 function set_weather(){
 	weather = getRandom(0,2);
 	switch(weather)
@@ -572,10 +567,12 @@ $("#weather").click(function(){
 $("#board").click(function(){
 		$(".warning").hide();
 		$("#board").hide();
+		$("#cover").hide();
 });
-$("#warning_text").click(function(){
+$(".warning").click(function(){
 		$(".warning").hide();
 		$("#board").hide();
+		$("#cover").hide();
 });
 $("#task_button")
 .bind('touchstart',function(){
@@ -606,12 +603,14 @@ $("#task_button")
 	{
 		$(".warning").show();
 		$("#board").show();
+		$("#cover").show();
 		document.getElementById("warning_text").innerHTML="請點擊碗<br/>用轉盤選擇食物餵食竹鼠";
 	}
 	else
 	{
 		$(".warning").show();
 		$("#board").show();
+		$("#cover").show();
 		document.getElementById("warning_text").innerHTML="今天事件已完成<br/>請點擊睡覺結束";
 	}
 });
@@ -668,6 +667,7 @@ $("#end_button")
 	{
 		$(".warning").show();
 		$("#board").show();
+		$("#cover").show();
 		document.getElementById("warning_text").innerHTML="請先完成<br/>今天的事件";
 	}
  
