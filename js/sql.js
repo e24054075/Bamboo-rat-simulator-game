@@ -29,17 +29,19 @@ $("#start_menu img[id='start_button']").click(function(e){
     })
   })
 
-$("#save_img").click(function(e){
-e.preventDefault()
-document.getElementById("save_img").style.height="13%";
+$("#save_img")
+.bind('touchstart',function(){
+  document.getElementById("save_img").style.height="13%";
     document.getElementById("save_img").style.width="18%";
     document.getElementById("save_img").style.top="37vh";
     document.getElementById("save_img").style.left="24.3vw";
-    setTimeout(function(){  document.getElementById("save_img").style.height="10%";
-    document.getElementById("save_img").style.width="15%";
-    document.getElementById("save_img").style.top="38vh";
-    document.getElementById("save_img").style.left="25vw"; }, 200);
-$.ajax({
+})
+.bind('touchend',function(){
+  document.getElementById("save_img").style.height="10%";
+  document.getElementById("save_img").style.width="15%";
+  document.getElementById("save_img").style.top="38vh";
+  document.getElementById("save_img").style.left="25vw"; 
+  $.ajax({
   method: "get",
   url: "./save",
   data:{
@@ -55,7 +57,7 @@ $.ajax({
   
   }
 })
-})
+});
 
 
 $("#user img[id='register']").click(function(e){

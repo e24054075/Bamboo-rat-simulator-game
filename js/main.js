@@ -564,43 +564,56 @@ $("#weather").click(function(){
 		$("#main").hide();
 		game.state.start('littlegame')
 });
-$("#ach_button").click(function(){
-	$("#cover").show();
-	$("#setting").show();
-	$("#return").show();
-	$("#achieve").show();
-	document.getElementById("ach_button").style.height="10vh";
+
+$("#ach_button")
+.bind('touchstart',function(){
+  document.getElementById("ach_button").style.height="10vh";
     document.getElementById("ach_button").style.width="10vw";
     document.getElementById("ach_button").style.top="90vh";
     document.getElementById("ach_button").style.left="17.5vw";
-    setTimeout(function(){  document.getElementById("ach_button").style.height="8vh";
+})
+.bind('touchend',function(){
+  document.getElementById("ach_button").style.height="8vh";
     document.getElementById("ach_button").style.width="8vw";
     document.getElementById("ach_button").style.top="92vh";
-    document.getElementById("ach_button").style.left="18vw"; },200);
-});
-$("#set_button").click(function(){
-	$("#cover").show();
+    document.getElementById("ach_button").style.left="18vw";
+  $("#cover").show();
 	$("#setting").show();
 	$("#return").show();
-	document.getElementById("set_button").style.height="10vh";
+	$("#achieve").show(); 
+ 
+});
+$("#set_button")
+.bind('touchstart',function(){
+  document.getElementById("set_button").style.height="10vh";
     document.getElementById("set_button").style.width="10vw";
     document.getElementById("set_button").style.top="90vh";
     document.getElementById("set_button").style.left="1.7vw";
-    setTimeout(function(){  document.getElementById("set_button").style.height="8vh";
+})
+.bind('touchend',function(){
+  document.getElementById("set_button").style.height="8vh";
     document.getElementById("set_button").style.width="8vw";
     document.getElementById("set_button").style.top="92vh";
-    document.getElementById("set_button").style.left="2vw"; },200);
+    document.getElementById("set_button").style.left="2vw";
+  $("#cover").show();
+	$("#setting").show();
+	$("#return").show();
+ 
 });
-$("#end_button").click(function(){
-	trigger.end = 1;
-	document.getElementById("end_button").style.height="10vh";
+$("#end_button")
+.bind('touchstart',function(){
+  document.getElementById("end_button").style.height="10vh";
     document.getElementById("end_button").style.width="10vw";
     document.getElementById("end_button").style.top="90vh";
-    document.getElementById("end_button").style.left="79.5vw";
-    setTimeout(function(){  document.getElementById("end_button").style.height="8vh";
+    document.getElementById("end_button").style.left="79.7vw";
+})
+.bind('touchend',function(){
+  document.getElementById("end_button").style.height="8vh";
     document.getElementById("end_button").style.width="8vw";
     document.getElementById("end_button").style.top="92vh";
-    document.getElementById("end_button").style.left="80vw"; },200);
+    document.getElementById("end_button").style.left="80vw";
+  trigger.end = 1;
+ 
 });
 $(document).ready(function(){	
 	$("#cover").hide();
