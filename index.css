@@ -137,6 +137,7 @@
 }
 #board
 {
+	z-index:2;
 	position:absolute;
 	top:35vh;
 	left:20vw;
@@ -220,6 +221,7 @@
 }
 .warning
 {
+	z-index:2;
     font-family: 'Noto Sans TC', sans-serif;
     font-size:55px;
     position:absolute;
@@ -228,18 +230,6 @@
     height:20vh;
     width:40vw;
 	word-break: break-all;
-}
-
-#food_text
-{
-	z-index:3;
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size:60px;
-    position:absolute;
-    top:50vh;
-	left:30vw;
-	width:40vw;
-	text-align:center;
 }
 #eb1
 {
