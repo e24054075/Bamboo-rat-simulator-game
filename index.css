@@ -1,8 +1,11 @@
 *
-
 {
   margin: 0px;
   padding: 0px;
+}
+#start_menu
+{
+	display:none;
 }
 #game
 {
@@ -58,9 +61,8 @@
 	position:absolute;
 	background-repeat:no-repeat;
 	z-index:3;
-	top:10vh;
-	left:70vw;
-	width:5vw;
+	top:68vh;
+	left:75vw;
 	height:5vh;
 }
 #day
@@ -127,6 +129,24 @@
 	width:48vw;
   	height:19vh;
 }
+#die_img
+{
+	z-index:2;
+	position:absolute;
+	top:25vh;
+	left:14vw;
+	width:72vw;
+  	height:40vh;
+}
+#die_paper
+{
+   	z-index:2;
+   	position:absolute;
+   	top:65vh;
+   	left:14vw;
+   	width:72vw;
+   	height:15vh;
+}
 #window
 {
 	position:absolute;
@@ -144,7 +164,15 @@
 	width:60vw;
   	height:30vh;
 }
-
+#frame
+{
+	z-index:2;
+	position:absolute;
+	top:15vh;
+	left:5vw;
+	width:90vw;
+  	height:70vh;
+}
 #paper
 {
    z-index:2;
@@ -414,10 +442,10 @@
 }
 #set_about{
 	position:absolute;
-        top:43vh;
-	left:6.9vw;
-	height: 30%;
-	width: 80%;
+    top:47vh;
+	left:14.5vw;
+	height: 15%;
+	width:55%;
 }
 .achieve_container 
 {
