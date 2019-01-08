@@ -653,5 +653,6 @@ $(document).ready(function(){
 	$(".warning").hide();
 	$("#board").hide();
 	$("#frame").hide();
+	$("#die_img").hide();
 	deviceType();
 });
