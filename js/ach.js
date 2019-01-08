@@ -1,4 +1,4 @@
-var user_ach_data;/*User achieve data used in this js file (BIN format)*/
+var user_ach_data = "";/*User achieve data used in this js file (BIN format)*/
 var ach_data = [
 	[1, "呱呱墜地"     ,"誕生第一隻竹署",2],
 	[2, "頭好壯壯"     ,"健康百分百",0],
@@ -20,9 +20,9 @@ var ach_data = [
 	];
 	
 	/*uncomment below if no database*/
-	/*$("#achieve").ready(function(){
+	$("#achieve").ready(function(){
 		ach_data_ready();
-	})*/
+	})
 	/*load achieve content and user data*/
 	function ach_data_ready(){
 		/*Prepare User data first */
