@@ -88,9 +88,24 @@ var ach_data = [
 			Unlock_ach(1);
 		}
 		if(bar_value[1] == 100){
+
+		}
+		if(bar_value[1] == 100){
 			Unlock_ach(15);
 		}
 		if(bar_value[3] == 100){
+			Unlock_ach(16);
+		}
+		if(bar_value[0] == 0){
+			Unlock_ach(1);
+		}
+		if(bar_value[1] == 0){
+			
+		}
+		if(bar_value[1] == 0){
+			Unlock_ach(15);
+		}
+		if(bar_value[3] == 0){
 			Unlock_ach(16);
 		}
 	}
