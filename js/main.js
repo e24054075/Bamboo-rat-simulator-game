@@ -151,6 +151,8 @@ var mainpage ={
 			var spinTween = game.add.tween(wheel).to({
 				angle: 360 * rounds + degrees
 			}, 1000, Phaser.Easing.Quadratic.Out, true);
+			$("#cover").show();
+			$("#cover").css({"opacity":"0"});
 			spinTween.onComplete.add(function(){
 				switch(prize)
 				{
@@ -180,7 +182,7 @@ var mainpage ={
 				document.getElementById("event_img").src="./assets/img/gogo"+event_time+".png";
 				$(".warning").show();
 				$("#board").show();
-				$("#cover").show();
+				$("#cover").css({"opacity":"0.3"});
 			});
 		}
 	});
@@ -462,11 +464,6 @@ $(".optionB_text").click(function(){
 	document.getElementById("C1-1").innerHTML=content_data[event_id][5];
 	event_end(1);
 });
-$(".warning").click(function(){
-	
-	$(".warning").hide("slow");
-	setTimeout(function(){$("#board").hide("slow");}, 100);
-});
 function set_weather(){
 	weather = getRandom(0,2);
 	switch(weather)
@@ -523,13 +520,13 @@ $("#weather").click(function(){
 		game.state.start('littlegame')
 });
 $("#board").click(function(){
-		$(".warning").hide("slow");
+		$(".warning").hide();
 		$("#cover").hide();
 		trigger.eat = 1;
 		setTimeout(function(){$("#board").hide("slow");}, 100);
 });
 $(".warning").click(function(){
-		$(".warning").hide("slow");
+		$(".warning").hide();
 		$("#cover").hide();
 		trigger.eat = 1;
 		setTimeout(function(){$("#board").hide("slow");}, 100);
@@ -564,14 +561,14 @@ $("#task_button")
 	{
 		$("#cover").show();
 		$("#board").show("slow");
-		setTimeout(function(){$(".warning").show("slow");}, 100);
+		setTimeout(function(){$(".warning").show();}, 600);
 		document.getElementById("warning_text").innerHTML="請點擊碗<br/>用轉盤選擇食物餵食竹鼠";
 	}
 	else
 	{
 		$("#cover").show();
 		$("#board").show("slow");
-		setTimeout(function(){$(".warning").show("slow");}, 100);
+		setTimeout(function(){$(".warning").show();}, 600);
 		document.getElementById("warning_text").innerHTML="今天事件已完成<br/>請點擊睡覺結束";
 	}
 });
@@ -628,7 +625,7 @@ $("#end_button")
 	{
 		$("#cover").show();
 		$("#board").show("slow");
-		setTimeout(function(){$(".warning").show("slow");}, 100);
+		setTimeout(function(){$(".warning").show();}, 600);
 		document.getElementById("warning_text").innerHTML="請先完成<br/>今天的事件";
 	}
  
