@@ -690,5 +690,5 @@ $("#frame").click(function(){
 	    bar_control(50,3);
 	    bar_control(50,4);
 		day=1;
-		document.getElementById("DAY").innerHTML="Day 1";
+		document.getElementById("day").innerHTML="Day 1";
 });
