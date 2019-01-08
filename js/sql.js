@@ -121,7 +121,8 @@ function dying(){
     $("#die_img").show();
     $("#die_paper").show();
     $("#die_text").show();
-	die_times=die_times+1;
+  die_times=die_times+1;
+  check_ach_dietimes();
 	console.log(die_times);
 }
 
