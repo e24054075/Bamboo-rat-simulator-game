@@ -93,6 +93,8 @@ var ach_data = [
 			Unlock_ach(15);
 		}
 		if(bar_value[2] == 100){
+			Unlock_ach(7);
+			Unlock_ach(17);
     	}
 		if(bar_value[3] == 100){
      		 Unlock_ach(16);
@@ -104,7 +106,7 @@ var ach_data = [
 
 		}
 		if(bar_value[2] == 0){
-
+			Unlock_ach(18);
 		}
 		if(bar_value[3] == 0){
 
@@ -128,6 +130,19 @@ var ach_data = [
 	function check_ach_size(){
 		if(rat_scale >1){
 			Unlock_ach(13);
+		}
+	}
+	function check_ach_dietimes(){
+		switch(die_times){
+			case 1:
+				Unlock_ach(8);
+				break;
+			case 5:
+				Unlock_ach(9);
+				break;
+			case 10:
+				Unlock_ach(10);
+				break;
 		}
 	}
 	function Unlock_ach(index) {/*start from 0*/
