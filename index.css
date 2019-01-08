@@ -139,6 +139,15 @@ display:none;
 	width:72vw;
   	height:40vh;
 }
+#die_paper
+{
+   	z-index:2;
+   	position:absolute;
+   	top:65vh;
+   	left:14vw;
+   	width:72vw;
+   	height:15vh;
+}
 #window
 {
 	position:absolute;
