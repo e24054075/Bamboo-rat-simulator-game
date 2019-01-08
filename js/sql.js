@@ -122,6 +122,7 @@ function dying(){
   });
   
   die_times=die_times+1;
+  console.log(die_times);
 }
 
 
