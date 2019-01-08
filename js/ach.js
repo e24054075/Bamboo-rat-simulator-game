@@ -1,4 +1,5 @@
 var user_ach_data = "";/*User achieve data used in this js file (BIN format)*/
+var loaded = 0;			/*For debug*/ 
 var ach_data = [
 	[1, "呱呱墜地"     ,"誕生第一隻竹署",2],
 	[2, "頭好壯壯"     ,"健康百分百",0],
@@ -23,8 +24,11 @@ var ach_data = [
 	$("#achieve").ready(function(){
 		ach_data_ready();
 	})
+
 	/*load achieve content and user data*/
 	function ach_data_ready(){
+		if(loaded)	$("#achieve div").remove();
+		else 		loaded = 1;
 		/*Prepare User data first */
 		user_ach_data = parseInt(ach_status,16).toString(2);		/*Parse user achieve data from HEX to BIN format*/
 		user_ach_data = paddingRight(user_ach_data,ach_data.length);/*Status: [low index]1000000000[high index] */
