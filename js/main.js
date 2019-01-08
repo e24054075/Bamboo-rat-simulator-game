@@ -684,6 +684,7 @@ $("#frame").click(function(){
 	    $("#die_paper").hide();
 	    $("#die_img").hide();
 	    $("#die_text").hide();
+	    bar_value[0]=0;bar_value[1]=0;bar_value[2]=0;bar_value[3]=0;
 	    bar_control(50,1);
 	    bar_control(50,2);
 	    bar_control(50,3);
