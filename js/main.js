@@ -148,6 +148,9 @@ var mainpage ={
 	grass.scale.set(0.6);
 	grass.visible = false;
 	$("#food_text").hide();
+	event_time = 0;
+	document.getElementById("event_img").src="./assets/img/gogo"+event_time+".png";
+	prize = -1;
     this.button_eat.onInputUp.add(function(){
 		if(prize == -1)
 		{
@@ -234,7 +237,10 @@ var mainpage ={
 		set_weather();
 		check_ach_day();/*define in ach js*/ 
 		check_ach_size();/*define in ach js*/ 
-		check_dying(); /*define if die*/
+		if(check_dying()) /*define if die*/
+		{
+			game.state.start('mainpage');
+		}
 	}
 	if(trigger.eat === 1&& game.time.now > gameTimer)
 	{
@@ -519,8 +525,11 @@ function set_weather(){
 };
 function event_end(a){
 	$("#paper").click(function(){
-		check_dying(); /*define if die*/
 		if(a == 1){
+		if(check_dying()) /*define if die*/
+		{
+			game.state.start('mainpage');
+		}
 		$("#cover").hide();
 	    $("#paper").slideToggle();
 	    $(".event_title").hide();

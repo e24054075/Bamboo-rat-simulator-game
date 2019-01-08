@@ -108,7 +108,6 @@ $("#enroll img[id='register_return']").click(function(e){
 
 
 function dying(){
-
     //$("#B1-1").hide();
     //$("#A1-1").hide();
     //$("#T1-1").hide();
@@ -117,15 +116,13 @@ function dying(){
   //$(".optionB_text").slideToggle();
   //$(".event_title").slideToggle();
     //$(".event_content").slideToggle();
-      $("#cover").show();
-      $("#frame").show();
-      $("#die_img").show();
-      $("#die_paper").show();
-      $("#die_text").show();
-  
-  
-  die_times=die_times+1;
-  console.log(die_times);
+    $("#cover").show();
+    $("#frame").show();
+    $("#die_img").show();
+    $("#die_paper").show();
+    $("#die_text").show();
+	die_times=die_times+1;
+	console.log(die_times);
 }
 
 
@@ -134,40 +131,50 @@ function check_dying(){
       document.getElementById("die_img").src="./assets/img/hotpot.png";
       document.getElementById("die_text").innerHTML=die_content_data[0];
       dying();
+	  return 1;
     }
-    if(bar_value[1] == 100){
+    else if(bar_value[1] == 100){
       document.getElementById("die_img").src="./assets/img/thug.png";
       document.getElementById("die_text").innerHTML=die_content_data[2];
       dying();
+	  return 1;
     }
-    if(bar_value[2] == 100){
+    else if(bar_value[2] == 100){
       document.getElementById("die_img").src="./assets/img/roast.png";
       document.getElementById("die_text").innerHTML=die_content_data[4];
       dying();
+	  return 1;
     }
-    if(bar_value[3] == 100){
+    else if(bar_value[3] == 100){
       document.getElementById("die_img").src="./assets/img/fried.png";
       document.getElementById("die_text").innerHTML=die_content_data[6];
       dying();
+	  return 1;
     }
-    if(bar_value[0] == 0){
+    else if(bar_value[0] == 0){
       document.getElementById("die_img").src="./assets/img/sick.png";
       document.getElementById("die_text").innerHTML=die_content_data[1];
       dying();
+	  return 1;
     }
-    if(bar_value[1] == 0){
+    else if(bar_value[1] == 0){
       document.getElementById("die_img").src="./assets/img/crazy.png";
       document.getElementById("die_text").innerHTML=die_content_data[3];
       dying();
+	  return 1;
     }
-    if(bar_value[2] == 0){
+    else if(bar_value[2] == 0){
       document.getElementById("die_img").src="./assets/img/sad.png";
       document.getElementById("die_text").innerHTML=die_content_data[5];
       dying();
+	  return 1;
     }
-    if(bar_value[3] == 0){
+    else if(bar_value[3] == 0){
       document.getElementById("die_img").src="./assets/img/fried2.png";
       document.getElementById("die_text").innerHTML=die_content_data[7];
       dying();
+	  return 1;
     }
+	else 
+		return 0;
   }
