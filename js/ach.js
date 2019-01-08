@@ -82,19 +82,20 @@ var ach_data = [
 		})
 	}
 function dying(){
-$("#paper").hide();
-    $("#optionA").hide();
-    $("#optionB").hide();
-    $(".event_title").hide();
-    $(".event_content").hide();
-    $(".optionA_text").hide();
-    $(".optionB_text").hide();
 
+    
+    $("#B1-1").hide();
+    $("#A1-1").hide();
+    $("#T1-1").hide();
+    $("#C1-1").hide();
+
+$("#paper").hide(function(){
 			$("#cover").show();
 			$("#frame").show();
 			$("#die_img").show();
 			$("#die_paper").show();
 			$("#die_text").show();
+	});
 
 }
 
@@ -105,7 +106,7 @@ $("#paper").hide();
 		if(bar_value[0] == 100){
 			document.getElementById("die_img").src="./assets/img/hotpot.png";
 			document.getElementById("die_text").innerHTML=die_content_data[0];
-      dying();
+      		dying();
 			Unlock_ach(1);
 		}
 		if(bar_value[1] == 100){

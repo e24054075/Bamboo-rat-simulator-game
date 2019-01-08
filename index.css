@@ -131,7 +131,7 @@
 }
 #die_img
 {
-	z-index:2;
+	z-index:3;
 	position:absolute;
 	top:25vh;
 	left:14vw;
@@ -140,7 +140,7 @@
 }
 #die_paper
 {
-   	z-index:2;
+   	z-index:3;
    	position:absolute;
    	top:65vh;
    	left:14vw;
@@ -149,7 +149,7 @@
 }
 #die_text
 {
-	z-index:2;
+	z-index:3;
     font-family: 'Noto Sans TC', sans-serif;
     font-size:44px;
     position:absolute;
@@ -178,7 +178,7 @@
 }
 #frame
 {
-	z-index:2;
+	z-index:4;
 	position:absolute;
 	top:15vh;
 	left:5vw;
