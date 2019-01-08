@@ -17,7 +17,7 @@ var device_type;
 var i;
 var weather;
 var prize = -1;
-
+var die_times=0;
 
 var rat_scale = 0.7;
 var bar_input = 20;

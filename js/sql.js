@@ -24,7 +24,7 @@ $("#start_menu img[id='start_button']").click(function(e){
           ach_data_ready();
           four_bar_conrtrol(data.health1-50,data.force1-50,data.charm1-50,data.mood1-50);
           day=data.day1;
-          
+          die_times=data.die_times1;
           $("#day").text("day "+day);
           running_username=data.running_username1;
           
@@ -55,7 +55,8 @@ $("#save_img")
     mood1: bar_value[3],
     ach_status1: ach_status,
     day1:day,
-    Username:running_username
+    Username:running_username,
+    die_times:die_times
   },
   success: function(data){
     alert("儲存成功!");
@@ -118,7 +119,7 @@ function dying(){
       $("#die_text").show();
   });
   
-
+  die_times=die_times+1;
 }
 
 
