@@ -66,7 +66,7 @@ var mainpage ={
 	game.load.spritesheet('rat_player','assets/img/rat4.png', 210, 114);
 	game.load.spritesheet('hat','assets/img/hat.png', 84, 84);
 	game.load.image("wheel", "./assets/img/plat.png");
-	game.load.image("pin", "./assets/img/spin.png");     
+	game.load.image("pin", "./assets/img/spin3.png");     
 	},
   create:()=>{	
     $('#day').text("DAY "+day);
@@ -117,9 +117,9 @@ var mainpage ={
 	wheel.scale.set(0.5);
     wheel.anchor.set(0.5);
 	wheel.visible = false;
-    pin = game.add.sprite(208.5, 490, "pin");
+    pin = game.add.sprite(209, 475, "pin");
     pin.anchor.set(0.5);
-	pin.scale.set(1.1);
+	pin.scale.set(1.3);
 	pin.visible = false;
 	//按鈕設定
 	this.button_eat = game.add.button(150, 640, 'bowl');
@@ -469,13 +469,16 @@ function set_weather(){
 	switch(weather)
 	{
 		case 0:
+			document.getElementById("sky").src ="./assets/img/sky.jpg";
 			document.getElementById("sky").src ="https://media.giphy.com/media/l0Ex63LkzqLu8aTF6/giphy.gif";
 			four_bar_conrtrol(0,0,5,0);
 			break;
 		case 1:
+			document.getElementById("sky").src ="./assets/img/sky_cloudy.jpg";
 			document.getElementById("sky").src ="https://media.giphy.com/media/LNDBTeQl8lhTO/giphy.gif";
 			break;
 		case 2:
+			document.getElementById("sky").src ="./assets/img/sky_rainy.jpg";
 			document.getElementById("sky").src ="https://media.giphy.com/media/3osxYzIQRqN4DOEddC/giphy.gif";
 			four_bar_conrtrol(0,0,-5,0);
 			break;
@@ -615,9 +618,9 @@ $("#set_button")
     document.getElementById("set_button").style.width="8vw";
     document.getElementById("set_button").style.top="92vh";
     document.getElementById("set_button").style.left="2vw";
-  $("#cover").show();
+   $("#cover").show();
 	$("#setting").show( "slow" );
-	$("#return").show();
+	$("#return").show("slow");
  
 });
 $("#end_button")

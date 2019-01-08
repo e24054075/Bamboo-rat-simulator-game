@@ -61,9 +61,8 @@
 	position:absolute;
 	background-repeat:no-repeat;
 	z-index:3;
-	top:10vh;
-	left:70vw;
-	width:5vw;
+	top:68vh;
+	left:75vw;
 	height:5vh;
 }
 #day
@@ -443,10 +442,10 @@
 }
 #set_about{
 	position:absolute;
-        top:43vh;
-	left:6.9vw;
-	height: 30%;
-	width: 80%;
+    top:47vh;
+	left:14.5vw;
+	height: 15%;
+	width:55%;
 }
 .achieve_container 
 {
