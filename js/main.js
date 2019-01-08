@@ -504,6 +504,14 @@ function set_weather(){
 			document.getElementById("sky").src ="https://media.giphy.com/media/GPmndydM1WXHG/giphy.gif";
 			four_bar_conrtrol(-5,-5,10,0);
 			break;
+		case 6:
+			document.getElementById("sky").src ="https://media.giphy.com/media/OWS35u8VQdccM/giphy.gif";
+			four_bar_conrtrol(0,0,-5,0);
+			break;
+		case 7:
+			document.getElementById("sky").src ="https://media.giphy.com/media/xT8qBhrlNooHBYR9f2/giphy.gif";
+			four_bar_conrtrol(5,5,5,5);
+			break;
 			
 	}
 };
