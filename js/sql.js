@@ -1,6 +1,7 @@
 var running_username='fd';
 $("#start_menu img[id='start_button']").click(function(e){
   e.preventDefault()
+  preloadGIF();/*Start loading GIF when user entering password   define in setting js*/
   document.getElementById("start_menu").style.display="none";
   document.getElementById("login").style.display="block";
 })
