@@ -472,14 +472,14 @@ function set_weather(){
 	switch(weather)
 	{
 		case 0:
-			document.getElementById("sky").src ="./assets/img/sky.jpg";
+			document.getElementById("sky").src ="https://media.giphy.com/media/l0Ex63LkzqLu8aTF6/giphy.gif";
 			four_bar_conrtrol(0,0,5,0);
 			break;
 		case 1:
-			document.getElementById("sky").src ="./assets/img/sky_cloudy.jpg";
+			document.getElementById("sky").src ="https://media.giphy.com/media/LNDBTeQl8lhTO/giphy.gif";
 			break;
 		case 2:
-			document.getElementById("sky").src ="./assets/img/sky_rainy.jpg";
+			document.getElementById("sky").src ="https://media.giphy.com/media/3osxYzIQRqN4DOEddC/giphy.gif";
 			four_bar_conrtrol(0,0,-5,0);
 			break;
 	}
