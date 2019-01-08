@@ -22,7 +22,8 @@ var ach_data = [
 	[19,"鬱鬱寡歡"     ,"我沒有憂鬱!!!!",0],
 	[20,"杜絕鼠瘟"	   ,"我沒有得病!!!!",0],
 	[21,"東亞病鼠"	   ,"弱肉強食",0],
-	[22,"臭邊緣"       ,"沒有人在乎我",0]
+	[22,"臭邊緣"       ,"沒有人在乎我",0],
+	[23,"追本溯源"     ,"點開About us",0]
 	];
 	
 	/*uncomment below if no database*/
@@ -81,7 +82,7 @@ var ach_data = [
 		$(".achieve_container").css("grid-template-rows",css_grid_row);
 		/*register icon onclick event*/
 		$(".achieve_icon").click(function(){
-			User_click($(this).index());/*Parse achieve index*/
+			User_click_icon($(this).index());/*Parse achieve index*/
 		})
 	}
 
@@ -163,7 +164,7 @@ var ach_data = [
 	/**********************************************************************************/
 	/***********************Below Are user interact Functions**************************/
 	/**********************************************************************************/
-	function User_click(index){
+	function User_click_icon(index){
 		var i = index/3;
 		var selector = $("#achieve div:nth-child("+(index+1)+") img");
 		if(ach_data[i][3] != 1){
@@ -174,6 +175,9 @@ var ach_data = [
 			selector.attr('src', "./assets/img/ach/ach"+ach_data[i][0]+".png");
 			selector.slideToggle("fast");
 		});
+	}	
+	function User_click_about(){
+		Unlock_ach(22);
 	}
 
 	/**********************************************************************************/
