@@ -659,5 +659,7 @@ $(document).ready(function(){
 	$("#board").hide();
 	$("#frame").hide();
 	$("#die_img").hide();
+	$("#die_paper").hide();
+	
 	deviceType();
 });
