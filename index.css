@@ -1,5 +1,8 @@
 *
-
+#start_menu
+{
+display:none;
+}
 {
   margin: 0px;
   padding: 0px;
@@ -126,6 +129,24 @@
 	left:28vw;
 	width:48vw;
   	height:19vh;
+}
+#die_img
+{
+	z-index:2;
+	position:absolute;
+	top:25vh;
+	left:14vw;
+	width:72vw;
+  	height:40vh;
+}
+#die_paper
+{
+   	z-index:2;
+   	position:absolute;
+   	top:65vh;
+   	left:14vw;
+   	width:72vw;
+   	height:15vh;
 }
 #window
 {
