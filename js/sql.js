@@ -109,17 +109,20 @@ $("#enroll img[id='register_return']").click(function(e){
 
 function dying(){
 
-    $("#B1-1").hide();
-    $("#A1-1").hide();
-    $("#T1-1").hide();
-    $("#C1-1").hide();
-  $("#paper").hide(function(){
+    //$("#B1-1").hide();
+    //$("#A1-1").hide();
+    //$("#T1-1").hide();
+    //$("#C1-1").hide();
+    //$(".optionA_text").slideToggle();
+  //$(".optionB_text").slideToggle();
+  //$(".event_title").slideToggle();
+    //$(".event_content").slideToggle();
       $("#cover").show();
       $("#frame").show();
       $("#die_img").show();
       $("#die_paper").show();
       $("#die_text").show();
-  });
+  
   
   die_times=die_times+1;
   console.log(die_times);

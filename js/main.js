@@ -234,6 +234,7 @@ var mainpage ={
 		set_weather();
 		check_ach_day();/*define in ach js*/ 
 		check_ach_size();/*define in ach js*/ 
+		check_dying(); /*define if die*/
 	}
 	if(trigger.eat === 1&& game.time.now > gameTimer)
 	{
@@ -518,6 +519,7 @@ function set_weather(){
 };
 function event_end(a){
 	$("#paper").click(function(){
+		check_dying(); /*define if die*/
 		if(a == 1){
 		$("#cover").hide();
 	    $("#paper").slideToggle();
@@ -541,7 +543,7 @@ function four_bar_conrtrol(a,b,c,d){
 	if(d != 0)
 		bar_control(d,4);
 	check_ach_bar();/*define in ach js*/ 
-	check_dying(); /*define if die*/
+	
 };
 function bar_control(b_input,b_type){
 	bar_value[b_type-1] += b_input;
