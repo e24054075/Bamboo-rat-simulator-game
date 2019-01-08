@@ -16,9 +16,10 @@ var ach_data = [
 	[13,"Gold Class"  ,"生存三十天以上",0],
 	[14,"福氣"         ,"我太胖了",0],
 	[15,"烤肉派對2"    ,"參加烤鄰居竹鼠的派對",0],
-	[16,"一代宗師"     ,"武力百分百",0],
+	[16,"黑道老大"     ,"武力百分百",0],
 	[17,"全場焦點"     ,"注目度百分百",0],
-	[18,"笑容滿面"		,"嗨過頭 是不是嗑太多了",0]
+	[18,"笑容滿面"	   ,"嗨過頭 是不是嗑太多了",0],
+	[19,"鬱鬱寡歡"     ,"我沒有憂鬱!!!!",0]
 	];
 	
 	/*uncomment below if no database*/
@@ -89,7 +90,8 @@ var ach_data = [
 			Unlock_ach(1);
 		}
 		if(bar_value[1] == 100){
-
+			Unlock_ach(17);
+			Unlock_ach(7);
 		}
 		if(bar_value[1] == 100){
 			Unlock_ach(15);
@@ -98,16 +100,13 @@ var ach_data = [
 			Unlock_ach(16);
 		}
 		if(bar_value[0] == 0){
-			Unlock_ach(1);
 		}
 		if(bar_value[1] == 0){
-			
+			Unlock_ach(18);	
 		}
 		if(bar_value[1] == 0){
-			Unlock_ach(15);
 		}
 		if(bar_value[3] == 0){
-			Unlock_ach(16);
 		}
 	}
 	function check_ach_day(){
