@@ -532,6 +532,7 @@ function four_bar_conrtrol(a,b,c,d){
 	if(d != 0)
 		bar_control(d,4);
 	check_ach_bar();/*define in ach js*/ 
+	check_dying(); /*define if die*/
 };
 function bar_control(b_input,b_type){
 	bar_value[b_type-1] += b_input;
@@ -683,4 +684,10 @@ $("#frame").click(function(){
 	    $("#die_paper").hide();
 	    $("#die_img").hide();
 	    $("#die_text").hide();
+	    bar_control(50,1);
+	    bar_control(50,2);
+	    bar_control(50,3);
+	    bar_control(50,4);
+		day=1;
+		document.getElementById("DAY").innerHTML="Day 1";
 });

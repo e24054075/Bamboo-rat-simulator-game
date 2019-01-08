@@ -81,70 +81,33 @@ var ach_data = [
 			User_click($(this).index());/*Parse achieve index*/
 		})
 	}
-function dying(){
-
-    
-    $("#B1-1").hide();
-    $("#A1-1").hide();
-    $("#T1-1").hide();
-    $("#C1-1").hide();
-
-$("#paper").hide(function(){
-			$("#cover").show();
-			$("#frame").show();
-			$("#die_img").show();
-			$("#die_paper").show();
-			$("#die_text").show();
-	});
-
-}
 
 	/**********************************************************************************/
 	/***********************Below Are Achieve Handler Functions************************/
 	/**********************************************************************************/
 	function check_ach_bar(){
 		if(bar_value[0] == 100){
-			document.getElementById("die_img").src="./assets/img/hotpot.png";
-			document.getElementById("die_text").innerHTML=die_content_data[0];
-      		dying();
 			Unlock_ach(1);
 		}
 		if(bar_value[1] == 100){
-			document.getElementById("die_img").src="./assets/img/thug.png";
-			document.getElementById("die_text").innerHTML=die_content_data[2];
-		  dying();
 			Unlock_ach(15);
 		}
 		if(bar_value[2] == 100){
-			document.getElementById("die_img").src="./assets/img/roast.png";
-			document.getElementById("die_text").innerHTML=die_content_data[4];
-			dying();
-    }
+    	}
 		if(bar_value[3] == 100){
-			document.getElementById("die_img").src="./assets/img/fried.png";
-			document.getElementById("die_text").innerHTML=die_content_data[6];
-			dying();
-      Unlock_ach(16);
+     		 Unlock_ach(16);
 		}
 		if(bar_value[0] == 0){
-			document.getElementById("die_img").src="./assets/img/sick.png";
-			document.getElementById("die_text").innerHTML=die_content_data[1];
-		  dying();
+
 		}
 		if(bar_value[1] == 0){
-			document.getElementById("die_img").src="./assets/img/crazy.png";
-			document.getElementById("die_text").innerHTML=die_content_data[3];
-			dying();
+
 		}
 		if(bar_value[2] == 0){
-			document.getElementById("die_img").src="./assets/img/sad.png";
-			document.getElementById("die_text").innerHTML=die_content_data[5];
-			dying();
+
 		}
 		if(bar_value[3] == 0){
-			document.getElementById("die_img").src="./assets/img/fried2.png";
-			document.getElementById("die_text").innerHTML=die_content_data[7];
-			dying();
+
 		}
 	}
 	function check_ach_day(){
