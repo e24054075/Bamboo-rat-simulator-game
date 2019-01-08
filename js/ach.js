@@ -1,4 +1,5 @@
-var user_ach_data;/*User achieve data used in this js file (BIN format)*/
+var user_ach_data = "";/*User achieve data used in this js file (BIN format)*/
+var loaded = 0;			/*For debug*/ 
 var ach_data = [
 	[1, "呱呱墜地"     ,"誕生第一隻竹署",2],
 	[2, "頭好壯壯"     ,"健康百分百",0],
@@ -20,11 +21,14 @@ var ach_data = [
 	];
 	
 	/*uncomment below if no database*/
-	/*$("#achieve").ready(function(){
+	$("#achieve").ready(function(){
 		ach_data_ready();
-	})*/
+	})
+
 	/*load achieve content and user data*/
 	function ach_data_ready(){
+		if(loaded)	$("#achieve div").remove();
+		else 		loaded = 1;
 		/*Prepare User data first */
 		user_ach_data = parseInt(ach_status,16).toString(2);		/*Parse user achieve data from HEX to BIN format*/
 		user_ach_data = paddingRight(user_ach_data,ach_data.length);/*Status: [low index]1000000000[high index] */
@@ -48,8 +52,6 @@ var ach_data = [
 			else						ach_img.src = "./assets/img/ach/ach00.png";
 			ach_div_icon.appendChild(ach_img);
 
-
-	
 			/*create achieve title container*/
 			var ach_div_title = document.createElement("div");
 			ach_div_title.className = "achieve_title";
@@ -78,6 +80,9 @@ var ach_data = [
 		})
 	}
 
+	/**********************************************************************************/
+	/***********************Below Are Achieve Handler Functions************************/
+	/**********************************************************************************/
 	function check_ach_bar(){
 		if(bar_value[0] == 100){
 			Unlock_ach(1);
@@ -120,6 +125,10 @@ var ach_data = [
 		$("#achieve div:nth-child("+(index+1)*3+") p").text(ach_data[index][2]);/*select ach content p element and open it*/ 
 		$('#ach_button img').attr('src', './assets/img/history_new.png');
 	}
+
+	/**********************************************************************************/
+	/***********************Below Are user interact Functions**************************/
+	/**********************************************************************************/
 	function User_click(index){
 		var i = index/3;
 		var selector = $("#achieve div:nth-child("+(index+1)+") img");
@@ -136,7 +145,6 @@ var ach_data = [
 	/**********************************************************************************/
 	/***********************Below Are String Operation Functions***********************/
 	/**********************************************************************************/
-
 	function paddingRight(str,lenght){/*Make 0x1000 to 0x10000000*/
 		if(str.length >= lenght)
 		return str;
