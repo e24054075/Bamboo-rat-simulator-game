@@ -487,7 +487,7 @@ $(".optionB_text").click(function(){
 	event_end(1);
 });
 function set_weather(){
-	weather = getRandom(0,5);
+	weather = getRandom(0,7);
 	switch(weather)
 	{
 		case 0:
@@ -510,11 +510,11 @@ function set_weather(){
 			break;
 		case 4:
 			document.getElementById("sky").src ="https://media.giphy.com/media/xT0wlvGLHmojbeu5vq/giphy.gif";
-			four_bar_conrtrol(0,-5,-5,10);
+			four_bar_conrtrol(0,-5,-5,5);
 			break;
 		case 5:
 			document.getElementById("sky").src ="https://media.giphy.com/media/GPmndydM1WXHG/giphy.gif";
-			four_bar_conrtrol(-5,-5,10,0);
+			four_bar_conrtrol(-5,-5,5,0);
 			break;
 		case 6:
 			document.getElementById("sky").src ="https://media.giphy.com/media/OWS35u8VQdccM/giphy.gif";
