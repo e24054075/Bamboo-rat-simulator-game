@@ -644,5 +644,6 @@ $(document).ready(function(){
     $(".optionB_text").hide();
 	$(".warning").hide();
 	$("#board").hide();
+	$("#frame").hide();
 	deviceType();
 });
