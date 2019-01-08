@@ -130,6 +130,15 @@ display:none;
 	width:48vw;
   	height:19vh;
 }
+#die_img
+{
+	z-index:2;
+	position:absolute;
+	top:25vh;
+	left:14vw;
+	width:72vw;
+  	height:40vh;
+}
 #window
 {
 	position:absolute;
