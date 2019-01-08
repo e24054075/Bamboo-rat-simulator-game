@@ -66,7 +66,11 @@
 				<!--sky_sunny,sky_cloudy,sky_rainy-->
 				<img src="./assets/img/window2.png" id="window">
 				<img id="board" src="./assets/img/board2.png">
-				<img id="frame" src="./assets/img/frame.png">
+				<div class="die">
+					<img id="frame" src="./assets/img/frame.png">
+					<img id="die_img" src="./assets/img/roast.png">
+					<img id="die_paper" src="./assets/img/die_paper.jpg">
+				</div>
 			</div>
 			<div id="setting" class = "setting_container">
 					<div class="setting_item">
@@ -81,8 +85,7 @@
 							</audio>
 					</div>
 					<div class="setting_item" id = "save_btn">
-							
-							<img id="save_img" src="./assets/img/set_store.png">
+						<img id="save_img" src="./assets/img/set_store.png">
 					</div>
 					<div class="setting_item">
 						<a  href="https://genius92606.github.io/Bamboo-rat-simulator/" target="_blank">
@@ -96,68 +99,66 @@
 			</div>
 			<div id="return">
 				<img src="./assets/img/return.png" height="100%">
-        </div>
+        	</div>
 		
 			<img src="./assets/img/paper.png" id="paper">
 			<img src="./assets/img/option.png" id="optionA">
 			<img src="./assets/img/option.png" id="optionB">
-    </div>
-    <div class="event_title">
-      <p id="T1-1">有朋自遠方來</p>
-    </div>
-    <div class="event_content">
-        <p id="C1-1">今天主人的朋友來參觀農場，快要經過我的籠子了，我該怎麼辦?</p>
-    </div>
-    <div class="optionA_text">
-      <p id="A1-1">開始大聲嚶嚶嚶的叫</p>
-    </div>
-   <div class="optionB_text">
-     <p id="B1-1">安靜的在角落磨牙</p>
-    </div>
-   <div class="warning"><p id="warning_text">平安度過了今天!去睡覺來迎接新的一天吧!</p></div>
-	<div id="start_menu">
-        <img id="start_back" src="./assets/img/startgamebg.png">
-        <img id="start_button" src="./assets/img/startgame.png">
-      </div>
-      <div id="login" style="display:none;">
-        <img id="login_back" src="./assets/img/login.PNG">
-        <form id="user">
-          <div class="ui transparent input">
-            <input id="username_input" placeholder="Account..." onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
-          </div> 
-          <br>
-          <div class="ui transparent input">
-            <input type="password"id="password_input" placeholder="password..." onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
-          </div>
-          <br>
-          <img  id="user_summit" src="./assets/img/login_button.png">
-          <img  id="register" src="./assets/img/register.png">
-          <h1 id="user_output"></h1>
-        </form>
-      </div>
-      <div id="enroll" style="display:none;">
-        <img id="enroll_back" src="./assets/img/registerbg.png">
-        <form id="new_user">
-          <div class="ui transparent input">
-            <input id="new_username_input" placeholder="Account..." onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
-          </div> 
-          <br>
-          <div class="ui transparent input">
-            <input type="password" id="new_password_input" placeholder="password..." onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
-          </div>
-          <br>
-          <img  id="register_return" src="./assets/img/register_return.png">
-          <img  id="new_register" src="./assets/img/register.png">
-          <h1 id="new_user_output"></h1>
-        </form>
-
-      </div>
-	  <script src="./js/main.js"></script>      
-      <script src="./js/setting.js"></script>
-			<script src="./js/sql.js"></script>
-			<script src="./js/ach.js"></script>
-			<script>$(window).load(function(){$('.loading').hide(1000);});</script>
-	
+    	</div>
+    	<div class="event_title">
+      		<p id="T1-1">有朋自遠方來</p>
+    	</div>
+    	<div class="event_content">
+        	<p id="C1-1">今天主人的朋友來參觀農場，快要經過我的籠子了，我該怎麼辦?</p>
+    	</div>
+    	<div class="optionA_text">
+      		<p id="A1-1">開始大聲嚶嚶嚶的叫</p>
+    	</div>
+   		<div class="optionB_text">
+     		<p id="B1-1">安靜的在角落磨牙</p>
+    	</div>
+    	<div class="warning"><p id="warning_text">平安度過了今天!去睡覺來迎接新的一天吧!</p></div>
+		<div id="start_menu">
+        	<img id="start_back" src="./assets/img/startgamebg.png">
+        	<img id="start_button" src="./assets/img/startgame.png">
+    	</div>
+    	<div id="login" style="display:none;">
+    	    <img id="login_back" src="./assets/img/login.PNG">
+    	    <form id="user">
+    	      	<div class="ui transparent input">
+    	        <input id="username_input" placeholder="Account..." onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+    	      	</div> 
+   		       	<br>
+    	     	<div class="ui transparent input">
+    	        <input type="password"id="password_input" placeholder="password..." onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+        	  	</div>
+          		<br>
+          		<img  id="user_summit" src="./assets/img/login_button.png">
+          		<img  id="register" src="./assets/img/register.png">
+          		<h1 id="user_output"></h1>
+        	</form>
+    	</div>
+    	<div id="enroll" style="display:none;">
+       		<img id="enroll_back" src="./assets/img/registerbg.png">
+        	<form id="new_user">
+          		<div class="ui transparent input">
+            		<input id="new_username_input" placeholder="Account..." onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+          		</div> 
+          		<br>
+          		<div class="ui transparent input">
+            		<input type="password" id="new_password_input" placeholder="password..." onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+          		</div>
+          		<br>
+          		<img  id="register_return" src="./assets/img/register_return.png">
+          		<img  id="new_register" src="./assets/img/register.png">
+          		<h1 id="new_user_output"></h1>
+        	</form>
+    	</div>
+		<script src="./js/main.js"></script>      
+    	<script src="./js/setting.js"></script>
+		<script src="./js/sql.js"></script>
+		<script src="./js/ach.js"></script>
+		<script>$(window).load(function(){$('.loading').hide(1000);});</script>
 	</body>
 </html>
 

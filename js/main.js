@@ -117,7 +117,7 @@ var mainpage ={
 	wheel.scale.set(0.5);
     wheel.anchor.set(0.5);
 	wheel.visible = false;
-    pin = game.add.sprite(208, 480, "pin");
+    pin = game.add.sprite(209, 475, "pin");
     pin.anchor.set(0.5);
 	pin.scale.set(1.3);
 	pin.visible = false;
@@ -465,7 +465,7 @@ $(".optionB_text").click(function(){
 	event_end(1);
 });
 function set_weather(){
-	weather = getRandom(0,2);
+	weather = getRandom(0,5);
 	switch(weather)
 	{
 		case 0:
@@ -482,6 +482,19 @@ function set_weather(){
 			document.getElementById("sky").src ="https://media.giphy.com/media/3osxYzIQRqN4DOEddC/giphy.gif";
 			four_bar_conrtrol(0,0,-5,0);
 			break;
+		case 3:
+			document.getElementById("sky").src ="https://giphy.com/gifs/world-end-FRJK5MiwNU7gQ";
+			four_bar_conrtrol(-20,-20,-20,-20);
+			break;
+		case 4:
+			document.getElementById("sky").src ="https://media.giphy.com/media/xT0wlvGLHmojbeu5vq/giphy.gif";
+			four_bar_conrtrol(0,-5,-5,10);
+			break;
+		case 5:
+			document.getElementById("sky").src ="https://media.giphy.com/media/GPmndydM1WXHG/giphy.gif";
+			four_bar_conrtrol(-5,-5,10,0);
+			break;
+			
 	}
 };
 function event_end(a){
@@ -647,5 +660,9 @@ $(document).ready(function(){
     $(".optionB_text").hide();
 	$(".warning").hide();
 	$("#board").hide();
+	$("#frame").hide();
+	$("#die_img").hide();
+	$("#die_paper").hide();
+	
 	deviceType();
 });
