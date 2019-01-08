@@ -465,7 +465,7 @@ $(".optionB_text").click(function(){
 	event_end(1);
 });
 function set_weather(){
-	weather = getRandom(0,2);
+	weather = getRandom(0,4);
 	switch(weather)
 	{
 		case 0:
@@ -478,6 +478,14 @@ function set_weather(){
 		case 2:
 			document.getElementById("sky").src ="https://media.giphy.com/media/3osxYzIQRqN4DOEddC/giphy.gif";
 			four_bar_conrtrol(0,0,-5,0);
+			break;
+		case 3:
+			document.getElementById("sky").src ="https://giphy.com/gifs/world-end-FRJK5MiwNU7gQ";
+			four_bar_conrtrol(-20,-20,-20,-20);
+			break;
+		case 4:
+			document.getElementById("sky").src ="https://media.giphy.com/media/xT0wlvGLHmojbeu5vq/giphy.gif";
+			four_bar_conrtrol(0,-5,-5,+10);
 			break;
 	}
 };
