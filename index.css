@@ -147,6 +147,18 @@
    	width:72vw;
    	height:15vh;
 }
+#die_text
+{
+	z-index:2;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size:44px;
+    position:absolute;
+    top:67vh;
+    left:19vw;
+    height:20vh;
+    width:63vw;
+	word-break: break-all;
+}
 #window
 {
 	position:absolute;
