@@ -254,6 +254,7 @@ var mainpage ={
 		rat_player.body.velocity.y = 0;
 		rat_player.angle = 90;
 		rat_player.play('catch');
+		bamboorat1_voice.play();
 		/*hat.frame = 0;
 		hat.body.x = rat_player.body.x + 42;
 		hat.body.y = rat_player.body.y - 42;*/
