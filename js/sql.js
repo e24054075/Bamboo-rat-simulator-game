@@ -56,7 +56,7 @@ $("#save_img")
     ach_status1: ach_status,
     day1:day,
     Username:running_username,
-    die_times:die_times
+    die_times1:die_times
   },
   success: function(data){
     alert("儲存成功!");
