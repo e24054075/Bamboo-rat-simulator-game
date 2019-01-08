@@ -493,7 +493,7 @@ function set_weather(){
 			four_bar_conrtrol(0,0,-5,0);
 			break;
 		case 3:
-			document.getElementById("sky").src ="https://giphy.com/gifs/world-end-FRJK5MiwNU7gQ";
+			document.getElementById("sky").src ="https://media.giphy.com/media/3oz8xsX51J7VCWOzTi/giphy.gif";
 			four_bar_conrtrol(-20,-20,-20,-20);
 			break;
 		case 4:
