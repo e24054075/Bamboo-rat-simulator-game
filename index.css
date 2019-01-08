@@ -144,7 +144,15 @@
 	width:60vw;
   	height:30vh;
 }
-
+#frame
+{
+	z-index:2;
+	position:absolute;
+	top:15vh;
+	left:5vw;
+	width:90vw;
+  	height:70vh;
+}
 #paper
 {
    z-index:2;
