@@ -209,37 +209,44 @@ var mainpage ={
 	//按鍵觸發
 	if(trigger.end === 1&& game.time.now > gameTimer)
 	{
-		trigger.end = 0;
-		day++;
-		$('#day').text("DAY "+day);
-		if(day%10 === 0 && rat_scale <= 1.6)
-		{
-			rat_player.body.x = 160;
-			rat_player.body.y = 525;
-			rat_scale += 0.09;
-			rat_player.scale.set(rat_scale);
-			//hat.scale.set(rat_scale);
-		}
-		gameTimer = game.time.now + 750;
-		switch(prize)
-		{
-			case 0:
-				bamboo.visible = false;
+
+			trigger.end = 0;
+			day++;
+			$('#day').text("DAY "+day);
+			if(day%10 === 0 && rat_scale <= 1.6)
+			{
+				rat_player.body.x = 160;
+				rat_player.body.y = 525;
+				rat_scale += 0.09;
+				rat_player.scale.set(rat_scale);
+				//hat.scale.set(rat_scale);
+			}
+			gameTimer = game.time.now + 750;
+			switch(prize)
+			{
+				case 0:
+					bamboo.visible = false;
+					break;
+				case 1:
+					corn.visible = false;
+					break;
+				case 2:
+					rice.visible = false;
+					break;
+				case 3:
+					grass.visible = false;
+					break;
+				default:
 				break;
-			case 1:
-				corn.visible = false;
-				break;
-			case 2:
-				rice.visible = false;
-				break;
-			case 3:
-				grass.visible = false;
-				break;
-			default:
-			break;
-		}
-		prize = -1;
-		set_weather();
+			}
+			prize = -1;
+			set_weather();
+		$("#day_cover").show("slow",function(){
+			setTimeout(function(){
+				$("#day_cover").hide("slow");
+			},1000)
+		});
+
 		check_ach_day();/*define in ach js*/ 
 		check_ach_size();/*define in ach js*/ 
 		if(check_dying()) /*define if die*/
