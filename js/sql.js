@@ -117,14 +117,16 @@ function dying(){
   //$(".optionB_text").slideToggle();
   //$(".event_title").slideToggle();
     //$(".event_content").slideToggle();
+	die_times=die_times+1;
+	check_ach_dietimes();
+	document.getElementById("die_time").innerHTML=die_times;
+	console.log(die_times);
     $("#cover").show();
     $("#frame").show();
     $("#die_img").show();
     $("#die_paper").show();
     $("#die_text").show();
-  die_times=die_times+1;
-  check_ach_dietimes();
-	console.log(die_times);
+	$("#die_time").show();
 }
 
 

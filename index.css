@@ -7,6 +7,10 @@
 {
 	position:abosulte;
 }
+#start_menu
+{
+  display:none;
+}
 #status
 {
 	position:absolute;
@@ -165,6 +169,16 @@
     height:20vh;
     width:63vw;
 	word-break: break-all;
+}
+#die_time
+{
+	font-family: 'Noto Sans TC', sans-serif;
+    font-size:50px;
+	z-index:4;
+   	position:absolute;
+   	top:15vh;
+   	left:48.5vw;
+   	color:white;
 }
 #window
 {
